@@ -1,0 +1,119 @@
+﻿using CustomWeaponBehaviour;
+using InstanceIDs;
+using SideLoader;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using UnityEngine;
+using TinyHelper;
+
+namespace Crusader
+{
+    public class HolyShock
+    {
+        public static Skill Init()
+        {
+            var myitem = new SL_AttackSkill()
+            {
+                Name = "Holy Shock",
+                EffectBehaviour = EditBehaviours.Destroy,
+                Target_ItemID = IDs.blessID, //perfect strike
+                New_ItemID = IDs.holyShockSkillID,
+                SLPackName = Crusader.ModFolderName,
+                SubfolderName = "Holy Shock",
+                Description = "A blast that damages opponents and heals allies.",
+                CastType = Character.SpellCastType.Bubble,
+                CastModifier = Character.SpellCastModifier.Immobilized,
+                CastLocomotionEnabled = false,
+                MobileCastMovementMult = -1,
+                CastSheatheRequired = 0,
+
+                Cooldown = 30,
+                StaminaCost = 0,
+                HealthCost = 0,
+                ManaCost = 14,
+            };
+
+            myitem.ApplyTemplate();
+            Skill skill = ResourcesPrefabManager.Instance.GetItemPrefab(myitem.New_ItemID) as Skill;
+
+            //Set the correct animation
+            new SL_PlaySoundEffect()
+            {
+                Follow = true,
+                OverrideCategory = EffectSynchronizer.EffectCategories.None,
+                Delay = 0.05f,
+                MinPitch = 1,
+                MaxPitch = 1,
+                SyncType = Effect.SyncTypes.OwnerSync,
+                Sounds = new List<GlobalAudioManager.Sounds>() { GlobalAudioManager.Sounds.SFX_SKILL_PreciseStrike_WhooshImpact }
+            }.ApplyToTransform(TinyGameObjectManager.GetOrMake(skill.transform, "ActivationEffects", true, true));
+
+            new SL_PlaySoundEffect()
+            {
+                Follow = true,
+                OverrideCategory = EffectSynchronizer.EffectCategories.None,
+                Delay = 0.4f,
+                MinPitch = 1,
+                MaxPitch = 1,
+                SyncType = Effect.SyncTypes.OwnerSync,
+                Sounds = new List<GlobalAudioManager.Sounds>() { GlobalAudioManager.Sounds.SFX_SKILL_LeapAttack_Impact }
+            }.ApplyToTransform(TinyGameObjectManager.GetOrMake(skill.transform, "ActivationEffects", true, true));
+
+            new SL_PlayVFX()
+            {
+                VFXPrefab = SL_PlayVFX.VFXPrefabs.VFXPreciseStrike,
+            }.ApplyToTransform(TinyGameObjectManager.GetOrMake(skill.transform, "ActivationEffects", true, true));
+
+            var effectsContainer = TinyGameObjectManager.GetOrMake(skill.transform, "Effects", true, true);
+
+            var damageBlast = effectsContainer.gameObject.AddComponent<ShootBlast>();
+
+            damageBlast.UseOnce = true;
+            damageBlast.enabled = true;
+            damageBlast.transform.parent = effectsContainer;
+            damageBlast.BaseBlast = SL_ShootBlast.GetBlastPrefab(SL_ShootBlast.BlastPrefabs.DispersionLight).GetComponent<Blast>();
+            damageBlast.InstanstiatedAmount = 5;
+            damageBlast.CastPosition = Shooter.CastPositionType.Local;
+            damageBlast.TargetType = Shooter.TargetTypes.Enemies;
+            damageBlast.TransformName = "ShooterTransform";
+
+            damageBlast.UseTargetCharacterPositionType = false;
+
+            damageBlast.SyncType = Effect.SyncTypes.OwnerSync;
+            damageBlast.OverrideEffectCategory = EffectSynchronizer.EffectCategories.None;
+            damageBlast.BasePotencyValue = 1f;
+            damageBlast.Delay = 0.0f;
+            damageBlast.LocalCastPositionAdd = new Vector3(0f, 0.0f, 0);
+            damageBlast.BaseBlast.Radius = 7;
+
+
+            var damageBlastEffect = damageBlast.BaseBlast.transform.Find("Effects");
+            damageBlastEffect.gameObject.SetActive(true);
+
+            var damage = damageBlastEffect.GetComponent<PunctualDamage>();
+            GameObject.Destroy(damage);
+            damage = damageBlastEffect.gameObject.AddComponent<PunctualDamage>();
+            damage.Delay = 0f;
+            damage.Damages = new DamageType[] { new DamageType(HolyDamageManager.HolyDamageManager.GetDamageType(), 40) };
+            damage.Knockback = 40;
+            var addThenSpread = damageBlastEffect.gameObject.AddComponent<AddThenSpreadStatus>();
+            addThenSpread.Status = Crusader.Instance.impendingDoomInstance;
+            addThenSpread.SetChanceToContract(100);
+            addThenSpread.Range = 7;
+
+            //Heal
+            var healingAoE = effectsContainer.gameObject.AddComponent<HealingAoE>();
+            healingAoE.Range = 7;
+            healingAoE.RestoredHealth = 20;
+            healingAoE.AmplificationType = HolyDamageManager.HolyDamageManager.GetDamageType();
+            healingAoE.CanRevive = false;
+
+            //var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack("Crusader").AssetBundles["divinesmite"].LoadAsset<GameObject>("divinesmite_Prefab"));
+            //prefab.transform.SetParent(shootBlast.BaseBlast.transform);
+
+            return skill;
+        }
+    }
+}
