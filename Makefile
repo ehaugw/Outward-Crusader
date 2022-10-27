@@ -61,9 +61,9 @@ assemble:
 	mkdir -p public/$(sideloaderpath)/Items/Thunderous\ Smite/Textures
 	cp resources/icons/thunderous_smite.png                 public/$(sideloaderpath)/Items/Thunderous\ Smite/Textures/icon.png
 	cp resources/icons/thunderous_smite_small.png           public/$(sideloaderpath)/Items/Thunderous\ Smite/Textures/skillicon.png
-	mkdir -p public/$(sideloaderpath)/Items/Wrathfull\ Smite/Textures
-	cp resources/icons/wrathfull_smite.png                  public/$(sideloaderpath)/Items/Wrathfull\ Smite/Textures/icon.png
-	cp resources/icons/wrathfull_smite_small.png            public/$(sideloaderpath)/Items/Wrathfull\ Smite/Textures/skillicon.png
+	mkdir -p public/$(sideloaderpath)/Items/Wrathful\ Smite/Textures
+	cp resources/icons/wrathful_smite.png                  public/$(sideloaderpath)/Items/Wrathful\ Smite/Textures/icon.png
+	cp resources/icons/wrathful_smite_small.png            public/$(sideloaderpath)/Items/Wrathful\ Smite/Textures/skillicon.png
 	
 	cp resources/textures/burstOfDivinityIcon.png           public/$(sideloaderpath)/Texture2D/
 	cp resources/textures/healingSurgeIcon.png              public/$(sideloaderpath)/Texture2D/
