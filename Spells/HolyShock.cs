@@ -110,8 +110,8 @@ namespace Crusader
             healingAoE.AmplificationType = HolyDamageManager.HolyDamageManager.GetDamageType();
             healingAoE.CanRevive = false;
 
-            //var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack("Crusader").AssetBundles["divinesmite"].LoadAsset<GameObject>("divinesmite_Prefab"));
-            //prefab.transform.SetParent(shootBlast.BaseBlast.transform);
+            var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack("Crusader").AssetBundles["divinesmite"].LoadAsset<GameObject>("divinesmite_Prefab"));
+            prefab.transform.SetParent(damageBlast.BaseBlast.transform);
 
             return skill;
         }

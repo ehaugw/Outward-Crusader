@@ -15,7 +15,7 @@ namespace Crusader
             var spark = ResourcesPrefabManager.Instance.GetItemPrefab(IDs.sparkID) as Skill;
             var damagingBlast = spark.transform.Find("Effects").gameObject.GetComponents<ShootBlast>()[0].BaseBlast;
 
-            var extraEffects = TinyGameObjectManager.MakeFreshObject("Effects", true, true, damagingBlast.transform).transform;
+            var extraEffects = TinyGameObjectManager.MakeFreshObject(EffectSourceConditions.EFFECTS_CONTAINER, true, true, damagingBlast.transform).transform;
             //UnityEngine.Object.DontDestroyOnLoad(damagingBlast.gameObject);
 
             var punctualDamage = extraEffects.gameObject.AddComponent<PunctualDamage>();
@@ -30,12 +30,16 @@ namespace Crusader
             addThenSpread.Status = Crusader.Instance.impendingDoomInstance;
             addThenSpread.Range = Radiating.RANGE * 0.5f;
 
-            var requirementTransform = TinyGameObjectManager.GetOrMake(addThenSpread.transform, EffectSourceConditions.SOURCE_CONDITION_CONTAINER, true, true);
-            var skillReq = requirementTransform.gameObject.AddComponent<SourceConditionSkill>();
-            skillReq.RequiredSkillID = IDs.divineFavourID;
+            //var condition = extraEffects.gameObject.AddComponent<StatusEffectCondition>();
+            //condition.StatusEffectPrefab = Crusader.Instance.burstOfDivinityInstance;
 
+            //var requirementTransform = TinyGameObjectManager.GetOrMake(addThenSpread.transform, EffectSourceConditions.SOURCE_CONDITION_CONTAINER, true, true);
+            //var skillReq = requirementTransform.gameObject.AddComponent<SourceConditionSkill>();
+            //skillReq.RequiredSkillID = IDs.divineFavourID;
+
+            //var requirementTransform = TinyGameObjectManager.GetOrMake(addThenSpread.transform, EffectSourceConditions.SOURCE_CONDITION_CONTAINER, true, true);
             //var condition = extraEffects.gameObject.AddComponent<PassiveSkillCondition>();
-            //condition.PassiveSkill = (PassiveSkill) Crusader.Instance.holyShockInstance;
+            //condition.PassiveSkill = (PassiveSkill)Crusader.Instance.holyShockInstance;
         }
     }
 }

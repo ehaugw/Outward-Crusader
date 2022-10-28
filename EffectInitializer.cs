@@ -101,6 +101,7 @@ namespace Crusader
                 effectName:             ModTheme.BurstOfDivinityEffectIdentifierName,
                 displayName:            ModTheme.BurstOfDivinityEffectName,
                 familyName:             ModTheme.BurstOfDivinityEffectIdentifierName,
+                //description: "Augments Spark and reduces the mana cost of spells, but stacks are expended when a spell is casted.",
                 description:            "Reduces the mana cost of spells, but stacks are expended when a spell is casted.",
                 lifespan:               BlessedDeterminationSpell.FREECAST_LIFESPAN,
                 refreshRate:            -1,

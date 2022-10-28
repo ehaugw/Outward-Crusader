@@ -15,7 +15,7 @@
     using SynchronizedWorldObjects;
 
     [BepInPlugin(GUID, NAME, VERSION)]
-    [BepInDependency("com.sinai.SideLoader", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency(SL.GUID, BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency(EffectSourceConditions.GUID, EffectSourceConditions.VERSION)]
     [BepInDependency(TinyHelper.GUID, TinyHelper.VERSION)]
     [BepInDependency(HolyDamageManager.GUID, HolyDamageManager.VERSION)]
@@ -29,7 +29,7 @@
         public static Crusader Instance;
 
         public const string GUID = "com.ehaugw.crusaderclass";
-        public const string VERSION = "4.3.0";
+        public const string VERSION = "5.0.0";
         public const string NAME = "The Crusader";
         public const string ModFolderName = "Crusader";
 
@@ -80,6 +80,7 @@
 
             KlausNPC.Init();
 
+            SL.BeforePacksLoaded += BeforePackLoaded;
             SL.OnPacksLoaded += OnPackLoaded;
             SL.OnSceneLoaded += OnSceneLoaded;
 
@@ -88,6 +89,12 @@
         }
 
         public Trainer altarTrainer;
+
+        private void BeforePackLoaded()
+        {
+            //CureWoundsSpell.Prepare();
+
+        }
 
         private void OnPackLoaded()
         {
@@ -125,7 +132,7 @@
 
                 AfterUseManaTagInstance                 = TinyTagManager.GetOrMakeTag(IDs.AfterUseManaTag);
 
-                //RadiantSpark.Init();
+                RadiantSpark.Init();
 
                 CrusaderSkillTree.SetupSkillTree(ref CrusaderSkillTreeInstance);
 

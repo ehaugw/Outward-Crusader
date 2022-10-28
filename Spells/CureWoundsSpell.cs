@@ -14,7 +14,6 @@ namespace Crusader
 
     public class CureWoundsSpell
     {
-
         [HarmonyPatch(typeof(Character), "SpellCastAnim")]
         public class Character_SpellCastAnim
         {
@@ -28,7 +27,7 @@ namespace Crusader
             }
         }
 
-        public static Skill Init()
+        public static void Prepare()
         {
             var myitem = new SL_Skill()
             {
@@ -58,13 +57,23 @@ namespace Crusader
                 ManaCost = 14,
             };
             myitem.ApplyTemplate();
-            Skill skill = ResourcesPrefabManager.Instance.GetItemPrefab(myitem.New_ItemID) as Skill;
+        }
 
+        public static Skill Init()
+        {
+            Prepare();
+            Skill skill = ResourcesPrefabManager.Instance.GetItemPrefab(IDs.cureWoundsID) as Skill;
+            
             //EmptyOffHandCondition.AddToSkill(skill, false, false);
 
             Transform effects;
 
             effects = skill.transform.Find("Effects");
+            var burntHealthRestore = effects.gameObject.AddComponent<AffectBurntHealth>();
+            burntHealthRestore.AffectQuantity = 1;
+            burntHealthRestore.IsModifier = false;
+
+            effects = TinyGameObjectManager.MakeFreshObject(EffectSourceConditions.EFFECTS_CONTAINER, true, true, skill.transform).transform;
             var healingAoE = effects.gameObject.AddComponent<HealingAoE>();
             healingAoE.Range = 30;
             setHealing(healingAoE, 2);
