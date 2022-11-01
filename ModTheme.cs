@@ -261,7 +261,7 @@ namespace Crusader
                     case Theme.Atheist:
                         return "Steel Heart Imbue";
                     case Theme.Crusader:
-                        return "Impending Doom Imbue";
+                        return "Zealous Weapon";
                 }
                 return "UNTHEMED STRING";
             }
