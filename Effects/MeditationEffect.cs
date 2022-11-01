@@ -6,7 +6,6 @@
     using UnityEngine;
     using SideLoader;
     using InstanceIDs;
-    using UnityEngine.Experimental.PlayerLoop;
 
     class MeditationEffect : Effect
     {
