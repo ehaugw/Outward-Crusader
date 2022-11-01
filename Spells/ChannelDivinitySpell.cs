@@ -26,7 +26,7 @@ namespace Crusader
                 CastModifier = Character.SpellCastModifier.Immobilized,
                 CastLocomotionEnabled = false,
                 MobileCastMovementMult = -1,
-                CastSheatheRequired = 2,
+                CastSheatheRequired = 1,
 
                 EffectTransforms = new SL_EffectTransform[] {
                     //new SL_EffectTransform() {
