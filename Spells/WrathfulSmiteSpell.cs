@@ -61,8 +61,8 @@ namespace Crusader
             Transform hitEffects;
 
             hitEffects = skill.transform.Find("HitEffects");
-            var execDamage = hitEffects.gameObject.AddComponent<ExecutionWeaponDamageTargetHealth>();
-            execDamage.SetCooldown = 0f;
+            var execDamage = hitEffects.gameObject.AddComponent<CooldownChangeWeaponDamageTargetHealth>();
+            execDamage.ExecuteSetCooldown = 0f;
             setDamage(execDamage);
             
             //SourceConditionSkill condition;
