@@ -1,4 +1,4 @@
-﻿namespace Crusader
+namespace Crusader
 {
     using System.Collections.Generic;
     using UnityEngine;
@@ -131,8 +131,6 @@
                 holyShockInstance                       = HolyShock.Init();
 
                 AfterUseManaTagInstance                 = TinyTagManager.GetOrMakeTag(IDs.AfterUseManaTag);
-
-                RadiantSpark.Init();
 
                 CrusaderSkillTree.SetupSkillTree(ref CrusaderSkillTreeInstance);
 
