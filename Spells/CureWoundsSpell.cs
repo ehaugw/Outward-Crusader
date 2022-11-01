@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using InstanceIDs;
 using SideLoader;
 using System;
@@ -67,11 +67,6 @@ namespace Crusader
             //EmptyOffHandCondition.AddToSkill(skill, false, false);
 
             Transform effects;
-
-            effects = skill.transform.Find("Effects");
-            var burntHealthRestore = effects.gameObject.AddComponent<AffectBurntHealth>();
-            burntHealthRestore.AffectQuantity = 1;
-            burntHealthRestore.IsModifier = false;
 
             effects = TinyGameObjectManager.MakeFreshObject(EffectSourceConditions.EFFECTS_CONTAINER, true, true, skill.transform).transform;
             var healingAoE = effects.gameObject.AddComponent<HealingAoE>();
