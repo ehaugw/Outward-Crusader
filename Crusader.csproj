@@ -55,7 +55,6 @@
     <Compile Include="Spells\BlessedDeterminationSpell.cs" />
     <Compile Include="Spells\AuraOfSmitingSpell.cs" />
     <Compile Include="Spells\InfuseBurstOfLight.cs" />
-    <Compile Include="Spells\RadiantSpark.cs" />
     <Compile Include="Spells\RestorationSpell.cs" />
     <Compile Include="Spells\CureWoundsSpell.cs" />
     <Compile Include="Spells\Judgement.cs" />
