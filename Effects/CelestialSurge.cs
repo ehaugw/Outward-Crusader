@@ -13,7 +13,12 @@
         {
             List<Character> charsInRange = new List<Character>();
             CharacterManager.Instance.FindCharactersInRange(character.CenterPosition, range + Radiating.RANGE, ref charsInRange);
-            foreach (var c in charsInRange.Where(c => !c.IsAlly(character))) TinyEffectManager.AddStatusEffectForDuration(c, Crusader.Instance.impendingDoomInstance, 50);
+           
+            
+            foreach (var c in charsInRange.Where(c => !c.IsAlly(character)))
+            {
+                TinyEffectManager.AddStatusEffectForDuration(c, Crusader.Instance.impendingDoomInstance, 50, source: character);
+            }
         }
 
         public static float range = 50f;
