@@ -48,6 +48,7 @@
     <Compile Include="ModTheme.cs" />
     <Compile Include="SkillTreesAndTrainers\KlausNPC.cs" />
     <Compile Include="Spells\HolyShock.cs" />
+    <Compile Include="Spells\Concecration.cs" />
     <Compile Include="Spells\RebukingSmite.cs" />
     <Compile Include="Spells\Upgrades\WrathfulSmiteCooldownReset.cs" />
     <Compile Include="Spells\Upgrades\SharingIsCaringSpell.cs" />

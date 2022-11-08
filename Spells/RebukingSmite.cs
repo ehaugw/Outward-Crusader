@@ -55,7 +55,6 @@ namespace Crusader
             Skill skill = ResourcesPrefabManager.Instance.GetItemPrefab(myitem.New_ItemID) as Skill;
 
             //Set the correct animation
-            TinyGameObjectManager.MakeFreshObject("ActivationEffects", true, true, skill.transform);
             WeaponSkillAnimationSelector.SetCustomAttackAnimation(skill, Weapon.WeaponType.Sword_2H);
 
             new SL_PlaySoundEffect()

@@ -53,6 +53,7 @@ namespace Crusader
         public Skill wrathfulSmiteCooldownReset;
         public Skill globalThunderInstance;
         public Skill holyShockInstance;
+        public Skill concecrationInstance;
 
         //public StatusEffect radiatingInstance;
         public StatusEffect impendingDoomInstance;
@@ -129,6 +130,7 @@ namespace Crusader
                 sharingIsCaringInstance                 = SharingIsCaringSpell.Init();
                 wrathfulSmiteCooldownReset              = WrathfulSmiteCooldownReset.Init();
                 holyShockInstance                       = HolyShock.Init();
+                concecrationInstance                    = Concecration.Init();
 
                 AfterUseManaTagInstance                 = TinyTagManager.GetOrMakeTag(IDs.AfterUseManaTag);
 
