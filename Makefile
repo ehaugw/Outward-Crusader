@@ -78,6 +78,11 @@ publish:
 	make assemble
 	rm -f $(modname).rar
 	rar a $(modname).rar -ep1 public/*
+	
+	cp resources/manifest.json public/BepInEx/
+	cp resources/README.md public/BepInEx/
+	cp resources/icon.png public/BepInEx/
+	(cd public/BepInEx && zip -r $(modname)_thunderstore.zip * && mv $(modname)_thunderstore.zip ../../)
 
 install:
 	make assemble
@@ -86,6 +91,7 @@ install:
 clean:
 	rm -f -r public
 	rm -f $(modname).rar
+	rm -f $(modname).zip
 	rm -f -r bin
 info:
 	echo Modname: $(modname)
