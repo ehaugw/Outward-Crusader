@@ -40,7 +40,7 @@ namespace Crusader
                     Weapon.WeaponType.FistW_2H
                 },
 
-                Cooldown = 40,
+                Cooldown = 100,
                 StaminaCost = 10,
                 ManaCost = 7,
                 HealthCost = 0,
