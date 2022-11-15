@@ -47,23 +47,23 @@ namespace Crusader
                 
                 SkillRows = new List<SL_SkillRow>() {
                     new SL_SkillRow() { RowIndex = 1, Slots = new List<SL_BaseSkillSlot>() {
-                            //new SL_SkillSlot() { ColumnIndex = 1, SilverCost = 50, SkillID = IDs.cureWoundsID,              Breakthrough = false,   RequiredSkillSlot = Vector2.zero, },
-                            new SL_SkillSlot() { ColumnIndex = 2, SilverCost = 50, SkillID = IDs.meditationID,              Breakthrough = false,   RequiredSkillSlot = Vector2.zero  },
-                            new SL_SkillSlot() { ColumnIndex = 3, SilverCost = 50, SkillID = IDs.rebukingSmiteID,           Breakthrough = false,   RequiredSkillSlot = Vector2.zero  },
+                            //new SL_SkillSlot() { ColumnIndex = 1, SilverCost = 50, SkillID = IDs.cureWoundsID,                Breakthrough = false,   RequiredSkillSlot = Vector2.zero, },
+                            new SL_SkillSlot() { ColumnIndex = 1, SilverCost = 50, SkillID = IDs.meditationID,                  Breakthrough = false,   RequiredSkillSlot = Vector2.zero  },
+                            new SL_SkillSlot() { ColumnIndex = 3, SilverCost = 50, SkillID = IDs.rebukingSmiteID,               Breakthrough = false,   RequiredSkillSlot = Vector2.zero  },
                     } },
 
                     new SL_SkillRow() { RowIndex = 2, Slots = new List<SL_BaseSkillSlot>() {
-                            new SL_SkillSlot() { ColumnIndex = 2, SilverCost = 100, SkillID = IDs.divineFavourID,           Breakthrough = false,   RequiredSkillSlot = new Vector2(1,2) },
+                            new SL_SkillSlot() { ColumnIndex = 1, SilverCost = 100, SkillID = IDs.divineFavourID,               Breakthrough = false,   RequiredSkillSlot = new Vector2(1,2) },
                     } },
 
                     new SL_SkillRow() { RowIndex = 3, Slots = new List<SL_BaseSkillSlot>() {
-                            new SL_SkillSlot() { ColumnIndex = 2, SilverCost = 500, SkillID = IDs.blessedDeterminationID,   Breakthrough = true,  RequiredSkillSlot = Vector2.zero, },
+                            new SL_SkillSlot() { ColumnIndex = 2, SilverCost = 500, SkillID = IDs.blessedDeterminationID,       Breakthrough = true,  RequiredSkillSlot = Vector2.zero, },
                     } },
 
                     new SL_SkillRow() { RowIndex = 4, Slots = new List<SL_BaseSkillSlot>() {
-                            new SL_SkillSlot() { ColumnIndex = 1, SilverCost = 600, SkillID = IDs.channelDivinityID,        Breakthrough = false,   RequiredSkillSlot = new Vector2(3, 2)},
-                            //new SL_SkillSlot() { ColumnIndex = 3, SilverCost = 600, SkillID = IDs.divineFavourID,           Breakthrough = false,   RequiredSkillSlot = new Vector2(3, 2)},
-                            new SL_SkillSlot() { ColumnIndex = 3, SilverCost = 600, SkillID = IDs.cureWoundsID,             Breakthrough = false,  RequiredSkillSlot = new Vector2(3, 2)},
+                            new SL_SkillSlot() { ColumnIndex = 1, SilverCost = 600, SkillID = IDs.consecrationID,               Breakthrough = false,   RequiredSkillSlot = new Vector2(1, 1)},
+                            //new SL_SkillSlot() { ColumnIndex = 3, SilverCost = 600, SkillID = IDs.divineFavourID,             Breakthrough = false,   RequiredSkillSlot = new Vector2(3, 2)},
+                            new SL_SkillSlot() { ColumnIndex = 3, SilverCost = 600, SkillID = IDs.cureWoundsID,                 Breakthrough = false,  RequiredSkillSlot = new Vector2(3, 2)},
 
                             //new SL_SkillSlotFork() {
                             //    ColumnIndex = 2,
