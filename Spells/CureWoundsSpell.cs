@@ -27,11 +27,13 @@ namespace Crusader
             }
         }
 
+        public const string ItemName = "Cure Wounds";
+
         public static void Prepare()
         {
             var myitem = new SL_Skill()
             {
-                Name = "Cure Wounds",
+                Name = ItemName,
                 EffectBehaviour = EditBehaviours.Override,
                 Target_ItemID = IDs.blessID,
                 New_ItemID = IDs.cureWoundsID,

@@ -64,11 +64,6 @@ namespace Crusader
             var execDamage = hitEffects.gameObject.AddComponent<CooldownChangeWeaponDamageTargetHealth>();
             execDamage.ExecuteSetCooldown = 0f;
             setDamage(execDamage);
-            
-            //SourceConditionSkill condition;
-            //condition = TinyGameObjectManager.MakeFreshObject(EffectSourceConditions.SOURCE_CONDITION_CONTAINER, true, true, hitEffects).AddComponent<SourceConditionSkill>();
-            //condition.RequiredSkillID = IDs.wrathfulSmiteCooldownResetID;
-
 
             //hitEffects = TinyGameObjectManager.MakeFreshObject("HitEffects", true, true, skill.transform).transform;
             //var damage = hitEffects.gameObject.AddComponent<WeaponDamageTargetHealth>();

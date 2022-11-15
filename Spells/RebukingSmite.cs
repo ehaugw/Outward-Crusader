@@ -65,7 +65,7 @@ namespace Crusader
                 MinPitch = 1,
                 MaxPitch = 1,
                 SyncType = Effect.SyncTypes.OwnerSync,
-                Sounds = new List<GlobalAudioManager.Sounds>() { GlobalAudioManager.Sounds.SFX_SKILL_FinishingBlow, GlobalAudioManager.Sounds.SFX_SKILL_SavageStrike }
+                Sounds = new List<GlobalAudioManager.Sounds>() { GlobalAudioManager.Sounds.SFX_SKILL_SavageStrike }
             }.ApplyToTransform(TinyGameObjectManager.GetOrMake(skill.transform, "ActivationEffects", true, true));
 
             new SL_PlayVFX()

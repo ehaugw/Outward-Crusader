@@ -68,25 +68,33 @@ namespace Crusader
 
             var effectsContainer = TinyGameObjectManager.GetOrMake(skill.transform, "Effects", true, true);
 
-            var damageBlast = effectsContainer.gameObject.AddComponent<ShootBlast>();
 
-            damageBlast.UseOnce = true;
-            damageBlast.enabled = true;
-            damageBlast.transform.parent = effectsContainer;
-            damageBlast.BaseBlast = SL_ShootBlast.GetBlastPrefab(SL_ShootBlast.BlastPrefabs.DispersionLight).GetComponent<Blast>();
-            damageBlast.InstanstiatedAmount = 5;
-            damageBlast.CastPosition = Shooter.CastPositionType.Local;
-            damageBlast.TargetType = Shooter.TargetTypes.Enemies;
-            damageBlast.TransformName = "ShooterTransform";
+            var damageBlast = new SL_ShootBlast()
+            {
+                CastPosition = Shooter.CastPositionType.Local,
+                TargetType = Shooter.TargetTypes.Enemies,
 
-            damageBlast.UseTargetCharacterPositionType = false;
-
-            damageBlast.SyncType = Effect.SyncTypes.OwnerSync;
-            damageBlast.OverrideEffectCategory = EffectSynchronizer.EffectCategories.None;
-            damageBlast.BasePotencyValue = 1f;
-            damageBlast.Delay = 0.0f;
-            damageBlast.LocalCastPositionAdd = new Vector3(0f, 0.0f, 0);
-            damageBlast.BaseBlast.Radius = 7;
+                BaseBlast = SL_ShootBlast.BlastPrefabs.DispersionLight,
+                Radius = 7,
+                BlastLifespan= 1,
+                RefreshTime= 0,
+                InstantiatedAmount = 5,
+                Interruptible = false,
+                HitOnShoot = true,
+                IgnoreShooter = true,
+                ParentToShootTransform = false,
+                ImpactSoundMaterial = EquipmentSoundMaterials.NONE,
+                DontPlayHitSound = true,
+                EffectBehaviour = EditBehaviours.Destroy,
+                Delay= 0,
+                BlastEffects = new SL_EffectTransform[] {
+                    new SL_EffectTransform() {
+                        TransformName = "Effects",
+                        Effects = new SL_Effect[] {
+                        }
+                    }
+                },
+            }.ApplyToTransform(effectsContainer) as ShootBlast;
 
 
             var damageBlastEffect = damageBlast.BaseBlast.transform.Find("Effects");
@@ -110,7 +118,9 @@ namespace Crusader
             healingAoE.AmplificationType = HolyDamageManager.HolyDamageManager.GetDamageType();
             healingAoE.CanRevive = false;
 
-            var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack("Crusader").AssetBundles["divinesmite"].LoadAsset<GameObject>("divinesmite_Prefab"));
+            //var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack("Crusader").AssetBundles["consecrated_ground"].LoadAsset<GameObject>("consecrated_ground_Prefab"));
+            //var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack("Crusader").AssetBundles["zealous_blade"].LoadAsset<GameObject>("zealous_blade_Prefab"));
+            var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack("Crusader").AssetBundles["holy_shock"].LoadAsset<GameObject>("holy_shock_Prefab"));
             prefab.transform.SetParent(damageBlast.BaseBlast.transform);
 
             return skill;
