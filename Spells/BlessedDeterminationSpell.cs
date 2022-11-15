@@ -22,7 +22,11 @@ namespace Crusader
             //neededEnergy = 100/buildup
             //efficiency = buildup*providedmana/100
             //buildup = efficiency*100/providedmana
-            return ((character?.StatusEffectMngr?.HasStatusEffect(Crusader.Instance.surgeOfDivinityInstance.IdentifierName) ?? false) ? 2 : 1) * 100 * BlessedDeterminationSpell.BLESSED_DETERMINATION_EFFICIENCY / FREECAST_PROVIDED_MANA;
+            return (
+                1
+                + (character?.StatusEffectMngr?.HasStatusEffect(Crusader.Instance.surgeOfDivinityInstance.IdentifierName) ?? false ? 1.0f : 0)
+                + (character?.StatusEffectMngr?.HasStatusEffect(Crusader.Instance.consecrationAllyInstance.IdentifierName) ?? false ? 0.5f : 0)
+            ) * 100 * BlessedDeterminationSpell.BLESSED_DETERMINATION_EFFICIENCY / FREECAST_PROVIDED_MANA;
         }
 
         public static Skill Init()

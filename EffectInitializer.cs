@@ -12,6 +12,42 @@ namespace Crusader
 
     class EffectInitializer
     {
+        public static StatusEffect MakeOnConsecrationAllyPrefab()
+        {
+
+            new SL_StatusEffect()
+            {
+                Name = ModTheme.ConsecratedGroundEffectName,
+                Description = "You stand on " + ModTheme.ConsecratedGroundEffectName + ".",
+                StatusIdentifier = ModTheme.ConsecratedGroundEffectName,
+                DisplayedInHUD = false,
+                IsHidden = true,
+                IsMalusEffect = false,
+                Lifespan = 1.5f,
+                TargetStatusIdentifier = "Mana Ratio Recovery 3",
+                EffectBehaviour = EditBehaviours.Destroy,
+                Effects = new SL_EffectTransform[] {
+                    new SL_EffectTransform() {
+                        Effects     = new SL_Effect[] {
+                            new SL_AffectStat() {
+                                AffectQuantity  = 2,
+                                Stat_Tag        = IDs.statTagProtection
+                            },
+                            new SL_AffectStat() {
+                                AffectQuantity  = 10,
+                                Stat_Tag        = IDs.statTagImpactResistance
+                            },
+                            new SL_AffectStat() {
+                                AffectQuantity  = 50,
+                                Stat_Tag        = IDs.statTagCorruptionResistance
+                            }
+                        }
+                    }
+                }
+            }.ApplyTemplate();
+            return ResourcesPrefabManager.Instance.GetStatusEffectPrefab(ModTheme.ConsecratedGroundEffectName);
+        }
+
         public static StatusEffect MakeAuraOfSmitingPrefab()
         {
                 var statusEffect = TinyEffectManager.MakeStatusEffectPrefab(

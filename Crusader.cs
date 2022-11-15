@@ -53,7 +53,7 @@ namespace Crusader
         public Skill wrathfulSmiteCooldownReset;
         public Skill globalThunderInstance;
         public Skill holyShockInstance;
-        public Skill concecrationInstance;
+        public Skill consecrationInstance;
 
         //public StatusEffect radiatingInstance;
         public StatusEffect impendingDoomInstance;
@@ -63,6 +63,7 @@ namespace Crusader
         public StatusEffect meditationCooldownStatusEffectInstance;
         public StatusEffect auraOfSmitingEffectInstance;
         public StatusEffect healingSurgeInstance;
+        public StatusEffect consecrationAllyInstance;
 
         public ImbueEffectPreset classInfusion;
 
@@ -111,7 +112,7 @@ namespace Crusader
                 meditationCooldownStatusEffectInstance  = EffectInitializer.MakeMeditationCooldownPrefab();
                 auraOfSmitingEffectInstance             = EffectInitializer.MakeAuraOfSmitingPrefab();
                 healingSurgeInstance                    = EffectInitializer.MakeHealingSurgePrefab();
-
+                consecrationAllyInstance                = EffectInitializer.MakeOnConsecrationAllyPrefab();
 
                 cureWoundsInstance                      = CureWoundsSpell.Init();
                 divineFavourInstance                    = Judgement.Init();
@@ -130,7 +131,7 @@ namespace Crusader
                 sharingIsCaringInstance                 = SharingIsCaringSpell.Init();
                 wrathfulSmiteCooldownReset              = WrathfulSmiteCooldownReset.Init();
                 holyShockInstance                       = HolyShock.Init();
-                concecrationInstance                    = Concecration.Init();
+                consecrationInstance                    = Consecration.Init();
 
                 AfterUseManaTagInstance                 = TinyTagManager.GetOrMakeTag(IDs.AfterUseManaTag);
 

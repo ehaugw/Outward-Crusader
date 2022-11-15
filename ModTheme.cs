@@ -56,6 +56,22 @@ namespace Crusader
             }
         }
 
+        public static string ConsecratedGroundEffectName
+        {
+            get
+            {
+                switch (GetTheme)
+                {
+                    case Theme.Elatt:
+                    case Theme.DawnWeaver:
+                    case Theme.Atheist:
+                    case Theme.Crusader:
+                    default:
+                        return "Consecrated Ground";
+                }
+            }
+        }
+
         public static string MeditationCooldownNotification
         {
             get
