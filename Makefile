@@ -44,8 +44,8 @@ assemble:
 	cp -u resources/icons/judgement.png                        public/$(sideloaderpath)/Items/Judgement/Textures/icon.png
 	cp -u resources/icons/judgement_small.png                  public/$(sideloaderpath)/Items/Judgement/Textures/skillicon.png
 	mkdir -p public/$(sideloaderpath)/Items/Consecration/Textures
-	cp -u resources/icons/Consecration.png                     public/$(sideloaderpath)/Items/Consecration/Textures/icon.png
-	cp -u resources/icons/Consecration.png                     public/$(sideloaderpath)/Items/Consecration/Textures/skillicon.png
+	cp -u resources/icons/consecration.png                     public/$(sideloaderpath)/Items/Consecration/Textures/icon.png
+	cp -u resources/icons/consecration_small.png                     public/$(sideloaderpath)/Items/Consecration/Textures/skillicon.png
 	mkdir -p public/$(sideloaderpath)/Items/Meditate/Textures
 	cp -u resources/icons/meditate.png                         public/$(sideloaderpath)/Items/Meditate/Textures/icon.png
 	cp -u resources/icons/meditate_small.png                   public/$(sideloaderpath)/Items/Meditate/Textures/skillicon.png
