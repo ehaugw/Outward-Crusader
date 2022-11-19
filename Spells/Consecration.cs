@@ -1,4 +1,4 @@
-﻿using CustomWeaponBehaviour;
+using CustomWeaponBehaviour;
 using InstanceIDs;
 using SideLoader;
 using System;
@@ -26,7 +26,7 @@ namespace Crusader
                 Target_ItemID = IDs.perfectStrikeID, //perfect strike
                 New_ItemID = IDs.consecrationID,
                 SLPackName = Crusader.ModFolderName,
-                SubfolderName = "Rebuking Smite",
+                SubfolderName = "Consecration",
                 Description = "Slam your weapon into the ground to consecrate it and stagger enemies in your vicinity.",
                 CastType = Character.SpellCastType.WeaponSkill2,
                 CastModifier = Character.SpellCastModifier.Attack,
@@ -147,42 +147,42 @@ namespace Crusader
             prefab.transform.SetParent(damageBlast.BaseBlast.transform);
 
 
-            var staggerEffects = TinyGameObjectManager.MakeFreshObject("Effects", true, true, skill.transform).transform;
-            var staggerBlast = new SL_ShootBlast()
-            {
+            //var staggerEffects = TinyGameObjectManager.MakeFreshObject("Effects", true, true, skill.transform).transform;
+            //var staggerBlast = new SL_ShootBlast()
+            //{
 
-                CastPosition = Shooter.CastPositionType.Local,
-                TargetType = Shooter.TargetTypes.Allies,
+            //    CastPosition = Shooter.CastPositionType.Local,
+            //    TargetType = Shooter.TargetTypes.Allies,
 
-                BaseBlast = SL_ShootBlast.BlastPrefabs.DispersionLight,
-                Radius = 2,
-                RefreshTime = 0,
-                BlastLifespan = -1,
-                InstantiatedAmount = 5,
-                Interruptible = false,
-                HitOnShoot = true,
-                IgnoreShooter = false,
-                ParentToShootTransform = false,
-                ImpactSoundMaterial = EquipmentSoundMaterials.NONE,
-                DontPlayHitSound = true,
+            //    BaseBlast = SL_ShootBlast.BlastPrefabs.DispersionLight,
+            //    Radius = 2,
+            //    RefreshTime = 0,
+            //    BlastLifespan = -1,
+            //    InstantiatedAmount = 5,
+            //    Interruptible = false,
+            //    HitOnShoot = true,
+            //    IgnoreShooter = false,
+            //    ParentToShootTransform = false,
+            //    ImpactSoundMaterial = EquipmentSoundMaterials.NONE,
+            //    DontPlayHitSound = true,
 
-                EffectBehaviour = EditBehaviours.Destroy,
+            //    EffectBehaviour = EditBehaviours.Destroy,
 
-                BlastEffects = new SL_EffectTransform[] {
-                    new SL_EffectTransform() {
-                        TransformName = "Effects",
-                        Effects = new SL_Effect[] {
-                            new SL_AddStatusEffect()
-                            {
-                                StatusEffect = ModTheme.ConsecratedGroundEffectName,
-                                ChanceToContract = 100,
-                            }
-                        }
-                    }
-                }
-            }.ApplyToTransform(staggerEffects) as ShootBlast;
+            //    BlastEffects = new SL_EffectTransform[] {
+            //        new SL_EffectTransform() {
+            //            TransformName = "Effects",
+            //            Effects = new SL_Effect[] {
+            //                new SL_AddStatusEffect()
+            //                {
+            //                    StatusEffect = ModTheme.ConsecratedGroundEffectName,
+            //                    ChanceToContract = 100,
+            //                }
+            //            }
+            //        }
+            //    }
+            //}.ApplyToTransform(staggerEffects) as ShootBlast;
 
-            staggerBlast.transform.Find("Effects").gameObject.AddComponent<CasualStagger>();
+            //staggerBlast.transform.Find("Effects").gameObject.AddComponent<CasualStagger>();
 
             return skill;
         }
