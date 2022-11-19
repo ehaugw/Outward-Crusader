@@ -27,7 +27,7 @@ namespace Crusader
                 New_ItemID = IDs.consecrationID,
                 SLPackName = Crusader.ModFolderName,
                 SubfolderName = "Consecration",
-                Description = "Slam your weapon into the ground to consecrate it and stagger enemies in your vicinity.",
+                Description = "Slam your weapon into the ground to consecrate it.",
                 CastType = Character.SpellCastType.WeaponSkill2,
                 CastModifier = Character.SpellCastModifier.Attack,
                 CastLocomotionEnabled = false,
