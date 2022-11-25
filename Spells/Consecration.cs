@@ -127,7 +127,7 @@ namespace Crusader
                 DontPlayHitSound = true,
 
                 EffectBehaviour = EditBehaviours.Destroy,
-
+                
                 BlastEffects = new SL_EffectTransform[] {
                     new SL_EffectTransform() {
                         TransformName = "Effects",
@@ -145,7 +145,6 @@ namespace Crusader
 
             var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack("Crusader").AssetBundles["consecrated_ground"].LoadAsset<GameObject>("new_consecrated_ground_Prefab"));
             prefab.transform.SetParent(damageBlast.BaseBlast.transform);
-
 
             //var staggerEffects = TinyGameObjectManager.MakeFreshObject("Effects", true, true, skill.transform).transform;
             //var staggerBlast = new SL_ShootBlast()

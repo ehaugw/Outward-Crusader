@@ -1,7 +1,7 @@
 [Mods by ehaugw](https://www.nexusmods.com/outward/users/myaccount?tab=files "Mods by ehaugw") | Support me on [Patreon](https://www.patreon.com/ehaugw "Patreon")
 
 
-This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at November 19, 2022. Due to significant changes in a few mod frameworks' infrastructures, it is recommended that you update all mods that are older than November 08, 2022.
+This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at November 25, 2022. Due to significant changes in a few mod frameworks' infrastructures, it is recommended that you update all mods that are older than November 08, 2022.
 
 
 
@@ -89,9 +89,25 @@ Manual Uninstallation
 * Applies 15 seconds of [Impending Doom](https://www.nexusmods.com/outward/mods/136 "Impending Doom") to enemies. Enemies already affected by [Impending Doom](https://www.nexusmods.com/outward/mods/136 "Impending Doom") will spread the effect to nearby enemies.
 * Heals allies for 10 health, scaling with the caster's [Holy Damage](https://www.nexusmods.com/outward/mods/221 "Holy Damage") bonus.
 
-**Consecration** (Cooldown: 100 seconds, Mana cost: 7, Stamina cost: 7)
+**Channel Divinity** (Cooldown: 300 seconds, Mana cost: 7)
+This skill can be combined with [Rune Magic](https://outward.gamepedia.com/Rune_Magic "Rune Magic") to make vastly different effects.
 
-* Slam your weapon into the ground to consecrate it.
+* [Shim](https://outward.gamepedia.com/Rune:_Shim "Shim")
+
+ * Adds 50 seconds of [Impending Doom](https://www.nexusmods.com/outward/mods/136 "Impending Doom") to nearby enemies.
+* [Dez](https://outward.gamepedia.com/Rune:_Dez "Dez")
+
+ * Buffs the caster with [Amplified Runic Protection](https://outward.gamepedia.com/Runic_Protection "Amplified Runic Protection").
+* [Fal](https://outward.gamepedia.com/Rune:_Fal "Fal")
+
+ * Heal the caster and his/her allies for 40 health, amplified by his/her [Holy Damage](https://www.nexusmods.com/outward/mods/221 "Holy Damage") modifier.
+ * Revives his/her allies if they are downed.
+* [Egoth](https://outward.gamepedia.com/Rune:_Egoth "Egoth")
+
+ * Buffs the caster with [Healing Surge](https://www.nexusmods.com/outward/mods/136 "Healing Surge").
+* **No Rune**
+
+ * Buffs the caster with [Surge of Divinity](https://www.nexusmods.com/outward/mods/136 "Surge of Divinity").
 
 
 
@@ -113,6 +129,14 @@ Some of the skills above cause status effects, and some of these effects are add
 * This effect can be stacked indefinitely. Each effect has individual timers.
 * Reduces the mana cost of the next spell cast by 7 per stack (before reductions).
 * One stack of [Burst of Divinity](https://www.nexusmods.com/outward/mods/136 "Burst of Divinity") will be consumed for every 7 mana that was not spend due to this status effect. This number is always rounded up.
+
+**Surge of Divinity** (Duration: 90 seconds)
+
+* Doubles the build-up rate of [Burst of Divinity](https://www.nexusmods.com/outward/mods/136 "Burst of Divinity").
+
+**Healing Surge** (Duration: 120 seconds)
+
+* Doubles the healing and range of [Cure Wounds](https://www.nexusmods.com/outward/mods/136 "Cure Wounds").
 
 
 

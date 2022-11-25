@@ -86,6 +86,8 @@ publish:
 	rm -f $(modname).rar
 	rar a $(modname).rar -ep1 public/*
 	
+	(cd ../Descriptions && python3 crusader.py)
+	
 	cp -u resources/manifest.json public/BepInEx/
 	cp -u resources/README.md public/BepInEx/
 	cp -u resources/icon.png public/BepInEx/
