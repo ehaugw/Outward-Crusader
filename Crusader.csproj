@@ -44,6 +44,7 @@
     <Compile Include="Effects\Healing.cs" />
     <Compile Include="Effects\ImpendingDoomDamage.cs" />
     <Compile Include="Effects\ImpendingDoom.cs" />
+    <Compile Include="Effects\SoulPlague.cs" />
     <Compile Include="Effects\SafeRemoveStatusFromOwner.cs" />
     <Compile Include="ModTheme.cs" />
     <Compile Include="SkillTreesAndTrainers\KlausNPC.cs" />

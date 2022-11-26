@@ -57,6 +57,7 @@ namespace Crusader
 
         //public StatusEffect radiatingInstance;
         public StatusEffect impendingDoomInstance;
+        public StatusEffect soulPlagueInstance;
         public StatusEffect burstOfDivinityInstance;
         public StatusEffect surgeOfDivinityInstance;
         public StatusEffect meditationStatusEffectInstance;
@@ -66,6 +67,8 @@ namespace Crusader
         public StatusEffect consecrationAllyInstance;
 
         public ImbueEffectPreset classInfusion;
+        public ImbueEffectPreset blueChamberInfusion;
+
 
         public Tag AfterUseManaTagInstance;
 
@@ -104,9 +107,11 @@ namespace Crusader
             //{
                 //radiatingInstance                   = EffectInitializer.MakeRadiatingPrefab();
                 impendingDoomInstance                   = EffectInitializer.MakeImpendingDoomPrefab();
+                soulPlagueInstance                      = EffectInitializer.MakeSoulPlaguePrefab();
                 burstOfDivinityInstance                 = EffectInitializer.MakeBurstOfDivinityPrefab();
                 surgeOfDivinityInstance                 = EffectInitializer.MakeSurgeOfDivinityPrefab();
                 classInfusion                           = EffectInitializer.MakeClassInfusion();
+                blueChamberInfusion                     = EffectInitializer.MakeBlueChamberInfusion();
                                                       //EffectInitializer.AddCondemnToDivineLightImbue();
                 meditationStatusEffectInstance          = EffectInitializer.MakeMeditationPrefab();
                 meditationCooldownStatusEffectInstance  = EffectInitializer.MakeMeditationCooldownPrefab();

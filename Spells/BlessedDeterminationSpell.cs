@@ -192,8 +192,14 @@ namespace Crusader
                     {
                         if (AfterUseMana && TinyHelper.SkillRequirements.SafeHasSkillKnowledge(character, IDs.divineFavourID) && character.CurrentWeapon is Weapon weapon)
                         {
-                            CrusaderRPCManager.Instance.photonView.RPC("ApplyAddImbueEffectRPC", PhotonTargets.All, new object[] {weapon.UID, Crusader.Instance.classInfusion.PresetID, Judgement.ImbueDuration });
-                            //character.CurrentWeapon?.AddImbueEffect(Crusader.Instance.classInfusion, Judgement.ImbueDuration);
+                            if (TinyHelper.SkillRequirements.SafeHasSkillKnowledge(character, IDs.infuseLightID))
+                            {
+                                CrusaderRPCManager.Instance.photonView.RPC("ApplyAddImbueEffectRPC", PhotonTargets.All, new object[] { weapon.UID, Crusader.Instance.classInfusion.PresetID, Judgement.ImbueDuration });
+                            }
+                            else
+                            {
+                                CrusaderRPCManager.Instance.photonView.RPC("ApplyAddImbueEffectRPC", PhotonTargets.All, new object[] { weapon.UID, Crusader.Instance.blueChamberInfusion.PresetID, Judgement.ImbueDuration });
+                            }
                         }
 
                         freecastingStacks = Math.Min(Convert.ToInt32(Math.Ceiling(__result / BlessedDeterminationSpell.FREECAST_PROVIDED_MANA)), freecastingStacks);

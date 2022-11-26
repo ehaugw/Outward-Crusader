@@ -283,6 +283,22 @@ namespace Crusader
             }
         }
 
+        public static string BlueChamberImbueName
+        {
+            get
+            {
+                return SoulPlagueName + " Weapon";
+            }
+        }
+
+        public static string SoulPlagueName
+        {
+            get
+            {
+                return "Soul Plague";
+            }
+        }
+
         public static string RadiatingEffectName
         {
             get
@@ -291,7 +307,6 @@ namespace Crusader
                 {
                     case Theme.Elatt:
                     case Theme.DawnWeaver:
-                        return "Radiating";
                     case Theme.Atheist:
                     case Theme.Crusader:
                         return "Radiating";

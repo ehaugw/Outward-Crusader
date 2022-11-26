@@ -190,6 +190,29 @@ namespace Crusader
             return statusEffect;
         }
 
+        public static StatusEffect MakeSoulPlaguePrefab()
+        {
+            var statusEffect = TinyEffectManager.MakeStatusEffectPrefab(
+                effectName: ModTheme.SoulPlagueName,
+                familyName: ModTheme.SoulPlagueName,
+                description: "Drains your soul",
+                lifespan: SoulPlague.LIFE_SPAN,
+                refreshRate: 1,
+                stackBehavior: StatusEffectFamily.StackBehaviors.IndependantUnique,
+                targetStatusName: "Curse",
+                isMalusEffect: true,
+                modGUID: Crusader.GUID,
+                iconFileName: Crusader.ModFolderName + @"\SideLoader\Texture2D\radiatingIcon.png" //???
+            );
+
+            var effectSignature = statusEffect.StatusEffectSignature;
+            var effectComponent = TinyGameObjectManager.MakeFreshObject("Effects", true, true, effectSignature.transform).AddComponent<Radiating>();
+            effectComponent.UseOnce = false;
+            effectSignature.Effects = new List<Effect>() { effectComponent };
+
+            return statusEffect;
+        }
+
         public static StatusEffect MakeImpendingDoomPrefab()
         {
             var statusEffect = TinyEffectManager.MakeStatusEffectPrefab(
@@ -298,6 +321,71 @@ namespace Crusader
         //        }
         //    }
         //}
+
+        public static ImbueEffectPreset MakeBlueChamberInfusion()
+        {
+            var requireDivineFavour = false;
+
+            ImbueEffectPreset effectPreset = TinyEffectManager.MakeImbuePreset(
+                imbueID: IDs.blueChamberImbueID,
+                name: ModTheme.BlueChamberImbueName,
+                description: "Weapon deals some Decay damage, inflicts Soul Plague and absorbs 10% of damage dealt as Health.",
+                iconFileName: Crusader.ModFolderName + @"\SideLoader\Texture2D\impendingDoomImbueIcon.png",
+                visualEffectID: IDs.infuseBloodImbueID
+            );
+
+            Transform effectTransform;
+
+            effectTransform = TinyGameObjectManager.MakeFreshObject("Effects", true, true, effectPreset.transform).transform;
+            TinyEffectManager.MakeWeaponDamage(effectTransform, 0, 0.20f, DamageType.Types.Decay, 3);
+            TinyEffectManager.MakeAbsorbHealth(effectTransform, 0.1f);
+
+            //if (requireDivineFavour)
+            //{
+            //    effectTransform = TinyGameObjectManager.MakeFreshObject("Effects", true, true, effectPreset.transform).transform;
+            //}
+            //TinyEffectManager.MakeStatusEffectChance(effectTransform, Crusader.Instance.soulPlagueInstance.IdentifierName, 100);
+
+            //if (requireDivineFavour)
+            //{
+            //    var requirementTransform = TinyGameObjectManager.GetOrMake(effectTransform, EffectSourceConditions.SOURCE_CONDITION_CONTAINER, true, true);
+            //    var skillReq = requirementTransform.gameObject.AddComponent<SourceConditionSkill>();
+            //    skillReq.RequiredSkillID = IDs.divineFavourID;// = Crusader.Instance.divineFavourInstance;
+            //}
+
+            //var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack("Crusader").AssetBundles["divinesmite"].LoadAsset<GameObject>("divineinfusion_Prefab"));
+            //effectPreset.ImbueFX = SL.GetSLPack("Crusader").AssetBundles["divinesmite"].LoadAsset<GameObject>("divineinfusion_Prefab").transform;
+            //UnityEngine.Object.DontDestroyOnLoad(effectPreset.ImbueFX.gameObject);
+            //prefab.transform.SetParent(effectTransform.transform);
+
+
+            //if (ResourcesPrefabManager.Instance.GetItemPrefab(IDs.elementalDischargeID)?.transform.Find("NormalBolt").gameObject is GameObject lightningEffectElemental)
+            ////if (gongStrike.transform.Find("ElementalEffect/NormalLight").gameObject is GameObject normalLightEffectObject)
+            //{
+            //    if (lightningEffectElemental.GetComponent<ImbueEffectORCondition>() is ImbueEffectORCondition orCondition)
+            //    {
+            //        var listOfImubes = orCondition.ImbueEffectPresets.ToList();
+            //        listOfImubes.Add(effectPreset);
+
+            //        orCondition.ImbueEffectPresets = listOfImubes.ToArray();
+            //    }
+            //}
+
+
+            //if (ResourcesPrefabManager.Instance.GetItemPrefab(IDs.gongStrikeID)?.transform.Find("ElementalEffect/NormalLightning").gameObject is GameObject lightningEffectGong)
+            ////if (gongStrike.transform.Find("ElementalEffect/NormalLight").gameObject is GameObject normalLightEffectObject)
+            //{
+            //    if (lightningEffectGong.GetComponent<ImbueEffectORCondition>() is ImbueEffectORCondition orCondition)
+            //    {
+            //        var listOfImubes = orCondition.ImbueEffectPresets.ToList();
+            //        listOfImubes.Add(effectPreset);
+
+            //        orCondition.ImbueEffectPresets = listOfImubes.ToArray();
+            //    }
+            //}
+
+            return effectPreset;
+        }
 
         public static ImbueEffectPreset MakeClassInfusion()
         {
