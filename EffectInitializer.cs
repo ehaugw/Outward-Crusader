@@ -324,7 +324,7 @@ namespace Crusader
 
         public static ImbueEffectPreset MakeBlueChamberInfusion()
         {
-            var requireDivineFavour = false;
+            //var requireDivineFavour = false;
 
             ImbueEffectPreset effectPreset = TinyEffectManager.MakeImbuePreset(
                 imbueID: IDs.blueChamberImbueID,
@@ -337,14 +337,15 @@ namespace Crusader
             Transform effectTransform;
 
             effectTransform = TinyGameObjectManager.MakeFreshObject("Effects", true, true, effectPreset.transform).transform;
-            TinyEffectManager.MakeWeaponDamage(effectTransform, 0, 0.20f, DamageType.Types.Decay, 3);
+            TinyEffectManager.MakeWeaponDamage(effectTransform, 0, 0.20f, DamageType.Types.Ethereal, 3);
             TinyEffectManager.MakeAbsorbHealth(effectTransform, 0.1f);
 
             //if (requireDivineFavour)
             //{
             //    effectTransform = TinyGameObjectManager.MakeFreshObject("Effects", true, true, effectPreset.transform).transform;
             //}
-            //TinyEffectManager.MakeStatusEffectChance(effectTransform, Crusader.Instance.soulPlagueInstance.IdentifierName, 100);
+            TinyEffectManager.MakeStatusEffectBuildup(effectTransform, "Haunted", 33);
+            TinyEffectManager.MakeStatusEffectBuildup(effectTransform, "Chill", 33);
 
             //if (requireDivineFavour)
             //{
