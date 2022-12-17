@@ -329,23 +329,24 @@ namespace Crusader
             ImbueEffectPreset effectPreset = TinyEffectManager.MakeImbuePreset(
                 imbueID: IDs.blueChamberImbueID,
                 name: ModTheme.BlueChamberImbueName,
-                description: "Weapon deals some Decay damage, inflicts Soul Plague and absorbs 10% of damage dealt as Health.",
+                description: "Weapon deals some Frost and Ethereal damage, inflicts Haunted and Chill, and absorbs 10% of damage dealt as Health.",
                 iconFileName: Crusader.ModFolderName + @"\SideLoader\Texture2D\impendingDoomImbueIcon.png",
-                visualEffectID: IDs.infuseBloodImbueID
+                visualEffectID: IDs.infuseManaImbueID
             );
 
             Transform effectTransform;
 
             effectTransform = TinyGameObjectManager.MakeFreshObject("Effects", true, true, effectPreset.transform).transform;
-            TinyEffectManager.MakeWeaponDamage(effectTransform, 0, 0.20f, DamageType.Types.Ethereal, 3);
+            TinyEffectManager.MakeWeaponDamage(effectTransform, 0, 0.10f, DamageType.Types.Ethereal, 1.5f);
+            TinyEffectManager.MakeWeaponDamage(effectTransform, 0, 0.10f, DamageType.Types.Frost, 1.5f);
             TinyEffectManager.MakeAbsorbHealth(effectTransform, 0.1f);
 
             //if (requireDivineFavour)
             //{
             //    effectTransform = TinyGameObjectManager.MakeFreshObject("Effects", true, true, effectPreset.transform).transform;
             //}
-            TinyEffectManager.MakeStatusEffectBuildup(effectTransform, "Haunted", 33);
-            TinyEffectManager.MakeStatusEffectBuildup(effectTransform, "Chill", 33);
+            TinyEffectManager.MakeStatusEffectBuildup(effectTransform, IDs.hauntedID, 33);
+            TinyEffectManager.MakeStatusEffectBuildup(effectTransform, IDs.chillID, 33);
 
             //if (requireDivineFavour)
             //{

@@ -295,7 +295,7 @@ namespace Crusader
         {
             get
             {
-                return "Soul Plague";
+                return "Bone Chill";
             }
         }
 
