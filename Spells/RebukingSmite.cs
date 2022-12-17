@@ -88,6 +88,9 @@ namespace Crusader
             Transform hitEffects = TinyGameObjectManager.MakeFreshObject("HitEffects", true, true, skill.transform).transform;
             var damage = hitEffects.gameObject.AddComponent<WeaponDamage>();
             setDamage(damage);
+            var status = hitEffects.gameObject.AddComponent<AddStatusEffect>();
+            status.SetChanceToContract(100);
+            status.Status = ResourcesPrefabManager.Instance.GetStatusEffectPrefab(IDs.doomID);
             
             return skill;
         }
