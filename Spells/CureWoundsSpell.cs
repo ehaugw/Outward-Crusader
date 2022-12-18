@@ -40,7 +40,7 @@ namespace Crusader
                 SLPackName = Crusader.ModFolderName,
                 SubfolderName = "Cure Wounds",
                 Description = "A swift spell that restores some health.",
-                CastType = Character.SpellCastType.Bubble,
+                CastType = Character.SpellCastType.Fast,
                 CastModifier = Character.SpellCastModifier.Mobile,
                 CastLocomotionEnabled = true,
                 MobileCastMovementMult = 0.7f,
@@ -53,7 +53,7 @@ namespace Crusader
                     }
                 },
 
-                Cooldown = 0.5f,
+                Cooldown = 2f,
                 StaminaCost = 0,
                 HealthCost = 0,
                 ManaCost = 14,
