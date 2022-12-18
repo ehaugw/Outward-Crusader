@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -42,6 +42,7 @@
     <Compile Include="EffectConditions\WillDieFromImpendingDoom.cs" />
     <Compile Include="Effects\AuraOfSmitingEffect.cs" />
     <Compile Include="Effects\Healing.cs" />
+    <Compile Include="Effects\HealingAoE.cs" />
     <Compile Include="Effects\ImpendingDoomDamage.cs" />
     <Compile Include="Effects\ImpendingDoom.cs" />
     <Compile Include="Effects\SoulPlague.cs" />
@@ -68,7 +69,6 @@
     <Compile Include="SkillTreesAndTrainers\CrusaderSkillTree.cs" />
     <Compile Include="SkillTreesAndTrainers\SetupTrainers.cs" />
     <Compile Include="Effects\MeditationEffect.cs" />
-    <Compile Include="Effects\HealingAoE.cs" />
     <Compile Include="Effects\CelestialSurge.cs" />
     <Compile Include="Effects\ChannelDivinity.cs" />
     <Compile Include="EffectInitializer.cs" />
