@@ -18,7 +18,7 @@ namespace Crusader
             {
                 Name = "Rebuking Swipe",
                 EffectBehaviour = EditBehaviours.Destroy,
-                Target_ItemID = IDs.perfectStrikeID, //perfect strike
+                Target_ItemID = IDs.punctureID,
                 New_ItemID = IDs.rebukingSmiteID,
                 SLPackName = Crusader.ModFolderName,
                 SubfolderName = "Rebuking Smite",
@@ -48,7 +48,15 @@ namespace Crusader
                 StaminaCost = 7,
                 ManaCost = 7,
                 HealthCost = 0,
-                DurabilityCost = 3
+                DurabilityCost = 3,
+                
+                EffectTransforms = new SL_EffectTransform[] {
+                    new SL_EffectTransform() {
+                        TransformName = "Effects",
+                        Effects = new SL_Effect[] {
+                        }
+                    },
+                },
             };
 
             myitem.ApplyTemplate();
@@ -71,19 +79,18 @@ namespace Crusader
             new SL_PlayVFX()
             {
                 VFXPrefab = SL_PlayVFX.VFXPrefabs.VFXMomentOfTruth,
+                
             }.ApplyToTransform(TinyGameObjectManager.GetOrMake(skill.transform, "ActivationEffects", true, true));
 
-
-            foreach (ParticleSystem particles in skill.gameObject.GetComponentsInChildren<ParticleSystem>())
+            foreach (var vfxSystem in skill.transform.Find("ActivationEffects").gameObject.GetComponents<PlayVFX>())
             {
-                var m = particles.main;
-                m.startColor = new Color() { r = 1f, g = 0.9f, b = 0.4f, a = 1 };
-                var colorOverLifetime = particles.colorOverLifetime;
-
-                var grad = new ParticleSystem.MinMaxGradient(new Color(1,0.9f,0.4f,1), new Color(1, 0.3f, 0.0f, 0));
-                colorOverLifetime.color = grad;
-                colorOverLifetime.enabled = true;
+                foreach (ParticleSystem particles in vfxSystem.VFX.gameObject.GetComponentsInChildren<ParticleSystem>())
+                {
+                    var m = particles.main;
+                    m.startColor = new ParticleSystem.MinMaxGradient(new Color(1, 0.83f, 0.7f, 0.5f)/2, new Color(1, 0.5f, 0.2f, 0.5f)/2);
+                }
             }
+
 
             Transform hitEffects = TinyGameObjectManager.MakeFreshObject("HitEffects", true, true, skill.transform).transform;
             var damage = hitEffects.gameObject.AddComponent<WeaponDamage>();
