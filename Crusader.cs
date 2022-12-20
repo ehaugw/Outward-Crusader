@@ -16,8 +16,8 @@ namespace Crusader
 
     [BepInPlugin(GUID, NAME, VERSION)]
     [BepInDependency(SL.GUID, BepInDependency.DependencyFlags.HardDependency)]
-    [BepInDependency(EffectSourceConditions.GUID, EffectSourceConditions.VERSION)]
     [BepInDependency(TinyHelper.GUID, TinyHelper.VERSION)]
+    [BepInDependency(EffectSourceConditions.GUID, EffectSourceConditions.VERSION)]
     [BepInDependency(HolyDamageManager.GUID, HolyDamageManager.VERSION)]
     [BepInDependency(SynchronizedWorldObjects.GUID, SynchronizedWorldObjects.VERSION)]
     [BepInDependency(CustomWeaponBehaviour.GUID, CustomWeaponBehaviour.VERSION)]
