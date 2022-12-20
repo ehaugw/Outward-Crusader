@@ -345,8 +345,8 @@ namespace Crusader
             //{
             //    effectTransform = TinyGameObjectManager.MakeFreshObject("Effects", true, true, effectPreset.transform).transform;
             //}
-            TinyEffectManager.MakeStatusEffectBuildup(effectTransform, IDs.hauntedID, 33);
-            TinyEffectManager.MakeStatusEffectBuildup(effectTransform, IDs.chillID, 33);
+            TinyEffectManager.MakeStatusEffectBuildup(effectTransform, IDs.hauntedNameID, 33);
+            TinyEffectManager.MakeStatusEffectBuildup(effectTransform, IDs.chillNameID, 33);
 
             //if (requireDivineFavour)
             //{

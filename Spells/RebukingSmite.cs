@@ -90,7 +90,7 @@ namespace Crusader
             setDamage(damage);
             var status = hitEffects.gameObject.AddComponent<AddStatusEffect>();
             status.SetChanceToContract(100);
-            status.Status = ResourcesPrefabManager.Instance.GetStatusEffectPrefab(IDs.doomID);
+            status.Status = ResourcesPrefabManager.Instance.GetStatusEffectPrefab(IDs.doomNameID);
             
             return skill;
         }
