@@ -55,8 +55,23 @@ namespace Crusader
             {
                 GameObject.Destroy(soundObj);
             }
-            
-            skill.transform.Find("ActivationEffects").gameObject.AddComponent<EnableHitDetection>().Delay = 0.5f;
+
+            new SL_PlayVFX()
+            {
+                VFXPrefab = SL_PlayVFX.VFXPrefabs.VFXMomentOfTruth,
+
+            }.ApplyToTransform(TinyGameObjectManager.GetOrMake(skill.transform, "ActivationEffects", true, true));
+
+            foreach (var vfxSystem in skill.transform.Find("ActivationEffects").gameObject.GetComponents<PlayVFX>())
+            {
+                foreach (ParticleSystem particles in vfxSystem.VFX.gameObject.GetComponentsInChildren<ParticleSystem>())
+                {
+                    var m = particles.main;
+                    m.startColor = new ParticleSystem.MinMaxGradient(new Color(1, 0.83f, 0.7f, 0.5f) / 2, new Color(1, 0.5f, 0.2f, 0.5f) / 2);
+                }
+            }
+
+            TinyGameObjectManager.GetOrMake(skill.transform, "ActivationEffects", true, true).gameObject.AddComponent<EnableHitDetection>().Delay = 0.5f;
 
             Transform hitEffects;
 
