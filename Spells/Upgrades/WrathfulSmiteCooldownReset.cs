@@ -34,18 +34,4 @@ namespace Crusader
             return skill;
         }
     }
-
-    //[HarmonyPatch(typeof(Weapon), "AddImbueEffect")]
-    //public class Weapon_AddImbueEffect
-    //{
-    //    [HarmonyPrefix]
-    //    public static void Prefix(Weapon __instance, ref ImbueEffectPreset _effect)
-    //    {
-    //        var skillKnowledge = __instance?.OwnerCharacter?.Inventory?.SkillKnowledge;
-    //        if (_effect.PresetID == IDs.divineLightImbueID && skillKnowledge != null && skillKnowledge.IsItemLearned(IDs.divineFavourID))
-    //        {
-    //            _effect = (ImbueEffectPreset)ResourcesPrefabManager.Instance.GetEffectPreset(IDs.radiantLightImbueID);
-    //        }
-    //    }
-    //}
 }
