@@ -287,11 +287,11 @@ namespace Crusader
         {
             get
             {
-                return SoulPlagueName + " Weapon";
+                return BoneChillName + " Weapon";
             }
         }
 
-        public static string SoulPlagueName
+        public static string BoneChillName
         {
             get
             {

@@ -193,8 +193,8 @@ namespace Crusader
         public static StatusEffect MakeSoulPlaguePrefab()
         {
             var statusEffect = TinyEffectManager.MakeStatusEffectPrefab(
-                effectName: ModTheme.SoulPlagueName,
-                familyName: ModTheme.SoulPlagueName,
+                effectName: ModTheme.BoneChillName,
+                familyName: ModTheme.BoneChillName,
                 description: "Drains your soul",
                 lifespan: SoulPlague.LIFE_SPAN,
                 refreshRate: 1,
