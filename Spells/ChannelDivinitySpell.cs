@@ -53,8 +53,43 @@ namespace Crusader
             new SL_PlayVFX()
             {
                 VFXPrefab = SL_PlayVFX.VFXPrefabs.VFXPreciseStrike,
-                Delay = 1.1f
+                Delay = 1.6f
             }.ApplyToTransform(TinyGameObjectManager.GetOrMake(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER_ACTIVATION, true, true));
+
+
+            var damageBlast = new SL_ShootBlast()
+            {
+                CastPosition = Shooter.CastPositionType.Local,
+                LocalPositionAdd = new Vector3(0, 0, 0),
+
+                TargetType = Shooter.TargetTypes.Enemies,
+
+                BaseBlast = SL_ShootBlast.BlastPrefabs.EliteSupremeShellSpecialLaser,
+                Radius = 0.5f,
+                BlastLifespan = 1,
+                RefreshTime = 0.2f,
+                InstantiatedAmount = 5,
+                Interruptible = false,
+                HitOnShoot = false,
+                IgnoreShooter = true,
+                ParentToShootTransform = false,
+                ImpactSoundMaterial = EquipmentSoundMaterials.NONE,
+                DontPlayHitSound = true,
+                EffectBehaviour = EditBehaviours.Destroy,
+                Delay = 0,
+                BlastEffects = new SL_EffectTransform[] {
+                    new SL_EffectTransform() {
+                        TransformName = "HitEffects",
+                        Effects = new SL_Effect[] {
+                            new SL_AutoKnock()
+                            {
+                                KnockDown = false   
+                            }
+                        }
+                    }
+                },
+            }.ApplyToTransform(TinyGameObjectManager.GetOrMake(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER, true, true)) as ShootBlast;
+            damageBlast.transform.Rotate(-90, 0, 0);
 
 
             StatusEffectsCondition conditions;
@@ -76,7 +111,7 @@ namespace Crusader
             conditions = myEffects.gameObject.AddComponent<StatusEffectsCondition>();
             conditions.StatusEffectNames = new[] { IDs.rageNameID, IDs.rageAmplifiedNameID };
             conditions.Invert = true;
-            myEffects.gameObject.AddComponent<AddStatusEffect>().Status = Crusader.Instance.burstOfDivinityInstance;
+            myEffects.gameObject.AddComponent<AddStatusEffect>().Status = Crusader.Instance.surgeOfDivinityInstance;
 
             myEffects = TinyGameObjectManager.MakeFreshTransform(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER, true, true);
             conditions = myEffects.gameObject.AddComponent<StatusEffectsCondition>();
