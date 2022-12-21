@@ -331,7 +331,7 @@ namespace Crusader
                 name: ModTheme.BlueChamberImbueName,
                 description: "Weapon deals some Frost and Ethereal damage, inflicts Haunted and Chill, and absorbs 10% of damage dealt as Health.",
                 iconFileName: Crusader.ModFolderName + @"\SideLoader\Texture2D\impendingDoomImbueIcon.png",
-                visualEffectID: IDs.infuseManaImbueID
+                visualEffectID: IDs.iceVarnishImbueID
             );
 
             Transform effectTransform;
@@ -341,50 +341,18 @@ namespace Crusader
             TinyEffectManager.MakeWeaponDamage(effectTransform, 0, 0.10f, DamageType.Types.Frost, 1.5f);
             TinyEffectManager.MakeAbsorbHealth(effectTransform, 0.1f);
 
-            //if (requireDivineFavour)
-            //{
-            //    effectTransform = TinyGameObjectManager.MakeFreshObject("Effects", true, true, effectPreset.transform).transform;
-            //}
             TinyEffectManager.MakeStatusEffectBuildup(effectTransform, IDs.hauntedNameID, 33);
             TinyEffectManager.MakeStatusEffectBuildup(effectTransform, IDs.chillNameID, 33);
 
-            //if (requireDivineFavour)
-            //{
-            //    var requirementTransform = TinyGameObjectManager.GetOrMake(effectTransform, EffectSourceConditions.SOURCE_CONDITION_CONTAINER, true, true);
-            //    var skillReq = requirementTransform.gameObject.AddComponent<SourceConditionSkill>();
-            //    skillReq.RequiredSkillID = IDs.divineFavourID;// = Crusader.Instance.divineFavourInstance;
-            //}
+            var fx = effectPreset.ImbueFX;
 
-            //var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack("Crusader").AssetBundles["divinesmite"].LoadAsset<GameObject>("divineinfusion_Prefab"));
-            //effectPreset.ImbueFX = SL.GetSLPack("Crusader").AssetBundles["divinesmite"].LoadAsset<GameObject>("divineinfusion_Prefab").transform;
-            //UnityEngine.Object.DontDestroyOnLoad(effectPreset.ImbueFX.gameObject);
-            //prefab.transform.SetParent(effectTransform.transform);
+            fx = Object.Instantiate(fx);
+            fx.gameObject.SetActive(false);
+            Object.DontDestroyOnLoad(fx);
+            effectPreset.ImbueFX= fx;
 
-
-            //if (ResourcesPrefabManager.Instance.GetItemPrefab(IDs.elementalDischargeID)?.transform.Find("NormalBolt").gameObject is GameObject lightningEffectElemental)
-            ////if (gongStrike.transform.Find("ElementalEffect/NormalLight").gameObject is GameObject normalLightEffectObject)
-            //{
-            //    if (lightningEffectElemental.GetComponent<ImbueEffectORCondition>() is ImbueEffectORCondition orCondition)
-            //    {
-            //        var listOfImubes = orCondition.ImbueEffectPresets.ToList();
-            //        listOfImubes.Add(effectPreset);
-
-            //        orCondition.ImbueEffectPresets = listOfImubes.ToArray();
-            //    }
-            //}
-
-
-            //if (ResourcesPrefabManager.Instance.GetItemPrefab(IDs.gongStrikeID)?.transform.Find("ElementalEffect/NormalLightning").gameObject is GameObject lightningEffectGong)
-            ////if (gongStrike.transform.Find("ElementalEffect/NormalLight").gameObject is GameObject normalLightEffectObject)
-            //{
-            //    if (lightningEffectGong.GetComponent<ImbueEffectORCondition>() is ImbueEffectORCondition orCondition)
-            //    {
-            //        var listOfImubes = orCondition.ImbueEffectPresets.ToList();
-            //        listOfImubes.Add(effectPreset);
-
-            //        orCondition.ImbueEffectPresets = listOfImubes.ToArray();
-            //    }
-            //}
+            GameObject.Destroy(fx.Find("IceParticlesCore").gameObject);
+            GameObject.Destroy(fx.Find("IceParticlesCoreModeled").gameObject);
 
             return effectPreset;
         }
