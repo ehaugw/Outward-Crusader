@@ -315,9 +315,6 @@ namespace Crusader
             }
         }
 
-
-        public const string ImpendingDoomEffectIdentifierName = "ImpendingDoom";
-
         public static string ImpendingDoomEffectName
         {
             get
