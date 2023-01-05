@@ -39,12 +39,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CrusaderRPCManager.cs" />
-    <Compile Include="EffectConditions\WillDieFromImpendingDoom.cs" />
     <Compile Include="Effects\AuraOfSmitingEffect.cs" />
     <Compile Include="Effects\Healing.cs" />
     <Compile Include="Effects\HealingAoE.cs" />
-    <Compile Include="Effects\ImpendingDoomDamage.cs" />
-    <Compile Include="Effects\ImpendingDoom.cs" />
     <Compile Include="Effects\SoulPlague.cs" />
     <Compile Include="Effects\SafeRemoveStatusFromOwner.cs" />
     <Compile Include="ModTheme.cs" />
@@ -148,6 +145,10 @@
       <Project>{871a4a4a-70c0-4995-8b51-5815c7ec432d}</Project>
       <Name>HolyDamageManager</Name>
       <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ImpendingDoom\ImpendingDoom.csproj">
+      <Project>{9f9a003c-f0e9-4f69-8470-1aec6928e139}</Project>
+      <Name>ImpendingDoom</Name>
     </ProjectReference>
     <ProjectReference Include="..\InstanceIDs\InstanceIDs.csproj">
       <Project>{407d22a2-71a9-4906-a3d0-0a2211718463}</Project>

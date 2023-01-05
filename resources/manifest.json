@@ -1,10 +1,11 @@
+
 {
   "name": "Crusader",
-  "version_number": "5.0.0",
-  "website_url": "https://github.com/ehaugw/Outward-Crusader",
-  "description": "Play Outward as a divine warrior with a magic fueled mix of melee and spell casting abilities.",
+  "version_number": "5.1.0",
+  "website_url": "https://outward.thunderstore.io/package/ehaugw/Crusader/",
+  "description": "Enable the user to play as a holy warrior with divine magic.",
   "dependencies": [
-    "sinai-dev-SideLoader-3.8.3",
-    "BepInEx-BepInExPack_Outward-5.4.8"
+"BepInEx-BepInExPack_Outward-5.4.19",
+"sinai-dev-SideLoader-3.8.4"
   ]
 }

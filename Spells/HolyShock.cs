@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using TinyHelper;
+using ImpendingDoom;
 
 namespace Crusader
 {
@@ -107,7 +108,7 @@ namespace Crusader
             damage.Damages = new DamageType[] { new DamageType(HolyDamageManager.HolyDamageManager.GetDamageType(), 40) };
             damage.Knockback = 40;
             var addThenSpread = damageBlastEffect.gameObject.AddComponent<AddThenSpreadStatus>();
-            addThenSpread.Status = Crusader.Instance.impendingDoomInstance;
+            addThenSpread.Status = ImpendingDoomMod.Instance.impendingDoomInstance;
             addThenSpread.SetChanceToContract(100);
             addThenSpread.Range = 7;
 

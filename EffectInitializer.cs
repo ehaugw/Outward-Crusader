@@ -9,6 +9,7 @@ using EffectSourceConditions;
 namespace Crusader
 {
     using EffectSourceConditions;
+    using ImpendingDoom;
 
     class EffectInitializer
     {
@@ -213,68 +214,6 @@ namespace Crusader
             return statusEffect;
         }
 
-        public static StatusEffect MakeImpendingDoomPrefab()
-        {
-            var statusEffect = TinyEffectManager.MakeStatusEffectPrefab(
-                effectName:             ModTheme.ImpendingDoomEffectIdentifierName,
-                displayName:            ModTheme.ImpendingDoomEffectName,
-                familyName:             ModTheme.ImpendingDoomEffectIdentifierName,
-                description:            "DESCRIPTION",
-                lifespan:               ImpendingDoom.LIFE_SPAN,
-                refreshRate:            ImpendingDoom.REFRESH_RATE,
-                stackBehavior:          StatusEffectFamily.StackBehaviors.Override, 
-                targetStatusName:       "HolyBlaze",
-                isMalusEffect:          true,
-                modGUID:                Crusader.GUID,
-                iconFileName:           Crusader.ModFolderName + @"\SideLoader\Texture2D\impendingDoomIcon.png"
-            );
-
-            var effectSignature = statusEffect.StatusEffectSignature;
-            Transform effectsContainer;
-
-            //Impending Doom
-            effectsContainer = TinyGameObjectManager.MakeFreshObject(EffectSourceConditions.EFFECTS_CONTAINER, true, true, effectSignature.transform).transform;
-            var impendingDoom = effectsContainer.gameObject.AddComponent<ImpendingDoom>();
-            impendingDoom.UseOnce = false;
-
-            //Nova
-            effectsContainer = TinyGameObjectManager.MakeFreshObject(EffectSourceConditions.EFFECTS_CONTAINER, true, true, effectSignature.transform).transform;
-            WillDieFromImpendingDoom condition = effectsContainer.gameObject.AddComponent<WillDieFromImpendingDoom>();
-
-            var shootBlast = effectsContainer.gameObject.AddComponent<TinyHelper.Effects.ShootBlastFromEffect>();
-
-            shootBlast.UseOnce = true;
-            shootBlast.enabled = true;
-            shootBlast.transform.parent = effectsContainer;
-            shootBlast.BaseBlast = SL_ShootBlast.GetBlastPrefab(SL_ShootBlast.BlastPrefabs.ForceRaiseLightning).GetComponent<Blast>();
-            shootBlast.InstanstiatedAmount = 5;
-            shootBlast.CastPosition = Shooter.CastPositionType.Local;
-            shootBlast.TargetType = Shooter.TargetTypes.Enemies;
-            shootBlast.TransformName = "ShooterTransform";
-
-            shootBlast.UseTargetCharacterPositionType = false;
-
-            shootBlast.SyncType = Effect.SyncTypes.OwnerSync;
-            shootBlast.OverrideEffectCategory = EffectSynchronizer.EffectCategories.None;
-            shootBlast.BasePotencyValue = 1f;
-            shootBlast.Delay = 0.25f;
-            shootBlast.LocalCastPositionAdd = new Vector3(0f, -1.0f, 0);
-            shootBlast.BaseBlast.Radius = ImpendingDoom.RANGE;
-
-            effectSignature.Effects = new List<Effect>() { impendingDoom, shootBlast};
-
-            //thunderGameObject.GetComponentInChildren<PunctualDamage>().enabled = true;
-
-            var blastEffects = shootBlast.BaseBlast.transform.Find("Effects");
-            var damage = blastEffects.GetComponent<PunctualDamage>();
-            GameObject.Destroy(damage);
-            damage = blastEffects.gameObject.AddComponent<ImpendingDoomDamage>();
-            damage.Delay = 0.25f;
-            damage.Knockback = 40;
-
-            return statusEffect;
-        }
-
         public static void AddCondemnToDivineLightImbue()
         {
             //Dictionary<int, EffectPreset> dictionary = (Dictionary<int, EffectPreset>) TinyHelper.At.GetValue(typeof(ResourcesPrefabManager), null, "EFFECTPRESET_PREFABS");
@@ -282,7 +221,7 @@ namespace Crusader
             var effectPreset = TinyEffectManager.GetEffectPreset(IDs.divineLightImbueID);
             var effectTransform = TinyGameObjectManager.MakeFreshObject("Effects", true, true, effectPreset.transform).transform;
 
-            TinyEffectManager.MakeStatusEffectChance(effectTransform, Crusader.Instance.impendingDoomInstance.IdentifierName, 100);
+            TinyEffectManager.MakeStatusEffectChance(effectTransform, ImpendingDoomMod.Instance.impendingDoomInstance.IdentifierName, 100);
             //TinyEffectManager.AddWeaponDamage(effectTransform, 4, 0, HolyDamageManager.HolyDamageManager.GetDamageType(), 0);
 
             var requirementTransform = TinyGameObjectManager.GetOrMake(effectTransform, EffectSourceConditions.SOURCE_CONDITION_CONTAINER, true, true);
@@ -378,7 +317,7 @@ namespace Crusader
             {
                 effectTransform = TinyGameObjectManager.MakeFreshObject("Effects", true, true, effectPreset.transform).transform;
             }
-            TinyEffectManager.MakeStatusEffectChance(effectTransform, Crusader.Instance.impendingDoomInstance.IdentifierName, 100);
+            TinyEffectManager.MakeStatusEffectChance(effectTransform, ImpendingDoomMod.Instance.impendingDoomInstance.IdentifierName, 100);
 
             if (requireDivineFavour)
             {

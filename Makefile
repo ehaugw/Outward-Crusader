@@ -4,7 +4,7 @@ pluginpath = BepInEx/plugins
 sideloaderpath = $(pluginpath)/$(modname)/SideLoader
 unityassets = resources/unity/Particles/Assets/AssetBundles
 
-dependencies = CustomWeaponBehaviour EffectSourceConditions HolyDamageManager SynchronizedWorldObjects TinyHelper
+dependencies = CustomWeaponBehaviour EffectSourceConditions HolyDamageManager SynchronizedWorldObjects TinyHelper ImpendingDoom
 
 assemble:
 	# common for all mods
@@ -70,7 +70,7 @@ assemble:
 	
 	cp -u resources/textures/burstOfDivinityIcon.png           public/$(sideloaderpath)/Texture2D/
 	cp -u resources/textures/healingSurgeIcon.png              public/$(sideloaderpath)/Texture2D/
-	cp -u resources/textures/impendingDoomIcon.png             public/$(sideloaderpath)/Texture2D/
+	cp -u ../ImpendingDoom/resources/textures/impendingDoomIcon.png             public/$(sideloaderpath)/Texture2D/
 	cp -u resources/textures/impendingDoomImbueIcon.png        public/$(sideloaderpath)/Texture2D/
 	cp -u resources/textures/radiatingIcon.png                 public/$(sideloaderpath)/Texture2D/
 	cp -u resources/textures/surgeOfDivinityIcon.png           public/$(sideloaderpath)/Texture2D/
@@ -86,10 +86,10 @@ publish:
 	rm -f $(modname).rar
 	rar a $(modname).rar -ep1 public/*
 	
-	(cd ../Descriptions && python3 crusader.py)
+	(cd ../Descriptions && python3 $(modname).py)
 	
 	cp -u resources/manifest.json public/BepInEx/
-	cp -u resources/README.md public/BepInEx/
+	cp -u README.md public/BepInEx/
 	cp -u resources/icon.png public/BepInEx/
 	(cd public/BepInEx && zip -r $(modname)_thunderstore.zip * && mv $(modname)_thunderstore.zip ../../)
 
@@ -101,6 +101,8 @@ clean:
 	rm -f -r public
 	rm -f $(modname).rar
 	rm -f $(modname).zip
+	rm -f resources/manifest.json
+	rm -f README.md
 info:
 	echo Modname: $(modname)
 play:

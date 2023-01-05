@@ -6,6 +6,7 @@
     using UnityEngine;
     using TinyHelper;
     using Discord;
+    using ImpendingDoom;
 
     class CelestialSurge : Effect
     {
@@ -17,7 +18,7 @@
             
             foreach (var c in charsInRange.Where(c => !c.IsAlly(character)))
             {
-                TinyEffectManager.AddStatusEffectForDuration(c, Crusader.Instance.impendingDoomInstance, 50, source: character);
+                TinyEffectManager.AddStatusEffectForDuration(c, ImpendingDoomMod.Instance.impendingDoomInstance, 50, source: character);
             }
         }
 

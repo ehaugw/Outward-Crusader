@@ -13,6 +13,7 @@ namespace Crusader
     using HolyDamageManager;
     using EffectSourceConditions;
     using SynchronizedWorldObjects;
+    using ImpendingDoom;
 
     [BepInPlugin(GUID, NAME, VERSION)]
     [BepInDependency(SL.GUID, BepInDependency.DependencyFlags.HardDependency)]
@@ -21,6 +22,7 @@ namespace Crusader
     [BepInDependency(HolyDamageManager.GUID, HolyDamageManager.VERSION)]
     [BepInDependency(SynchronizedWorldObjects.GUID, SynchronizedWorldObjects.VERSION)]
     [BepInDependency(CustomWeaponBehaviour.GUID, CustomWeaponBehaviour.VERSION)]
+    [BepInDependency(ImpendingDoomMod.GUID, ImpendingDoomMod.VERSION)]
 
     public class Crusader : BaseUnityPlugin
     {
@@ -29,7 +31,7 @@ namespace Crusader
         public static Crusader Instance;
 
         public const string GUID = "com.ehaugw.crusaderclass";
-        public const string VERSION = "5.0.0";
+        public const string VERSION = "5.1.0";
         public const string NAME = "The Crusader";
         public const string ModFolderName = "Crusader";
 
@@ -55,8 +57,6 @@ namespace Crusader
         public Skill holyShockInstance;
         public Skill consecrationInstance;
 
-        //public StatusEffect radiatingInstance;
-        public StatusEffect impendingDoomInstance;
         public StatusEffect soulPlagueInstance;
         public StatusEffect burstOfDivinityInstance;
         public StatusEffect surgeOfDivinityInstance;
@@ -105,8 +105,6 @@ namespace Crusader
         {
             //try
             //{
-                //radiatingInstance                   = EffectInitializer.MakeRadiatingPrefab();
-                impendingDoomInstance                   = EffectInitializer.MakeImpendingDoomPrefab();
                 soulPlagueInstance                      = EffectInitializer.MakeSoulPlaguePrefab();
                 burstOfDivinityInstance                 = EffectInitializer.MakeBurstOfDivinityPrefab();
                 surgeOfDivinityInstance                 = EffectInitializer.MakeSurgeOfDivinityPrefab();
