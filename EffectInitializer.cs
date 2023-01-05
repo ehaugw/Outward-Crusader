@@ -326,8 +326,8 @@ namespace Crusader
                 skillReq.RequiredSkillID = IDs.divineFavourID;// = Crusader.Instance.divineFavourInstance;
             }
 
-            //var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack("Crusader").AssetBundles["divinesmite"].LoadAsset<GameObject>("divineinfusion_Prefab"));
-            //effectPreset.ImbueFX = SL.GetSLPack("Crusader").AssetBundles["divinesmite"].LoadAsset<GameObject>("divineinfusion_Prefab").transform;
+            //var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack(Crusader.ModFolderName).AssetBundles["divinesmite"].LoadAsset<GameObject>("divineinfusion_Prefab"));
+            //effectPreset.ImbueFX = SL.GetSLPack(Crusader.ModFolderName).AssetBundles["divinesmite"].LoadAsset<GameObject>("divineinfusion_Prefab").transform;
             //UnityEngine.Object.DontDestroyOnLoad(effectPreset.ImbueFX.gameObject);
             //prefab.transform.SetParent(effectTransform.transform);
 

@@ -119,9 +119,7 @@ namespace Crusader
             healingAoE.AmplificationType = HolyDamageManager.HolyDamageManager.GetDamageType();
             healingAoE.CanRevive = false;
 
-            //var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack("Crusader").AssetBundles["consecrated_ground"].LoadAsset<GameObject>("consecrated_ground_Prefab"));
-            //var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack("Crusader").AssetBundles["zealous_blade"].LoadAsset<GameObject>("zealous_blade_Prefab"));
-            var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack("Crusader").AssetBundles["holy_shock"].LoadAsset<GameObject>("holy_shock_Prefab"));
+            var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack(Crusader.ModFolderName).AssetBundles["holy_shock"].LoadAsset<GameObject>("holy_shock_Prefab"));
             prefab.transform.SetParent(damageBlast.BaseBlast.transform);
 
             return skill;

@@ -143,7 +143,7 @@ namespace Crusader
 
             }.ApplyToTransform(effects) as ShootBlast;
 
-            //var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack("Crusader").AssetBundles["consecrated_ground"].LoadAsset<GameObject>("new_consecrated_ground_Prefab"));
+            //var prefab = UnityEngine.Object.Instantiate(SL.GetSLPack(Crusader.ModFolderName).AssetBundles["consecrated_ground"].LoadAsset<GameObject>("new_consecrated_ground_Prefab"));
             //prefab.transform.SetParent(damageBlast.BaseBlast.transform);
 
             //var staggerEffects = TinyGameObjectManager.MakeFreshObject("Effects", true, true, skill.transform).transform;
