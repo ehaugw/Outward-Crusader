@@ -14,6 +14,7 @@ namespace Crusader
     using EffectSourceConditions;
     using SynchronizedWorldObjects;
     using ImpendingDoom;
+    using System.IO;
 
     [BepInPlugin(GUID, NAME, VERSION)]
     [BepInDependency(SL.GUID, BepInDependency.DependencyFlags.HardDependency)]
@@ -26,14 +27,12 @@ namespace Crusader
 
     public class Crusader : BaseUnityPlugin
     {
-        //public const bool RELATED_TO_ELATT = false;
-
         public static Crusader Instance;
 
         public const string GUID = "com.ehaugw.crusaderclass";
-        public const string VERSION = "5.1.0";
+        public const string VERSION = "5.1.1";
         public const string NAME = "The Crusader";
-        public const string ModFolderName = "Crusader";
+        public static string ModFolderName = Directory.GetParent(typeof(Crusader).Assembly.Location).Name.ToString();
 
         public Skill cureWoundsInstance;
         public Skill divineFavourInstance;
