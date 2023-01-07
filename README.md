@@ -1,7 +1,7 @@
 [Mods by ehaugw](https://outward.thunderstore.io/package/ehaugw/ "Mods by ehaugw") | Support me on [Patreon](https://www.patreon.com/ehaugw "Patreon")
 
 
-This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at January 05, 2023. Due to significant changes in a few mod frameworks' infrastructures, it is recommended that you update all mods that are older than November 08, 2022.
+This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at January 07, 2023. Due to significant changes in a few mod frameworks' infrastructures, it is recommended that you update all mods that are older than November 08, 2022.
 
 
 
@@ -90,7 +90,7 @@ Manual Uninstallation
 * Applies 15 seconds of [Impending Doom](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Impending Doom") to enemies. Enemies already affected by [Impending Doom](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Impending Doom") will spread the effect to nearby enemies.
 * Heals allies for 10 health, scaling with the caster's [Holy Damage](https://www.nexusmods.com/outward/mods/221 "Holy Damage") bonus.
 
-**Channel Divinity** (Cooldown: 300 seconds, Mana cost: 7)
+**Divinity** (Cooldown: 300 seconds, Mana cost: 7)
 This skill can be combined with [Rune Magic](https://outward.gamepedia.com/Rune_Magic "Rune Magic") to make vastly different effects.
 
 * [Rage](https://outward.fandom.com/wiki/Rage "Rage")
@@ -144,6 +144,11 @@ Not from a jedi, but I suggest seeking out [Klaus](https://staticdelivery.nexusm
 # Patch notes
 
 
+* Version 5.1.2
+
+  * Use the correct root folder when launched with anyhting else than manual BepInEx.
+  * Moved Claus to a more fitting location nearby.
+  * Renamed [Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Divinity") to **Channel**.
 * Version 5.1.1
 
   * Fix README
@@ -321,6 +326,7 @@ Not from a jedi, but I suggest seeking out [Klaus](https://staticdelivery.nexusm
   * Remove alchemy loopholes that obliterates the game economy.
 * [Crusader's Equipment](https://outward.thunderstore.io/package/ehaugw/CrusadersEquipment/ "Crusader's Equipment")
 
+  * Provide interesting gear options for people who with to play with knight-ish builds
   * Provide more gear options for players who wish to increase their [Holy Damage](https://www.nexusmods.com/outward/mods/221 "Holy Damage") bonus.
   * Ensuring that the highest possible [Holy Damage](https://www.nexusmods.com/outward/mods/221 "Holy Damage") bonus is not affected by this mod.
   * Provide more options for players who wish to look like someone doing Elatt's bidding
@@ -339,7 +345,7 @@ Not from a jedi, but I suggest seeking out [Klaus](https://staticdelivery.nexusm
   * Ensuring that the highest possible lightning damage bonus is not affected by this mod.
 * [Runic Scrolls](https://www.nexusmods.com/outward/mods/132 "Runic Scrolls")
 
-  * To provide an alternative to a [Lexicon](https://outward.gamepedia.com/Lexicons "Lexicon") for people who rarely cast [Rune Magic](https://outward.gamepedia.com/Rune_Magic "Rune Magic").
+  * Provide Runic Scrolls, which are consumed alternatives to lexicons that goes into your quiver slot.
   * Said alternative should be expensive to not make [Internalized Lexicon](https://outward.gamepedia.com/Internalized_Lexicon "Internalized Lexicon") redundant.
 * [Skilled at Sitting](https://www.nexusmods.com/outward/mods/127 "Skilled at Sitting")
 
