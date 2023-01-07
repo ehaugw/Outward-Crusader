@@ -1,14 +1,11 @@
 ﻿using InstanceIDs;
-using NodeCanvas.DialogueTrees;
-using NodeCanvas.Framework;
-using NodeCanvas.Tasks.Actions;
 using SideLoader;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Crusader
 {
     using SynchronizedWorldObjects;
+    using System.Linq;
     using TinyHelper;
 
     public class KlausNPC : SynchronizedNPC
@@ -18,14 +15,16 @@ namespace Crusader
             var syncedNPC = new KlausNPC(
                 identifierName: "Klaus",
                 rpcListenerID: IDs.NPCID_Klaus,
-                defaultEquipment: new int[] { IDs.beardID, IDs.krypteiaArmorID, IDs.krypteiaBootsID, IDs.palladiumSwordID },
+                defaultEquipment: new int[] { IDs.beardID, IDs.palladiumBootsID, IDs.palladiumArmorID, ResourcesPrefabManager.Instance.GetItemPrefab(IDs.puresteelLongswordID)?.ItemID ?? IDs.palladiumSwordID },
                 visualData: new SL_Character.VisualData() { Gender = Character.Gender.Female}
             );
 
             syncedNPC.AddToScene(new SynchronizedNPCScene(
                 scene: "HallowedMarshNewTerrain",
-                position: new Vector3(523.9f, -62.3f, 512.2f),
-                rotation: new Vector3(0, 21.5f, 0),
+                //position: new Vector3(523.9f, -62.3f, 512.2f),
+                //rotation: new Vector3(0, 21.5f, 0),
+                position: new Vector3(485.078f, -63.4412f, 491.7649f),
+                rotation: new Vector3(0, 278.94f, 0),
                 pose: Character.SpellCastType.EnterInnBed
             ));
         }
@@ -36,6 +35,7 @@ namespace Crusader
 
         override public object SetupClientSide(int rpcListenerID, string instanceUID, int sceneViewID, int recursionCount, string rpcMeta)
         {
+            Character player = GameObject.FindObjectsOfType<Character>().Where(x => x.IsLocalPlayer).First();
             Character instanceCharacter = base.SetupClientSide(rpcListenerID, instanceUID, sceneViewID, recursionCount, rpcMeta) as Character;
             if (instanceCharacter == null) return null;
 
@@ -46,9 +46,18 @@ namespace Crusader
             var graph = TinyDialogueManager.GetDialogueGraph(trainerTemplate);
             TinyDialogueManager.SetActorReference(graph, actor);
 
-            var openTrainer = TinyDialogueManager.MakeTrainDialogueAction(graph, trainerComp);
             var rootStatement = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Hi there! What is a guy like you doing so far off the road? Are you all right?");
-            var wantToLeavePrisonStatement = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Ohh... Please forgive me. I am Klaus, a " + ModTheme.SkillTreeNameReadable + ". I have not felt in touch with myself lately, so  I went out here to the marsh looking for a place whare I could " + ModTheme.MeditationSkillName + ".");
+            var characterIntroduction = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Ohh... Please forgive me. I am Klaus, a " + ModTheme.SkillTreeNameReadable + ". I have not felt in touch with myself lately, so  I went out here to the marsh looking for a place whare I could " + ModTheme.MeditationSkillName + ".");
+
+
+            NodeCanvas.DialogueTrees.DTNode openTrainer;
+            if (FactionSelector.IsHolyMission(player))
+            {
+                openTrainer = TinyDialogueManager.MakeTrainDialogueAction(graph, trainerComp);
+            } else
+            {
+                openTrainer = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Unfortunately, I am only able to train those who are blessed by Elatt.");
+            }
 
             var introMultipleChoice = TinyDialogueManager.MakeMultipleChoiceNode(graph, new string[] {
                 "I seem to be doing all right. Thanks for the concern. Who are you?",
@@ -58,14 +67,14 @@ namespace Crusader
             graph.allNodes.Clear();
             graph.allNodes.Add(rootStatement);
             graph.allNodes.Add(introMultipleChoice);
-            graph.allNodes.Add(wantToLeavePrisonStatement);
+            graph.allNodes.Add(characterIntroduction);
             graph.allNodes.Add(openTrainer);
 
             graph.primeNode = rootStatement;
             graph.ConnectNodes(rootStatement, introMultipleChoice);
-            graph.ConnectNodes(introMultipleChoice, wantToLeavePrisonStatement, 0);
+            graph.ConnectNodes(introMultipleChoice, characterIntroduction, 0);
             graph.ConnectNodes(introMultipleChoice, openTrainer, 1);
-            graph.ConnectNodes(wantToLeavePrisonStatement, rootStatement);
+            graph.ConnectNodes(characterIntroduction, rootStatement);
 
             var obj = instanceGameObject.transform.parent.gameObject;
             obj.SetActive(true);
