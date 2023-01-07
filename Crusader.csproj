@@ -44,6 +44,7 @@
     <Compile Include="Effects\HealingAoE.cs" />
     <Compile Include="Effects\SoulPlague.cs" />
     <Compile Include="Effects\SafeRemoveStatusFromOwner.cs" />
+    <Compile Include="FactionSelector.cs" />
     <Compile Include="ModTheme.cs" />
     <Compile Include="SkillTreesAndTrainers\KlausNPC.cs" />
     <Compile Include="Spells\HolyShock.cs" />
