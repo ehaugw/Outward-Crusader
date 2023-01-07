@@ -56,12 +56,12 @@ namespace Crusader
                 openTrainer = TinyDialogueManager.MakeTrainDialogueAction(graph, trainerComp);
             } else
             {
-                openTrainer = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Unfortunately, I am only able to train those who are blessed by Elatt.");
+                openTrainer = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Unfortunately, I am only able to help those who are blessed by Elatt.");
             }
 
             var introMultipleChoice = TinyDialogueManager.MakeMultipleChoiceNode(graph, new string[] {
                 "I seem to be doing all right. Thanks for the concern. Who are you?",
-                "I am here to receive some training. Would you be willing to help me with that?"
+                "I am here to receive training. Would you be willing to help me with that?"
             });
 
             graph.allNodes.Clear();
