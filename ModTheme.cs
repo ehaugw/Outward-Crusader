@@ -1,4 +1,5 @@
-﻿using Steamworks;
+﻿using InstanceIDs;
+using Steamworks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -156,7 +157,7 @@ namespace Crusader
             }
         }
 
-        public const string BurstOfDivinityEffectIdentifierName = "BurstOfDivinity";
+        public const string BurstOfDivinityEffectIdentifierName = IDs.burstOfDivinityNameID;
         public static string BurstOfDivinityEffectName
         {
             get
@@ -187,7 +188,7 @@ namespace Crusader
                     case Theme.Atheist:
                         return "Channel Soul";
                     case Theme.Crusader:
-                        return "Channel Divinity";
+                        return "Channel";
                 }
                 return "UNTHEMED STRING";
             }
