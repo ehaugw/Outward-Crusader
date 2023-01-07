@@ -47,7 +47,7 @@ namespace Crusader
                         Effects = new SL_Effect[] {
                             new SL_ImbueWeapon() {
                                 Lifespan = 60,
-                                ImbueEffect_Preset_ID = IDs.burstOfLightImbueID,
+                                ImbueEffect_Preset_ID = IDs.holyMissionImbueID,
                                 Imbue_Slot = Weapon.WeaponSlot.MainHand
                             },
                             //new SL_AddStatusEffect()

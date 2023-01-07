@@ -101,7 +101,7 @@ namespace Crusader
 
             }.ApplyToTransform(effects);
 
-            SpecificImbueCondition.AddToSkill(skill, Crusader.Instance.classInfusion);
+            SpecificImbueCondition.AddToSkill(skill, Crusader.Instance.holyMissionInfusion);
 
             new SL_PlayVFX()
             {
