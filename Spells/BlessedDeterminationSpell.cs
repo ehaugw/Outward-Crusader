@@ -139,7 +139,7 @@ namespace Crusader
         //        }
         //        if (__state.Item3 > 0 && TinyHelper.SkillRequirements.SafeHasSkillKnowledge(__state.Item1, IDs.divineFavourID))
         //        {
-        //            __state.Item1?.CurrentWeapon?.AddImbueEffect(Crusader.Instance.classInfusion, Judgement.ImbueDuration);
+        //            __state.Item1?.CurrentWeapon?.AddImbueEffect(Crusader.Instance.holyMissionInfusion, Judgement.ImbueDuration);
         //        }
         //    }
 
@@ -192,14 +192,14 @@ namespace Crusader
                     {
                         if (AfterUseMana && TinyHelper.SkillRequirements.SafeHasSkillKnowledge(character, IDs.divineFavourID) && character.CurrentWeapon is Weapon weapon)
                         {
-                            //if (TinyHelper.SkillRequirements.SafeHasSkillKnowledge(character, IDs.infuseLightID))
-                            //{
-                                CrusaderRPCManager.Instance.photonView.RPC("ApplyAddImbueEffectRPC", PhotonTargets.All, new object[] { weapon.UID, Crusader.Instance.classInfusion.PresetID, Judgement.ImbueDuration });
-                            //}
-                            //else
-                            //{
-                            //    CrusaderRPCManager.Instance.photonView.RPC("ApplyAddImbueEffectRPC", PhotonTargets.All, new object[] { weapon.UID, Crusader.Instance.blueChamberInfusion.PresetID, Judgement.ImbueDuration });
-                            //}
+                            if (FactionSelector.IsHolyMission(character))
+                            {
+                                CrusaderRPCManager.Instance.photonView.RPC("ApplyAddImbueEffectRPC", PhotonTargets.All, new object[] { weapon.UID, Crusader.Instance.holyMissionInfusion.PresetID, Judgement.ImbueDuration });
+                            }
+                            else if (FactionSelector.IsBlueChamberCollective(character))
+                            {
+                                CrusaderRPCManager.Instance.photonView.RPC("ApplyAddImbueEffectRPC", PhotonTargets.All, new object[] { weapon.UID, Crusader.Instance.blueChamberInfusion.PresetID, Judgement.ImbueDuration });
+                            }
                         }
 
                         freecastingStacks = Math.Min(Convert.ToInt32(Math.Ceiling(__result / BlessedDeterminationSpell.FREECAST_PROVIDED_MANA)), freecastingStacks);

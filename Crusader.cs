@@ -30,7 +30,7 @@ namespace Crusader
         public static Crusader Instance;
 
         public const string GUID = "com.ehaugw.crusaderclass";
-        public const string VERSION = "5.1.1";
+        public const string VERSION = "5.1.2";
         public const string NAME = "The Crusader";
         public static string ModFolderName = Directory.GetParent(typeof(Crusader).Assembly.Location).Name.ToString();
 
@@ -65,7 +65,7 @@ namespace Crusader
         public StatusEffect healingSurgeInstance;
         public StatusEffect consecrationAllyInstance;
 
-        public ImbueEffectPreset classInfusion;
+        public ImbueEffectPreset holyMissionInfusion;
         public ImbueEffectPreset blueChamberInfusion;
 
 
@@ -107,7 +107,7 @@ namespace Crusader
                 soulPlagueInstance                      = EffectInitializer.MakeSoulPlaguePrefab();
                 burstOfDivinityInstance                 = EffectInitializer.MakeBurstOfDivinityPrefab();
                 surgeOfDivinityInstance                 = EffectInitializer.MakeSurgeOfDivinityPrefab();
-                classInfusion                           = EffectInitializer.MakeClassInfusion();
+                holyMissionInfusion                     = EffectInitializer.MakeHolyMissionInfusion();
                 blueChamberInfusion                     = EffectInitializer.MakeBlueChamberInfusion();
                                                       //EffectInitializer.AddCondemnToDivineLightImbue();
                 meditationStatusEffectInstance          = EffectInitializer.MakeMeditationPrefab();

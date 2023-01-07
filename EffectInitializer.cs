@@ -296,12 +296,12 @@ namespace Crusader
             return effectPreset;
         }
 
-        public static ImbueEffectPreset MakeClassInfusion()
+        public static ImbueEffectPreset MakeHolyMissionInfusion()
         {
             var requireDivineFavour = false;
 
             ImbueEffectPreset effectPreset = TinyEffectManager.MakeImbuePreset(
-                imbueID:            IDs.burstOfLightImbueID,
+                imbueID:            IDs.holyMissionImbueID,
                 name:               ModTheme.ImbueEffectName,
                 description:        "Weapon deals some " + HolyDamageManager.HolyDamageManager.GetDamageType().ToString() + " Damage" + /*", applies " + ModTheme.RadiatingEffectName + */ " and emits light.",
                 iconFileName:       Crusader.ModFolderName + @"\SideLoader\Texture2D\impendingDoomImbueIcon.png",
