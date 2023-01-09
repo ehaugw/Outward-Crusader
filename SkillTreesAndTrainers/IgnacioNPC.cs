@@ -53,7 +53,7 @@ namespace Crusader
                 openTrainer = TinyDialogueManager.MakeTrainDialogueAction(graph, trainerComp);
             } else
             {
-                openTrainer = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "I am not allowed to train people outside the tribe. You should go back to town and talk to Rissa.");
+                openTrainer = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "I am not allowed to train people not commited to the tribe. You should go back to town and talk to Rissa.");
             }
 
             var introMultipleChoice = TinyDialogueManager.MakeMultipleChoiceNode(graph, new string[] {
