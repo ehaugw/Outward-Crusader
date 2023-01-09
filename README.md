@@ -162,7 +162,7 @@ Not from a jedi, but I suggest seeking out [Klaus](https://staticdelivery.nexusm
 # Patch notes
 
 
-* Version 5.1.3
+* Version 5.1.4
 
   * Update description on **Rebuking Smite** to reveal that it applies Doomed.
   * Update visual effects of **Rebuking Smite**, [Wrathful Smite](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Wrathful Smite"), [Cure Wounds](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Cure Wounds") and [Channel](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Channel") to match faction.
