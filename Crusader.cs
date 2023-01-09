@@ -30,7 +30,7 @@ namespace Crusader
         public static Crusader Instance;
 
         public const string GUID = "com.ehaugw.crusaderclass";
-        public const string VERSION = "5.1.2";
+        public const string VERSION = "5.1.3";
         public const string NAME = "The Crusader";
         public static string ModFolderName = Directory.GetParent(typeof(Crusader).Assembly.Location).Name.ToString();
 
@@ -81,8 +81,8 @@ namespace Crusader
             DontDestroyOnLoad(rpcGameObject);
             rpcGameObject.AddComponent<CrusaderRPCManager>();
 
-
             KlausNPC.Init();
+            IgnacioNPC.Init();
 
             SL.BeforePacksLoaded += BeforePackLoaded;
             SL.OnPacksLoaded += OnPackLoaded;
