@@ -139,7 +139,7 @@ namespace Crusader
         //        }
         //        if (__state.Item3 > 0 && TinyHelper.SkillRequirements.SafeHasSkillKnowledge(__state.Item1, IDs.divineFavourID))
         //        {
-        //            __state.Item1?.CurrentWeapon?.AddImbueEffect(Crusader.Instance.holyMissionInfusion, Judgement.ImbueDuration);
+        //            __state.Item1?.CurrentWeapon?.AddImbueEffect(Crusader.Instance.classInfusion, Judgement.ImbueDuration);
         //        }
         //    }
 
