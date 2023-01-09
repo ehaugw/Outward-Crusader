@@ -18,11 +18,11 @@ namespace Crusader
             {
                 Name = ModTheme.ChannelDivinitySpellName,
                 EffectBehaviour  = EditBehaviours.Destroy,
-                Target_ItemID = IDs.blessID, //Bless
+                Target_ItemID = IDs.sparkID,
                 New_ItemID = IDs.channelDivinityID,
                 SLPackName = Crusader.ModFolderName,
                 SubfolderName = "Channel Divinity",
-                Description = "You channel your divinity, drastically increasing your " + ModTheme.BurstOfDivinityEffectName + " buildup, or produces combo effects when casted in combination with a Rune spell.",
+                Description = "You channel your divinity, drastically increasing your " + ModTheme.BurstOfDivinityEffectName + " buildup, or produces combo effects when casted in combination with Discipline or Rage.",
                 CastType = Character.SpellCastType.CallElements,
                 CastModifier = Character.SpellCastModifier.Immobilized,
                 CastLocomotionEnabled = false,
@@ -37,7 +37,6 @@ namespace Crusader
 
             myitem.ApplyTemplate();
             Skill skill = ResourcesPrefabManager.Instance.GetItemPrefab(myitem.New_ItemID) as Skill;
-            //EmptyOffHandCondition.AddToSkill(skill, true, true);
 
             new SL_PlaySoundEffect()
             {
@@ -50,48 +49,51 @@ namespace Crusader
                 Sounds = new List<GlobalAudioManager.Sounds>() { GlobalAudioManager.Sounds.SFX_SKILL_FinishingBlow}
             }.ApplyToTransform(TinyGameObjectManager.GetOrMake(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER_ACTIVATION, true, true));
 
-            new SL_PlayVFX()
+            FactionSelector.SetCasterParticleForFaction(skill, 1.6f);
+
+            foreach (var tup in new Tuple<int, SL_ShootBlast.BlastPrefabs>[]{
+                new Tuple<int, SL_ShootBlast.BlastPrefabs>(IDs.questionsAndCorruptionID, SL_ShootBlast.BlastPrefabs.EliteSupremeShellSpecialLaser),
+                new Tuple<int, SL_ShootBlast.BlastPrefabs>(IDs.mixedLegaciesID, SL_ShootBlast.BlastPrefabs.CrimsonEliteLaser)
+            })
             {
-                VFXPrefab = SL_PlayVFX.VFXPrefabs.VFXPreciseStrike,
-                Delay = 1.6f
-            }.ApplyToTransform(TinyGameObjectManager.GetOrMake(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER_ACTIVATION, true, true));
+                var blastTransform = TinyGameObjectManager.MakeFreshTransform(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER, true, true);
+                var damageBlast = new SL_ShootBlast()
+                {
+                    CastPosition = Shooter.CastPositionType.Local,
+                    LocalPositionAdd = new Vector3(0, 0, 0),
 
+                    TargetType = Shooter.TargetTypes.Enemies,
 
-            var damageBlast = new SL_ShootBlast()
-            {
-                CastPosition = Shooter.CastPositionType.Local,
-                LocalPositionAdd = new Vector3(0, 0, 0),
-
-                TargetType = Shooter.TargetTypes.Enemies,
-
-                BaseBlast = SL_ShootBlast.BlastPrefabs.EliteSupremeShellSpecialLaser,
-                Radius = 0.5f,
-                BlastLifespan = 1,
-                RefreshTime = 0.2f,
-                InstantiatedAmount = 5,
-                Interruptible = false,
-                HitOnShoot = false,
-                IgnoreShooter = true,
-                ParentToShootTransform = false,
-                ImpactSoundMaterial = EquipmentSoundMaterials.NONE,
-                DontPlayHitSound = true,
-                EffectBehaviour = EditBehaviours.Destroy,
-                Delay = 0,
-                BlastEffects = new SL_EffectTransform[] {
+                    BaseBlast = tup.Item2,
+                    Radius = 0.5f,
+                    BlastLifespan = 1,
+                    RefreshTime = 0.2f,
+                    InstantiatedAmount = 5,
+                    Interruptible = false,
+                    HitOnShoot = false,
+                    IgnoreShooter = true,
+                    ParentToShootTransform = false,
+                    ImpactSoundMaterial = EquipmentSoundMaterials.NONE,
+                    DontPlayHitSound = true,
+                    EffectBehaviour = EditBehaviours.Destroy,
+                    Delay = 0,
+                    BlastEffects = new SL_EffectTransform[] {
                     new SL_EffectTransform() {
                         TransformName = "HitEffects",
                         Effects = new SL_Effect[] {
                             new SL_AutoKnock()
                             {
-                                KnockDown = false   
+                                KnockDown = false
                             }
                         }
                     }
                 },
-            }.ApplyToTransform(TinyGameObjectManager.GetOrMake(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER, true, true)) as ShootBlast;
-            damageBlast.transform.Rotate(-90, 0, 0);
-
-
+                }.ApplyToTransform(blastTransform) as ShootBlast;
+                damageBlast.transform.Rotate(-90, 0, 0);
+                var requirementTransform = TinyGameObjectManager.GetOrMake(blastTransform, EffectSourceConditions.SOURCE_CONDITION_CONTAINER, true, true);
+                requirementTransform.gameObject.AddComponent<SourceConditionQuest>().RequiredQuestID = tup.Item1;
+            }
+            
             StatusEffectsCondition conditions;
             Transform myEffects;
 
@@ -121,15 +123,6 @@ namespace Crusader
             conditions.StatusEffectNames = new[] { IDs.rageNameID, IDs.rageAmplifiedNameID };
             conditions.Invert = false;
             myEffects.gameObject.AddComponent<CelestialSurge>();
-
-            //myEffects = TinyGameObjectManager.MakeFreshTransform(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER, true, true);
-            //conditions = myEffects.gameObject.AddComponent<StatusEffectsCondition>();
-            //conditions.StatusEffectNames = new[] { IDs.disciplineNameID, IDs.disciplineAmplifiedNameID };
-            //conditions.Invert = false;
-            //conditions = myEffects.gameObject.AddComponent<StatusEffectsCondition>();
-            //conditions.StatusEffectNames = new[] { IDs.rageNameID, IDs.rageAmplifiedNameID };
-            //conditions.Invert = false;
-            //myEffects.gameObject.AddComponent<CelestialSurge>();
 
             return skill;
         }
