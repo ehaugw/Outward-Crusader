@@ -34,8 +34,8 @@ namespace Crusader
             var myitem = new SL_Skill()
             {
                 Name = ItemName,
-                EffectBehaviour = EditBehaviours.Override,
-                Target_ItemID = IDs.blessID,
+                EffectBehaviour = EditBehaviours.Destroy,
+                Target_ItemID = IDs.sparkID,
                 New_ItemID = IDs.cureWoundsID,
                 SLPackName = Crusader.ModFolderName,
                 SubfolderName = "Cure Wounds",
@@ -66,6 +66,19 @@ namespace Crusader
             Prepare();
             Skill skill = ResourcesPrefabManager.Instance.GetItemPrefab(IDs.cureWoundsID) as Skill;
             
+            new SL_PlaySoundEffect()
+            {
+                Follow = true,
+                OverrideCategory = EffectSynchronizer.EffectCategories.None,
+                Delay = 0,
+                MinPitch = 1,
+                MaxPitch = 1,
+                SyncType = Effect.SyncTypes.OwnerSync,
+                Sounds = new List<GlobalAudioManager.Sounds>() { GlobalAudioManager.Sounds.SFX_SKILL_BoonSpell/* SFX_SKILL_GongStrike_Release */}
+            }.ApplyToTransform(TinyGameObjectManager.GetOrMake(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER_ACTIVATION, true, true));
+
+            FactionSelector.SetCasterParticleForFaction(skill, 0f);
+
             //EmptyOffHandCondition.AddToSkill(skill, false, false);
 
             Transform effects;
