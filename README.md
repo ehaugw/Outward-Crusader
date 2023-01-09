@@ -162,6 +162,9 @@ Not from a jedi, but I suggest seeking out [Klaus](https://staticdelivery.nexusm
 # Patch notes
 
 
+* Version 5.1.5
+
+  * Include newest TinyHelper.
 * Version 5.1.4
 
   * Update description on **Rebuking Smite** to reveal that it applies Doomed.
