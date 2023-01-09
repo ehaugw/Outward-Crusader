@@ -8,7 +8,6 @@ using System.Linq;
 
 namespace Crusader
 {
-    using EffectSourceConditions;
     public class WrathfulSmiteSpell
     {
         public static Skill Init()
@@ -16,8 +15,8 @@ namespace Crusader
             var myitem = new SL_AttackSkill()
             {
                 Name = "Wrathful Smite",
-                EffectBehaviour = EditBehaviours.Override,
-                Target_ItemID = IDs.perfectStrikeID, //perfect strike
+                EffectBehaviour = EditBehaviours.Destroy,
+                Target_ItemID = IDs.punctureID,
                 New_ItemID = IDs.wrathfulSmiteID,
                 SLPackName = Crusader.ModFolderName,
                 SubfolderName = "Wrathful Smite",
@@ -48,34 +47,22 @@ namespace Crusader
             myitem.ApplyTemplate();
             Skill skill = ResourcesPrefabManager.Instance.GetItemPrefab(myitem.New_ItemID) as Skill;
 
-            GameObject.Destroy(skill.gameObject.GetComponentInChildren<WeaponDamage>());
-            GameObject.Destroy(skill.gameObject.GetComponentInChildren<HasStatusEffectEffectCondition>());
-            GameObject.Destroy(skill.gameObject.GetComponentInChildren<AddStatusEffect>());
-            foreach (var soundObj in skill.gameObject.GetComponentsInChildren<PlaySoundEffect>().Where(x => x.Sounds.Contains(GlobalAudioManager.Sounds.CS_Golem_HeavyAttackFence_Whoosh1)))
+            new SL_PlaySoundEffect()
             {
-                GameObject.Destroy(soundObj);
-            }
-
-            new SL_PlayVFX()
-            {
-                VFXPrefab = SL_PlayVFX.VFXPrefabs.VFXMomentOfTruth,
-
+                Follow = true,
+                OverrideCategory = EffectSynchronizer.EffectCategories.None,
+                Delay = 0.22f,
+                MinPitch = 1,
+                MaxPitch = 1,
+                SyncType = Effect.SyncTypes.OwnerSync,
+                Sounds = new List<GlobalAudioManager.Sounds>() { GlobalAudioManager.Sounds.SFX_SKILL_PreciseStrike_WhooshImpact }
             }.ApplyToTransform(TinyGameObjectManager.GetOrMake(skill.transform, "ActivationEffects", true, true));
 
-            foreach (var vfxSystem in skill.transform.Find("ActivationEffects").gameObject.GetComponents<PlayVFX>())
-            {
-                foreach (ParticleSystem particles in vfxSystem.VFX.gameObject.GetComponentsInChildren<ParticleSystem>())
-                {
-                    var m = particles.main;
-                    m.startColor = new ParticleSystem.MinMaxGradient(new Color(1, 0.83f, 0.7f, 0.5f) / 2, new Color(1, 0.5f, 0.2f, 0.5f) / 2);
-                }
-            }
-
-            TinyGameObjectManager.GetOrMake(skill.transform, "ActivationEffects", true, true).gameObject.AddComponent<EnableHitDetection>().Delay = 0.5f;
+            FactionSelector.SetWeaponTrailForFaction(skill);
+            TinyGameObjectManager.MakeFreshTransform(skill.transform, "ActivationEffects", true, true).gameObject.AddComponent<EnableHitDetection>().Delay = 0.5f;
 
             Transform hitEffects;
-
-            hitEffects = skill.transform.Find("HitEffects");
+            hitEffects = TinyGameObjectManager.MakeFreshTransform(skill.transform, "HitEffects", true, true);
             var execDamage = hitEffects.gameObject.AddComponent<CooldownChangeWeaponDamageTargetHealth>();
             execDamage.ExecuteSetCooldown = 0f;
             setDamage(execDamage);

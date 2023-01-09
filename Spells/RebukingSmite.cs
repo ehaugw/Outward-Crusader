@@ -10,6 +10,7 @@ using TinyHelper;
 
 namespace Crusader
 {
+    using EffectSourceConditions;
     public class RebukingSmiteSpell
     {
         public static Skill Init()
@@ -22,7 +23,7 @@ namespace Crusader
                 New_ItemID = IDs.rebukingSmiteID,
                 SLPackName = Crusader.ModFolderName,
                 SubfolderName = "Rebuking Smite",
-                Description = "Attack in a wide arch.",
+                Description = "Attack in a wide arch. Applies Doomed.",
                 CastType = Character.SpellCastType.WeaponSkill2,
                 CastModifier = Character.SpellCastModifier.Attack,
                 CastLocomotionEnabled = false,
@@ -76,21 +77,7 @@ namespace Crusader
                 Sounds = new List<GlobalAudioManager.Sounds>() { GlobalAudioManager.Sounds.SFX_SKILL_SavageStrike }
             }.ApplyToTransform(TinyGameObjectManager.GetOrMake(skill.transform, "ActivationEffects", true, true));
 
-            new SL_PlayVFX()
-            {
-                VFXPrefab = SL_PlayVFX.VFXPrefabs.VFXMomentOfTruth,
-                
-            }.ApplyToTransform(TinyGameObjectManager.GetOrMake(skill.transform, "ActivationEffects", true, true));
-
-            foreach (var vfxSystem in skill.transform.Find("ActivationEffects").gameObject.GetComponents<PlayVFX>())
-            {
-                foreach (ParticleSystem particles in vfxSystem.VFX.gameObject.GetComponentsInChildren<ParticleSystem>())
-                {
-                    var m = particles.main;
-                    m.startColor = new ParticleSystem.MinMaxGradient(new Color(1, 0.83f, 0.7f, 0.5f)/2, new Color(1, 0.5f, 0.2f, 0.5f)/2);
-                }
-            }
-
+            FactionSelector.SetWeaponTrailForFaction(skill);
 
             Transform hitEffects = TinyGameObjectManager.MakeFreshObject("HitEffects", true, true, skill.transform).transform;
             var damage = hitEffects.gameObject.AddComponent<WeaponDamage>();

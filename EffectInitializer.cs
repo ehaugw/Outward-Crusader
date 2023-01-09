@@ -293,6 +293,9 @@ namespace Crusader
             GameObject.Destroy(fx.Find("IceParticlesCore").gameObject);
             GameObject.Destroy(fx.Find("IceParticlesCoreModeled").gameObject);
 
+            var main = fx.Find("Smoke").GetComponent<ParticleSystem>().main;
+            main.startColor = FactionSelector.blueChamberCollectiveMinMaxGradient;
+
             return effectPreset;
         }
 
