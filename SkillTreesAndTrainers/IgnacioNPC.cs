@@ -16,7 +16,13 @@ namespace Crusader
                 identifierName: "Ignacio",
                 rpcListenerID: IDs.NPCID_Ignacio,
                 defaultEquipment: new int[] { IDs.krypteiaHoodID, IDs.krypteiaBootsID, IDs.krypteiaArmorID, IDs.wolfSwordID },
-                visualData: new SL_Character.VisualData() { Gender = Character.Gender.Female}
+                visualData: new SL_Character.VisualData()
+                {
+                    Gender = Character.Gender.Male,
+                    HeadVariationIndex = (int)SL_Character.Ethnicities.Asian,
+                    HairStyleIndex = 0,
+                    HairColorIndex = 0,
+                }
             );
 
             syncedNPC.AddToScene(new SynchronizedNPCScene(
