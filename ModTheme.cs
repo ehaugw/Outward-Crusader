@@ -296,7 +296,7 @@ namespace Crusader
         {
             get
             {
-                return "Bone Chill";
+                return "Bone Shivering";
             }
         }
 
