@@ -15,7 +15,7 @@ namespace Crusader
             var syncedNPC = new KlausNPC(
                 identifierName: "Klaus",
                 rpcListenerID: IDs.NPCID_Klaus,
-                defaultEquipment: new int[] { IDs.beardID, IDs.palladiumBootsID, IDs.palladiumArmorID, ResourcesPrefabManager.Instance.GetItemPrefab(IDs.puresteelLongswordID)?.ItemID ?? IDs.palladiumSwordID },
+                defaultEquipment: new int[] { IDs.beardID, IDs.palladiumBootsID, IDs.palladiumArmorID, IDs.palladiumSwordID },
                 visualData: new SL_Character.VisualData() { Gender = Character.Gender.Female}
             );
 
