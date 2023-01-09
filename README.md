@@ -1,7 +1,7 @@
 [Mods by ehaugw](https://outward.thunderstore.io/package/ehaugw/ "Mods by ehaugw") | Support me on [Patreon](https://www.patreon.com/ehaugw "Patreon")
 
 
-This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at January 07, 2023. Due to significant changes in a few mod frameworks' infrastructures, it is recommended that you update all mods that are older than November 08, 2022.
+This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at January 09, 2023. Due to significant changes in a few mod frameworks' infrastructures, it is recommended that you update all mods that are older than November 08, 2022.
 
 
 
@@ -144,6 +144,9 @@ Not from a jedi, but I suggest seeking out [Klaus](https://staticdelivery.nexusm
 # Patch notes
 
 
+* Version 5.1.3
+
+  * Fix a bug that caused [Holy Shock](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Holy Shock") to deal damage about 40 times.
 * Version 5.1.2
 
   * Use the correct root folder when launched with anyhting else than manual BepInEx.
