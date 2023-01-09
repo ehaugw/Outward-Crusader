@@ -131,6 +131,22 @@ namespace Crusader
 
             return statusEffect;
         }
+        public static StatusEffect MakeSurgeOfMemoriesPrefab()
+        {
+            var statusEffect = TinyEffectManager.MakeStatusEffectPrefab(
+                effectName: "Surge of Memories",
+                familyName: "Surge of Memories",
+                description: "Greatly increases Ancestral Memory buildup.",
+                lifespan: 90,
+                refreshRate: -1,
+                stackBehavior: StatusEffectFamily.StackBehaviors.Override,
+                targetStatusName: "Mana Ratio Recovery 3",
+                isMalusEffect: false,
+                modGUID: Crusader.GUID,
+                iconFileName: Crusader.ModFolderName + @"\SideLoader\Texture2D\surgeOfDivinityIcon.png");
+
+            return statusEffect;
+        }
 
         public static StatusEffect MakeBurstOfDivinityPrefab()
         {
@@ -147,6 +163,24 @@ namespace Crusader
                 isMalusEffect:          false,
                 modGUID:                Crusader.GUID,
                 iconFileName:           Crusader.ModFolderName + @"\SideLoader\Texture2D\burstOfDivinityIcon.png");;
+
+            return statusEffect;
+        }
+
+        public static StatusEffect MakeAncestralMemoryPrefab()
+        {
+            var statusEffect = TinyEffectManager.MakeStatusEffectPrefab(
+                effectName: IDs.ancestralMemoryNameID,
+                displayName: "Ancestral Memory",
+                familyName: IDs.ancestralMemoryNameID,
+                description: "Reduces the mana cost of spells, but stacks are expended when a spell is casted.",
+                lifespan: BlessedDeterminationSpell.FREECAST_LIFESPAN,
+                refreshRate: -1,
+                stackBehavior: StatusEffectFamily.StackBehaviors.StackAll,
+                targetStatusName: "Mana Ratio Recovery 3",
+                isMalusEffect: false,
+                modGUID: Crusader.GUID,
+                iconFileName: Crusader.ModFolderName + @"\SideLoader\Texture2D\burstOfDivinityIcon.png"); ;
 
             return statusEffect;
         }
@@ -276,8 +310,8 @@ namespace Crusader
             Transform effectTransform;
 
             effectTransform = TinyGameObjectManager.MakeFreshObject("Effects", true, true, effectPreset.transform).transform;
-            TinyEffectManager.MakeWeaponDamage(effectTransform, 0, 0.10f, DamageType.Types.Ethereal, 1.5f);
-            TinyEffectManager.MakeWeaponDamage(effectTransform, 0, 0.10f, DamageType.Types.Frost, 1.5f);
+            TinyEffectManager.MakeWeaponDamage(effectTransform, 0, 0.05f, DamageType.Types.Ethereal, 1.5f);
+            TinyEffectManager.MakeWeaponDamage(effectTransform, 0, 0.05f, DamageType.Types.Frost, 1.5f);
             TinyEffectManager.MakeAbsorbHealth(effectTransform, 0.1f);
 
             TinyEffectManager.MakeStatusEffectBuildup(effectTransform, IDs.hauntedNameID, 33);

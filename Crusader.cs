@@ -58,7 +58,9 @@ namespace Crusader
 
         public StatusEffect soulPlagueInstance;
         public StatusEffect burstOfDivinityInstance;
+        public StatusEffect ancestralMemoryInstance;
         public StatusEffect surgeOfDivinityInstance;
+        public StatusEffect surgeOfMemoriesInstance;
         public StatusEffect meditationStatusEffectInstance;
         public StatusEffect meditationCooldownStatusEffectInstance;
         public StatusEffect auraOfSmitingEffectInstance;
@@ -106,7 +108,9 @@ namespace Crusader
             //{
                 soulPlagueInstance                      = EffectInitializer.MakeSoulPlaguePrefab();
                 burstOfDivinityInstance                 = EffectInitializer.MakeBurstOfDivinityPrefab();
+                ancestralMemoryInstance                 = EffectInitializer.MakeAncestralMemoryPrefab();
                 surgeOfDivinityInstance                 = EffectInitializer.MakeSurgeOfDivinityPrefab();
+                surgeOfMemoriesInstance                 = EffectInitializer.MakeSurgeOfMemoriesPrefab();
                 holyMissionInfusion                     = EffectInitializer.MakeHolyMissionInfusion();
                 blueChamberInfusion                     = EffectInitializer.MakeBlueChamberInfusion();
                                                       //EffectInitializer.AddCondemnToDivineLightImbue();

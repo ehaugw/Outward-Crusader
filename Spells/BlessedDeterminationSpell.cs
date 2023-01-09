@@ -25,6 +25,7 @@ namespace Crusader
             return (
                 1
                 + (character?.StatusEffectMngr?.HasStatusEffect(Crusader.Instance.surgeOfDivinityInstance.IdentifierName) ?? false ? 1.0f : 0)
+                + (character?.StatusEffectMngr?.HasStatusEffect(Crusader.Instance.surgeOfMemoriesInstance.IdentifierName) ?? false ? 1.0f : 0)
                 + (character?.StatusEffectMngr?.HasStatusEffect(Crusader.Instance.consecrationAllyInstance.IdentifierName) ?? false ? 0.5f : 0)
             ) * 100 * BlessedDeterminationSpell.BLESSED_DETERMINATION_EFFICIENCY / FREECAST_PROVIDED_MANA;
         }
@@ -69,88 +70,20 @@ namespace Crusader
         {
             if (___m_character is Character character && character.Inventory.SkillKnowledge.IsItemLearned(IDs.blessedDeterminationID) && (ModTheme.BlessedDeterminationRequiredBoonName == null || character.StatusEffectMngr.HasStatusEffect(ModTheme.BlessedDeterminationRequiredBoonName) || character.StatusEffectMngr.HasStatusEffect(ModTheme.BlessedDeterminationRequiredBoonName + " Amplified")))
             {
-                character.StatusEffectMngr.AddStatusEffectBuildUp(Crusader.Instance.burstOfDivinityInstance, _staminaConsumed * BlessedDeterminationSpell.GetFreeCastBuildup(character), character);
+                if (FactionSelector.IsBlueChamberCollective(character))
+                {
+                    character.StatusEffectMngr.AddStatusEffectBuildUp(Crusader.Instance.ancestralMemoryInstance, _staminaConsumed * BlessedDeterminationSpell.GetFreeCastBuildup(character), character);
+                } else
+                {
+                    character.StatusEffectMngr.AddStatusEffectBuildUp(Crusader.Instance.burstOfDivinityInstance, _staminaConsumed * BlessedDeterminationSpell.GetFreeCastBuildup(character), character);
+                }
             }
         }
     }
 
-    //[HarmonyPatch(typeof(Skill), "HasEnoughMana")]
-    //public class Skill_HasEnoughMana
-    //{
-    //    [HarmonyPrefix]
-    //    public static bool Prefix(Skill __instance, ref bool _tryingToActivate, ref bool __result)
-    //    {
-    //        if (__instance.ManaCost > 0)
-    //        {
-    //            int freecastingStacks = __instance.OwnerCharacter?.StatusEffectMngr?.GetStatusEffectOfName(Crusader.Instance.burstOfDivinityInstance.IdentifierName)?.StackCount ?? 0;
-    //            var remainingCost = __instance.ManaCost;
-    //            remainingCost -= freecastingStacks * BlessedDeterminationSpell.FREECAST_PROVIDED_MANA;
-    //            remainingCost = __instance.OwnerCharacter?.Stats?.GetFinalManaConsumption(null, remainingCost) ?? remainingCost;
-
-    //            if (__instance.OwnerCharacter.Mana >= remainingCost)
-    //            {
-    //                __result = true;
-    //                return false; //do NOT call the original function
-    //            }
-    //        }
-    //        return true;//call the original function
-    //    }
-    //}
-
     [HarmonyPatch(typeof(CharacterStats), "UseMana")]
     public class CharacterStats_UseMana
     {
-        //[HarmonyPrefix]
-        //public static void Prefix(CharacterStats __instance, ref float _amount, out Tuple<Character, float, int, StatusEffect> __state)
-        //{
-        //    __state = null;
-        //    if (_amount <= 0) return;
-
-
-        //    if (At.GetField<CharacterStats>(__instance, "m_character") is Character character && character.StatusEffectMngr != null)
-        //    {
-        //        if (character.StatusEffectMngr.GetStatusEffectOfName(Crusader.Instance.burstOfDivinityInstance.IdentifierName) is StatusEffect effect)
-        //        {
-        //            int freecastingStacks = effect.StackCount;
-        //            if (freecastingStacks > 0)
-        //            {
-        //                //float remainingCost = _amount;
-        //                //remainingCost = character?.Stats?.GetFinalManaConsumption(null, remainingCost) ?? remainingCost;
-
-        //                freecastingStacks = Math.Min(Convert.ToInt32(Math.Ceiling(_amount / BlessedDeterminationSpell.FREECAST_PROVIDED_MANA)), freecastingStacks);
-
-        //                float oldCost = character?.Stats?.GetFinalManaConsumption(null, _amount) ?? _amount;
-        //                _amount = Mathf.Max(0, _amount - freecastingStacks * BlessedDeterminationSpell.FREECAST_PROVIDED_MANA);
-        //                __state = new Tuple<Character, float, int, StatusEffect>(character, /*oldCost*/ _amount, freecastingStacks, effect);
-        //            }
-        //        }
-        //    }
-        //}
-
-        //[HarmonyPostfix]
-        //public static void Postfix(CharacterStats __instance, ref float _amount, ref Tuple<Character, float, int, StatusEffect> __state)
-        //{
-        //    if (__state != null)
-        //    {
-        //        //_amount = __state.Item2;
-        //        for (int i = 0; i < __state.Item3; i++)
-        //        {
-        //            __state.Item4.RemoveOldestStack();
-        //        }
-        //        if (__state.Item3 > 0 && TinyHelper.SkillRequirements.SafeHasSkillKnowledge(__state.Item1, IDs.divineFavourID))
-        //        {
-        //            __state.Item1?.CurrentWeapon?.AddImbueEffect(Crusader.Instance.classInfusion, Judgement.ImbueDuration);
-        //        }
-        //    }
-
-        //    if (At.GetField<CharacterStats>(__instance, "m_character") is Character character)
-        //    {
-        //if (character != null && character.Inventory.SkillKnowledge.IsItemLearned(IDs.blessedDeterminationID) && (ModTheme.BlessedDeterminationRequiredBoonName == null || character.StatusEffectMngr.HasStatusEffect(ModTheme.BlessedDeterminationRequiredBoonName) || character.StatusEffectMngr.HasStatusEffect(ModTheme.BlessedDeterminationRequiredBoonName + " Amplified")))
-        //{
-        //    character.Stats.AffectStamina(_amount* BlessedDeterminationSpell.BLESSED_DETERMINATION_STAMINA_REGEN);
-        //}
-        //    }
-        //}
         [HarmonyPrefix]
         public static void Prefix(ref float _amount, out float __state)
         {
@@ -184,32 +117,32 @@ namespace Crusader
                     character.Stats.AffectStamina(__result * BlessedDeterminationSpell.BLESSED_DETERMINATION_STAMINA_REGEN);
                 }
 
-                if (character.StatusEffectMngr.GetStatusEffectOfName(Crusader.Instance.burstOfDivinityInstance.IdentifierName) is StatusEffect effect)
+                foreach (var tup in new Tuple<string, int>[]
                 {
-                    int freecastingStacks = effect.StackCount;
-                    
-                    if (freecastingStacks > 0)
+                    new Tuple<string, int>(Crusader.Instance.burstOfDivinityInstance.IdentifierName, Crusader.Instance.holyMissionInfusion.PresetID),
+                    new Tuple<string, int>(Crusader.Instance.ancestralMemoryInstance.IdentifierName, Crusader.Instance.blueChamberInfusion.PresetID)
+                })
+                {
+                    if (character.StatusEffectMngr.GetStatusEffectOfName(tup.Item1) is StatusEffect effect)
                     {
-                        if (AfterUseMana && TinyHelper.SkillRequirements.SafeHasSkillKnowledge(character, IDs.divineFavourID) && character.CurrentWeapon is Weapon weapon)
-                        {
-                            if (FactionSelector.IsHolyMission(character))
-                            {
-                                CrusaderRPCManager.Instance.photonView.RPC("ApplyAddImbueEffectRPC", PhotonTargets.All, new object[] { weapon.UID, Crusader.Instance.holyMissionInfusion.PresetID, Judgement.ImbueDuration });
-                            }
-                            else if (FactionSelector.IsBlueChamberCollective(character))
-                            {
-                                CrusaderRPCManager.Instance.photonView.RPC("ApplyAddImbueEffectRPC", PhotonTargets.All, new object[] { weapon.UID, Crusader.Instance.blueChamberInfusion.PresetID, Judgement.ImbueDuration });
-                            }
-                        }
+                        int freecastingStacks = effect.StackCount;
 
-                        freecastingStacks = Math.Min(Convert.ToInt32(Math.Ceiling(__result / BlessedDeterminationSpell.FREECAST_PROVIDED_MANA)), freecastingStacks);
-                        __result = Mathf.Max(0, __result - freecastingStacks * BlessedDeterminationSpell.FREECAST_PROVIDED_MANA);
-
-                        if (AfterUseMana)
+                        if (freecastingStacks > 0)
                         {
-                            for (int i = 0; i < freecastingStacks; i++)
+                            if (AfterUseMana && TinyHelper.SkillRequirements.SafeHasSkillKnowledge(character, IDs.divineFavourID) && character.CurrentWeapon is Weapon weapon)
                             {
-                                effect.RemoveOldestStack();
+                                CrusaderRPCManager.Instance.photonView.RPC("ApplyAddImbueEffectRPC", PhotonTargets.All, new object[] { weapon.UID, tup.Item2, Judgement.ImbueDuration });
+                            }
+
+                            freecastingStacks = Math.Min(Convert.ToInt32(Math.Ceiling(__result / BlessedDeterminationSpell.FREECAST_PROVIDED_MANA)), freecastingStacks);
+                            __result = Mathf.Max(0, __result - freecastingStacks * BlessedDeterminationSpell.FREECAST_PROVIDED_MANA);
+
+                            if (AfterUseMana)
+                            {
+                                for (int i = 0; i < freecastingStacks; i++)
+                                {
+                                    effect.RemoveOldestStack();
+                                }
                             }
                         }
                     }

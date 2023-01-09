@@ -96,7 +96,35 @@ namespace Crusader
             
             StatusEffectsCondition conditions;
             Transform myEffects;
+            QuestKnowledgeCondition qconditions;
 
+            //SURGE OF DIVINITY
+            myEffects = TinyGameObjectManager.MakeFreshTransform(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER, true, true);
+            conditions = myEffects.gameObject.AddComponent<StatusEffectsCondition>();
+            conditions.StatusEffectNames = new[] { IDs.disciplineNameID, IDs.disciplineAmplifiedNameID };
+            conditions.Invert = true;
+            conditions = myEffects.gameObject.AddComponent<StatusEffectsCondition>();
+            conditions.StatusEffectNames = new[] { IDs.rageNameID, IDs.rageAmplifiedNameID };
+            conditions.Invert = true;
+            qconditions = myEffects.gameObject.AddComponent<QuestKnowledgeCondition>();
+            qconditions.Quests = new[] { IDs.mixedLegaciesID };
+            qconditions.Invert = true;
+            myEffects.gameObject.AddComponent<AddStatusEffect>().Status = Crusader.Instance.surgeOfDivinityInstance;
+
+            //SURGE OF MEMORIES
+            myEffects = TinyGameObjectManager.MakeFreshTransform(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER, true, true);
+            conditions = myEffects.gameObject.AddComponent<StatusEffectsCondition>();
+            conditions.StatusEffectNames = new[] { IDs.disciplineNameID, IDs.disciplineAmplifiedNameID };
+            conditions.Invert = true;
+            conditions = myEffects.gameObject.AddComponent<StatusEffectsCondition>();
+            conditions.StatusEffectNames = new[] { IDs.rageNameID, IDs.rageAmplifiedNameID };
+            conditions.Invert = true;
+            qconditions = myEffects.gameObject.AddComponent<QuestKnowledgeCondition>();
+            qconditions.Quests = new[] { IDs.mixedLegaciesID };
+            qconditions.Invert = false;
+            myEffects.gameObject.AddComponent<AddStatusEffect>().Status = Crusader.Instance.surgeOfMemoriesInstance;
+
+            //HEALING SURGE
             myEffects = TinyGameObjectManager.MakeFreshTransform(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER, true, true);
             conditions = myEffects.gameObject.AddComponent<StatusEffectsCondition>();
             conditions.StatusEffectNames = new[] { IDs.disciplineNameID, IDs.disciplineAmplifiedNameID };
@@ -106,15 +134,7 @@ namespace Crusader
             conditions.Invert = true;
             myEffects.gameObject.AddComponent<AddStatusEffect>().Status = Crusader.Instance.healingSurgeInstance;
 
-            myEffects = TinyGameObjectManager.MakeFreshTransform(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER, true, true);
-            conditions = myEffects.gameObject.AddComponent<StatusEffectsCondition>();
-            conditions.StatusEffectNames = new[] { IDs.disciplineNameID, IDs.disciplineAmplifiedNameID };
-            conditions.Invert = true;
-            conditions = myEffects.gameObject.AddComponent<StatusEffectsCondition>();
-            conditions.StatusEffectNames = new[] { IDs.rageNameID, IDs.rageAmplifiedNameID };
-            conditions.Invert = true;
-            myEffects.gameObject.AddComponent<AddStatusEffect>().Status = Crusader.Instance.surgeOfDivinityInstance;
-
+            //CELESTIAL SURGE
             myEffects = TinyGameObjectManager.MakeFreshTransform(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER, true, true);
             conditions = myEffects.gameObject.AddComponent<StatusEffectsCondition>();
             conditions.StatusEffectNames = new[] { IDs.disciplineNameID, IDs.disciplineAmplifiedNameID };
