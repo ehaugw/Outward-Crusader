@@ -15,8 +15,14 @@ namespace Crusader
             var syncedNPC = new KlausNPC(
                 identifierName: "Klaus",
                 rpcListenerID: IDs.NPCID_Klaus,
-                defaultEquipment: new int[] { IDs.beardID, IDs.palladiumBootsID, IDs.palladiumArmorID, IDs.palladiumSwordID },
-                visualData: new SL_Character.VisualData() { Gender = Character.Gender.Female}
+                defaultEquipment: new int[] {IDs.beardID, IDs.palladiumBootsID, IDs.palladiumArmorID, IDs.palladiumSwordID },
+                visualData: new SL_Character.VisualData() {
+                    Gender = Character.Gender.Male,
+                    SkinIndex = (int)SL_Character.Ethnicities.Asian,
+                    HeadVariationIndex = 3,
+                    HairStyleIndex = (int) HairStyles.BraidsBack,
+                    HairColorIndex = (int) HairColors.White
+                }
             );
 
             syncedNPC.AddToScene(new SynchronizedNPCScene(
