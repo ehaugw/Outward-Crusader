@@ -64,17 +64,18 @@ Manual Uninstallation
 **Meditate** (Passive)
 
 * The caster is set in a meditating pose until he/she moves.
-* Meditating for 3 seconds buffs the caster with [Burst of Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Burst of Divinity").
+* Meditating for 3 seconds buffs the caster with [Burst of Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Burst of Divinity") or [Ancestral Memory](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Ancestral Memory") depending on faction choice.
 * Receiving the buffs from [Meditate](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Meditate") has a 100 seconds internal cooldown, despite the [Meditate](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Meditate") skill having no cooldown itself.
 
 **Blessed Determination** (Passive)
 
 * Restores 100% of mana spent as stamina.
-* Each point of stamina spent gives about 5% [Burst of Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Burst of Divinity") build-up.
+* Each point of stamina spent gives about 5% [Burst of Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Burst of Divinity") or [Ancestral Memory](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Ancestral Memory") depending on faction choice build-up.
 
 **Judgement** (Passive)
 
-* When you expend [Burst of Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Burst of Divinity") to cast a spell, your primary weapon becomes infused with [Zealous Weapon](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Zealous Weapon") for 15 seconds.
+* When you expend [Burst of Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Burst of Divinity") to cast a spell, your primary weapon becomes infused with [Zealous Weapon](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Zealous Weapon") for 10 seconds.
+* When you expend [Ancestral Memory](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Ancestral Memory") to cast a spell, your primary weapon becomes infused with [Bone Shivering Weapon](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Bone Shivering Weapon") for 10 seconds.
 
 **Wrathful Smite** (Cooldown: 40 seconds, Mana cost: 7, Stamina cost: 10)
 
@@ -107,10 +108,17 @@ This skill can be combined with [Rune Magic](https://outward.gamepedia.com/Rune_
 
 Some of the skills above cause status effects, and some of these effects are added to the game by this mod. The new effects are:
 
-**Zealous Weapon** (Duration: 60 seconds)
+**Zealous Weapon** (Duration: 10 seconds)
 
 * A weapon infusion that adds 5 + 25% of weapon damage as [Holy Damage](https://www.nexusmods.com/outward/mods/221 "Holy Damage") to the affected weapon.
 * Applies 15 seconds of [Impending Doom](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Impending Doom") on a hit.
+
+**Bone Shivering Weapon** (Duration: 10 seconds)
+
+* A weapon infusion that adds 5% of weapon damage as both frost and ethereal damage to the affected weapon.
+* Adds 33% Chill buildup.
+* Adds 33% Haunted buildup.
+* Heals for 10% of the damage dealt with the weapon.
 
 **Impending Doom** (Duration: 15 seconds, ticks once every 1 second)
 
@@ -124,9 +132,19 @@ Some of the skills above cause status effects, and some of these effects are add
 * Reduces the mana cost of the next spell cast by 7 per stack (before reductions).
 * One stack of [Burst of Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Burst of Divinity") will be consumed for every 7 mana that was not spend due to this status effect. This number is always rounded up.
 
+**Ancestral Memory** (Duration: 30 seconds)
+
+* This effect can be stacked indefinitely. Each effect has individual timers.
+* Reduces the mana cost of the next spell cast by 7 per stack (before reductions).
+* One stack of [Ancestral Memory](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Ancestral Memory") will be consumed for every 7 mana that was not spend due to this status effect. This number is always rounded up.
+
 **Surge of Divinity** (Duration: 90 seconds)
 
 * Doubles the build-up rate of [Burst of Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Burst of Divinity").
+
+**Surge of Memories** (Duration: 90 seconds)
+
+* Doubles the build-up rate of [Ancestral Memory](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Ancestral Memory").
 
 **Healing Surge** (Duration: 120 seconds)
 
@@ -146,18 +164,24 @@ Not from a jedi, but I suggest seeking out [Klaus](https://staticdelivery.nexusm
 
 * Version 5.1.3
 
+  * Update description on **Rebuking Smite** to reveal that it applies Doomed.
+  * Update visual effects of **Rebuking Smite**, [Wrathful Smite](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Wrathful Smite"), [Cure Wounds](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Cure Wounds") and [Channel](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Channel") to match faction.
+  * Make Blue Chamber Collective eligible for the class and create a corresponding weapon imbue and status effects.
+  * Implemented [Ancestral Memory](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Ancestral Memory") and **Surge of Memories**.
+* Version 5.1.3
+
   * Fix a bug that caused [Holy Shock](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Holy Shock") to deal damage about 40 times.
 * Version 5.1.2
 
   * Use the correct root folder when launched with anyhting else than manual BepInEx.
   * Moved Claus to a more fitting location nearby.
-  * Renamed [Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Divinity") to **Channel**.
+  * Renamed **Divinity** to [Channel](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Channel").
 * Version 5.1.1
 
   * Fix README
 * Version 5.1.0
 
-  * Uses a standalone DLL for [Impending Doom](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Impending Doom").
+  * Uses a standalone DLL for [Impending Doom](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Impending Doom").Replaced **Consecration** with [Channel Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Channel Divinity").
 * Version 5.0.0
 
   * Updated to work with Outward Definitive Edition
@@ -288,7 +312,7 @@ Not from a jedi, but I suggest seeking out [Klaus](https://staticdelivery.nexusm
     * Removed: Cure Bleeding
     * Divine Favour
     * Mana cost: 15 -> 7
-  * [Restoration](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Restoration")
+  * **Restoration**
 
     * Mana cost: 15 -> 14
     * Added: Cure Bleeding

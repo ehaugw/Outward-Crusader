@@ -143,7 +143,7 @@ namespace Crusader
                 targetStatusName: "Mana Ratio Recovery 3",
                 isMalusEffect: false,
                 modGUID: Crusader.GUID,
-                iconFileName: Crusader.ModFolderName + @"\SideLoader\Texture2D\surgeOfDivinityIcon.png");
+                iconFileName: Crusader.ModFolderName + @"\SideLoader\Texture2D\surgeOfMemoriesIcon.png");
 
             return statusEffect;
         }
@@ -180,7 +180,7 @@ namespace Crusader
                 targetStatusName: "Mana Ratio Recovery 3",
                 isMalusEffect: false,
                 modGUID: Crusader.GUID,
-                iconFileName: Crusader.ModFolderName + @"\SideLoader\Texture2D\burstOfDivinityIcon.png"); ;
+                iconFileName: Crusader.ModFolderName + @"\SideLoader\Texture2D\ancestralMemoryIcon.png"); ;
 
             return statusEffect;
         }

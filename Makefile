@@ -65,9 +65,11 @@ assemble:
 	cp -u resources/icons/thunderous_smite.png                 public/$(sideloaderpath)/Items/Thunderous\ Smite/Textures/icon.png
 	cp -u resources/icons/thunderous_smite_small.png           public/$(sideloaderpath)/Items/Thunderous\ Smite/Textures/skillicon.png
 	mkdir -p public/$(sideloaderpath)/Items/Wrathful\ Smite/Textures
-	cp -u resources/icons/wrathful_smite.png                  public/$(sideloaderpath)/Items/Wrathful\ Smite/Textures/icon.png
-	cp -u resources/icons/wrathful_smite_small.png            public/$(sideloaderpath)/Items/Wrathful\ Smite/Textures/skillicon.png
+	cp -u resources/icons/wrathful_smite.png                   public/$(sideloaderpath)/Items/Wrathful\ Smite/Textures/icon.png
+	cp -u resources/icons/wrathful_smite_small.png             public/$(sideloaderpath)/Items/Wrathful\ Smite/Textures/skillicon.png
 	
+	cp -u resources/textures/ancestralMemoryIcon.png           public/$(sideloaderpath)/Texture2D/
+	cp -u resources/textures/surgeOfMemoriesIcon.png           public/$(sideloaderpath)/Texture2D/
 	cp -u resources/textures/burstOfDivinityIcon.png           public/$(sideloaderpath)/Texture2D/
 	cp -u resources/textures/healingSurgeIcon.png              public/$(sideloaderpath)/Texture2D/
 	cp -u ../ImpendingDoom/resources/textures/impendingDoomIcon.png             public/$(sideloaderpath)/Texture2D/
