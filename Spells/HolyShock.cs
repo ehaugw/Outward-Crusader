@@ -78,7 +78,7 @@ namespace Crusader
                 BaseBlast = SL_ShootBlast.BlastPrefabs.DispersionLight,
                 Radius = 7,
                 BlastLifespan= 1,
-                RefreshTime= 0,
+                RefreshTime= -1,
                 InstantiatedAmount = 5,
                 Interruptible = false,
                 HitOnShoot = true,
