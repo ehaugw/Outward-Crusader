@@ -24,7 +24,15 @@
                 {
                     if (!_affectedCharacter.StatusEffectMngr.HasStatusEffect(Crusader.Instance.meditationCooldownStatusEffectInstance.IdentifierName))
                     {
-                        _affectedCharacter.StatusEffectMngr.AddStatusEffect(Crusader.Instance.burstOfDivinityInstance, _affectedCharacter);
+                        if (FactionSelector.IsBlueChamberCollective(_affectedCharacter))
+                        {
+                            _affectedCharacter.StatusEffectMngr.AddStatusEffect(Crusader.Instance.ancestralMemoryInstance, _affectedCharacter);
+                        }
+                        else
+                        {
+                            _affectedCharacter.StatusEffectMngr.AddStatusEffect(Crusader.Instance.burstOfDivinityInstance, _affectedCharacter);
+                        }
+
                         _affectedCharacter.StatusEffectMngr.AddStatusEffect(Crusader.Instance.meditationCooldownStatusEffectInstance, _affectedCharacter);
                     } else if (_affectedCharacter.IsLocalPlayer && !trainerWasOpened)
                     {
