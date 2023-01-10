@@ -13,11 +13,11 @@ namespace Crusader
         public static Skill Init()
         {
             TinyHelper.TinyHelper.OnDescriptionModified += delegate (Item item, ref string description) {
-                if (item.ItemID == IDs.blessedDeterminationID)
+                if (item.ItemID == IDs.divineFavourID)
                 {
                     if (FactionSelector.IsBlueChamberCollective(CharacterManager.Instance.GetFirstLocalCharacter()))
                     {
-                        description = "When you expend " + ModTheme.BlueChamberImbueName + " to cast a spell, your primary weapon becomes infused with " + ModTheme.BlueChamberImbueName + " for " + ImbueDuration + " seconds.";
+                        description = "When you expend " + ModTheme.AncestralMemoryEffectName + " to cast a spell, your primary weapon becomes infused with " + ModTheme.BlueChamberImbueName + " for " + ImbueDuration + " seconds.";
                     }
                     else if (FactionSelector.IsHolyMission(CharacterManager.Instance.GetFirstLocalCharacter()))
                     {
@@ -34,7 +34,7 @@ namespace Crusader
                 New_ItemID = IDs.divineFavourID,
                 SLPackName = Crusader.ModFolderName,
                 SubfolderName = "Judgement",
-                Description = "When you expend " + ModTheme.BurstOfDivinityEffectName + " or " + ModTheme.BlueChamberImbueName + " to cast a spell, your primary weapon becomes infused with a powerful infusion for " + ImbueDuration + " seconds.",
+                Description = "When " + ModTheme.BlessedDeterminationSpellName + " or " + ModTheme.MeditationSkillName + " provides mana to cast a spell, your primary weapon becomes infused with a powerful infusion for " + ImbueDuration + " seconds.",
                 IsUsable = false,
                 CastType = Character.SpellCastType.NONE,
                 CastModifier = Character.SpellCastModifier.Immobilized,
