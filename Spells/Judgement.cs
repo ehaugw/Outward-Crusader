@@ -20,7 +20,7 @@ namespace Crusader
                 New_ItemID = IDs.divineFavourID,
                 SLPackName = Crusader.ModFolderName,
                 SubfolderName = "Judgement",
-                Description = "When you expend " + ModTheme.BurstOfDivinityEffectName + " to cast a spell, your primary weapon becomes infused with a powerful infusion for " + ImbueDuration + " seconds.",//ModTheme.ImbueEffectName +" and Spark to cause a " + ModTheme.ImpendingDoomEffectName + " effect. Spark will cause the " + ModTheme.ImpendingDoomEffectName + " effect to spread if the target is already affected by " + ModTheme.ImpendingDoomEffectName + ".\n\nCreatures affected by " + ModTheme.ImpendingDoomEffectName + " take dmage over time and may be struck by lightning.",
+                Description = "When you expend " + ModTheme.BurstOfDivinityEffectName + " or " + ModTheme.BlueChamberImbueName + " to cast a spell, your primary weapon becomes infused with a powerful infusion for " + ImbueDuration + " seconds.",//ModTheme.ImbueEffectName +" and Spark to cause a " + ModTheme.ImpendingDoomEffectName + " effect. Spark will cause the " + ModTheme.ImpendingDoomEffectName + " effect to spread if the target is already affected by " + ModTheme.ImpendingDoomEffectName + ".\n\nCreatures affected by " + ModTheme.ImpendingDoomEffectName + " take dmage over time and may be struck by lightning.",
                 IsUsable = false,
                 CastType = Character.SpellCastType.NONE,
                 CastModifier = Character.SpellCastModifier.Immobilized,
@@ -37,18 +37,4 @@ namespace Crusader
             return skill;
         }
     }
-
-    //[HarmonyPatch(typeof(Weapon), "AddImbueEffect")]
-    //public class Weapon_AddImbueEffect
-    //{
-    //    [HarmonyPrefix]
-    //    public static void Prefix(Weapon __instance, ref ImbueEffectPreset _effect)
-    //    {
-    //        var skillKnowledge = __instance?.OwnerCharacter?.Inventory?.SkillKnowledge;
-    //        if (_effect.PresetID == IDs.divineLightImbueID && skillKnowledge != null && skillKnowledge.IsItemLearned(IDs.divineFavourID))
-    //        {
-    //            _effect = (ImbueEffectPreset)ResourcesPrefabManager.Instance.GetEffectPreset(IDs.radiantLightImbueID);
-    //        }
-    //    }
-    //}
 }
