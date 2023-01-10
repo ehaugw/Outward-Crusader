@@ -92,7 +92,7 @@ Manual Uninstallation
 * Applies 15 seconds of [Impending Doom](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Impending Doom") to enemies. Enemies already affected by [Impending Doom](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Impending Doom") will spread the effect to nearby enemies.
 * Heals allies for 10 health, scaling with the caster's [Holy Damage](https://www.nexusmods.com/outward/mods/221 "Holy Damage") bonus.
 
-**Divinity** (Cooldown: 300 seconds, Mana cost: 7)
+**Channel** (Cooldown: 300 seconds, Mana cost: 7)
 This skill can be combined with [Rune Magic](https://outward.gamepedia.com/Rune_Magic "Rune Magic") to make vastly different effects.
 
 * [Rage](https://outward.fandom.com/wiki/Rage "Rage")
