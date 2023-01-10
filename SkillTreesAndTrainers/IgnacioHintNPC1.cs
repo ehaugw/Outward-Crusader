@@ -55,12 +55,12 @@ namespace Crusader
             var rootStatement = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Hi! Have you seen Ignacio?");
             var characterIntroduction = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Ignacio calls me Laura, and so can you!");
             var locateTrainer = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Ignacio uses to play with me when he's not meditating in the Ancestor's Resting Place.");
-            //var closeDialogue = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Good bye!");
+            var closeDialogue = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Good bye!");
 
             var introMultipleChoice = TinyDialogueManager.MakeMultipleChoiceNode(graph, new string[] {
                 "Who is asking?",
                 "Who is Ignacio?",
-                //"No, I am sorry."
+                "No, I am sorry."
             });
 
             graph.allNodes.Clear();
@@ -73,7 +73,7 @@ namespace Crusader
             graph.ConnectNodes(rootStatement, introMultipleChoice);
             graph.ConnectNodes(introMultipleChoice, characterIntroduction, 0);
             graph.ConnectNodes(introMultipleChoice, locateTrainer, 1);
-            //graph.ConnectNodes(introMultipleChoice, closeDialogue, 2);
+            graph.ConnectNodes(introMultipleChoice, closeDialogue, 2);
             graph.ConnectNodes(characterIntroduction, rootStatement);
 
             var obj = instanceGameObject.transform.parent.gameObject;
