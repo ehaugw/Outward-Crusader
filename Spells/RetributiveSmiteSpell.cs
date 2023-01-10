@@ -39,14 +39,14 @@ namespace Crusader
 
                 Cooldown = 20,
                 StaminaCost = 7,
-                ManaCost = 7,
+                ManaCost = 14,
                 HealthCost = 0,
             };
             myitem.ApplyTemplate();
             Skill skill = ResourcesPrefabManager.Instance.GetItemPrefab(myitem.New_ItemID) as Skill;
 
             var damageEffect = skill.gameObject.GetComponentInChildren<WeaponDamage>();
-            damageEffect.WeaponDamageMult = 1.5f;
+            damageEffect.WeaponDamageMult = 1.7f;
             damageEffect.WeaponKnockbackMult = 1.5f;
             damageEffect.WeaponDamageMultKDown = -1f;
             damageEffect.WeaponDurabilityLossPercent = 0;

@@ -55,11 +55,11 @@ Manual Uninstallation
 * Heals the caster and all allies of the caster within 15 units for 10 health, scaling with the caster's [Holy Damage](https://www.nexusmods.com/outward/mods/221 "Holy Damage") bonus.
 * The player is partially mobile during the entire spell casting animation.
 
-**Rebuking Smite** (Cooldown: 20 seconds, Mana cost: 7, Stamina cost: 7)
+**Rebuking Smite** (Cooldown: 20 seconds, Mana cost: 7, Stamina cost: 14)
 
 * A sweeping weapon attack.
+* Deals 1.7x weapon damage.
 * Deals 1.5x impact damage.
-* Deals 1.5x weapon damage.
 * Applies **Doomed**.
 
 **Meditate** (Passive)
@@ -163,6 +163,9 @@ Not from a jedi, but I suggest seeking out [Klaus](https://staticdelivery.nexusm
 # Patch notes
 
 
+* Version 5.1.9
+
+  * **Rebuking Smite** mana cost to 14 and damage multiplier to 1.7.
 * Version 5.1.9
 
   * Actually fix what 5.1.8 was supposed to fix.
