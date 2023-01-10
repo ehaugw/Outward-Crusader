@@ -30,7 +30,7 @@ namespace Crusader
         public static Crusader Instance;
 
         public const string GUID = "com.ehaugw.crusaderclass";
-        public const string VERSION = "5.1.7";
+        public const string VERSION = "5.1.8";
         public const string NAME = "The Crusader";
         public static string ModFolderName = Directory.GetParent(typeof(Crusader).Assembly.Location).Name.ToString();
 

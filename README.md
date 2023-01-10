@@ -163,6 +163,9 @@ Not from a jedi, but I suggest seeking out [Klaus](https://staticdelivery.nexusm
 # Patch notes
 
 
+* Version 5.1.8
+
+  * Use dynamic descriptions for [Judgement](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Judgement"), [Channel](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Channel") and [Blessed Determination](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Blessed Determination").
 * Version 5.1.7
 
   * Add a hint NPC in Monsoon, leading to the Holy Mission trainer
