@@ -60,6 +60,7 @@ Manual Uninstallation
 * A sweeping weapon attack.
 * Deals 1.5x impact damage.
 * Deals 1.5x weapon damage.
+* Applies **Doomed**.
 
 **Meditate** (Passive)
 
