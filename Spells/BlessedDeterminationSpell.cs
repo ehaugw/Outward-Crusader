@@ -32,6 +32,24 @@ namespace Crusader
 
         public static Skill Init()
         {
+            TinyHelper.TinyHelper.OnDescriptionModified += delegate (Item item, ref string description) {
+                if (item.ItemID == IDs.blessedDeterminationID)
+                {
+                    if (FactionSelector.IsBlueChamberCollective(CharacterManager.Instance.GetFirstLocalCharacter()))
+                    {
+                        description =
+                            (ModTheme.BlessedDeterminationRequiredBoonName != null ? "While under the effect of the " + ModTheme.BlessedDeterminationRequiredBoonName + " boon, all" : "All") +
+                            " spent mana is regained as stamina, and spending stamina builds up an " + ModTheme.AncestralMemoryEffectName + ", which reduces the mana cost of the next spell you cast.";
+                    }
+                    else if (FactionSelector.IsHolyMission(CharacterManager.Instance.GetFirstLocalCharacter()))
+                    {
+                        description =
+                            (ModTheme.BlessedDeterminationRequiredBoonName != null ? "While under the effect of the " + ModTheme.BlessedDeterminationRequiredBoonName + " boon, all" : "All") +
+                            " spent mana is regained as stamina, and spending stamina builds up an " + ModTheme.BurstOfDivinityEffectName + ", which reduces the mana cost of the next spell you cast.";
+                    }
+                }
+            };
+
             var myitem = new SL_Skill()
             {
                 Name = ModTheme.BlessedDeterminationSpellName,
@@ -40,7 +58,8 @@ namespace Crusader
                 New_ItemID = IDs.blessedDeterminationID,
                 SLPackName = Crusader.ModFolderName,
                 SubfolderName = "Blessed Determination",
-                Description = (ModTheme.BlessedDeterminationRequiredBoonName != null ? "While under the effect of the " + ModTheme.BlessedDeterminationRequiredBoonName + " boon, all" : "All") + 
+                Description =
+                    (ModTheme.BlessedDeterminationRequiredBoonName != null ? "While under the effect of the " + ModTheme.BlessedDeterminationRequiredBoonName + " boon, all" : "All") + 
                     " spent mana is regained as stamina, and spending stamina builds up an effect that reduces the mana cost of the next spell you cast.",
                 IsUsable = false,
                 CastType = Character.SpellCastType.NONE,

@@ -14,6 +14,20 @@ namespace Crusader
     {
         public static Skill Init()
         {
+            TinyHelper.TinyHelper.OnDescriptionModified += delegate (Item item, ref string description) {
+                if (item.ItemID == IDs.blessedDeterminationID)
+                {
+                    if (FactionSelector.IsBlueChamberCollective(CharacterManager.Instance.GetFirstLocalCharacter()))
+                    {
+                        description = "You channel your divinity, drastically increasing your " + ModTheme.AncestralMemoryEffectName + " buildup, or produces combo effects when casted in combination with Discipline or Rage.";
+                    }
+                    else if (FactionSelector.IsHolyMission(CharacterManager.Instance.GetFirstLocalCharacter()))
+                    {
+                        description = "You channel your divinity, drastically increasing your " + ModTheme.BurstOfDivinityEffectName + " buildup, or produces combo effects when casted in combination with Discipline or Rage.";
+                    }
+                }
+            };
+
             var myitem = new SL_Skill()
             {
                 Name = ModTheme.ChannelDivinitySpellName,
@@ -22,7 +36,7 @@ namespace Crusader
                 New_ItemID = IDs.channelDivinityID,
                 SLPackName = Crusader.ModFolderName,
                 SubfolderName = "Channel Divinity",
-                Description = "You channel your divinity, drastically increasing your " + ModTheme.BurstOfDivinityEffectName + " buildup, or produces combo effects when casted in combination with Discipline or Rage.",
+                Description = "You channel your divinity, drastically increasing your " + ModTheme.BlessedDeterminationSpellName + " buildup, or produces combo effects when casted in combination with Discipline or Rage.",
                 CastType = Character.SpellCastType.CallElements,
                 CastModifier = Character.SpellCastModifier.Immobilized,
                 CastLocomotionEnabled = false,

@@ -12,6 +12,20 @@ namespace Crusader
 
         public static Skill Init()
         {
+            TinyHelper.TinyHelper.OnDescriptionModified += delegate (Item item, ref string description) {
+                if (item.ItemID == IDs.blessedDeterminationID)
+                {
+                    if (FactionSelector.IsBlueChamberCollective(CharacterManager.Instance.GetFirstLocalCharacter()))
+                    {
+                        description = "When you expend " + ModTheme.BlueChamberImbueName + " to cast a spell, your primary weapon becomes infused with " + ModTheme.BlueChamberImbueName + " for " + ImbueDuration + " seconds.";
+                    }
+                    else if (FactionSelector.IsHolyMission(CharacterManager.Instance.GetFirstLocalCharacter()))
+                    {
+                        description = "When you expend " + ModTheme.BurstOfDivinityEffectName + " to cast a spell, your primary weapon becomes infused with " + ModTheme.HolyMissionImbueName + " for " + ImbueDuration + " seconds.";
+                    }
+                }
+            };
+
             var myitem = new SL_Skill()
             {
                 Name = ModTheme.DivineFavorSpellName,
@@ -20,7 +34,7 @@ namespace Crusader
                 New_ItemID = IDs.divineFavourID,
                 SLPackName = Crusader.ModFolderName,
                 SubfolderName = "Judgement",
-                Description = "When you expend " + ModTheme.BurstOfDivinityEffectName + " or " + ModTheme.BlueChamberImbueName + " to cast a spell, your primary weapon becomes infused with a powerful infusion for " + ImbueDuration + " seconds.",//ModTheme.ImbueEffectName +" and Spark to cause a " + ModTheme.ImpendingDoomEffectName + " effect. Spark will cause the " + ModTheme.ImpendingDoomEffectName + " effect to spread if the target is already affected by " + ModTheme.ImpendingDoomEffectName + ".\n\nCreatures affected by " + ModTheme.ImpendingDoomEffectName + " take dmage over time and may be struck by lightning.",
+                Description = "When you expend " + ModTheme.BurstOfDivinityEffectName + " or " + ModTheme.BlueChamberImbueName + " to cast a spell, your primary weapon becomes infused with a powerful infusion for " + ImbueDuration + " seconds.",
                 IsUsable = false,
                 CastType = Character.SpellCastType.NONE,
                 CastModifier = Character.SpellCastModifier.Immobilized,

@@ -267,7 +267,7 @@ namespace Crusader
                 return "UNTHEMED STRING";
             }
         }
-        public static string ImbueEffectName
+        public static string HolyMissionImbueName
         {
             get
             {
