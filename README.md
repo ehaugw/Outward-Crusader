@@ -162,6 +162,9 @@ Not from a jedi, but I suggest seeking out [Klaus](https://staticdelivery.nexusm
 # Patch notes
 
 
+* Version 5.1.7
+
+  * Add a hint NPC in Monsoon, leading to the Holy Mission trainer
 * Version 5.1.6
 
   * Add a hint NPC in Berg, leading to the Blue Chamber Collective trainer
