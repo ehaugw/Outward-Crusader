@@ -8,7 +8,7 @@ namespace Crusader
 {
     public class Judgement
     {
-        public static float ImbueDuration = 10;
+        public const float ImbueDuration = 10;
 
         public static Skill Init()
         {
@@ -20,7 +20,7 @@ namespace Crusader
                 New_ItemID = IDs.divineFavourID,
                 SLPackName = Crusader.ModFolderName,
                 SubfolderName = "Judgement",
-                Description = "When you expend " + ModTheme.BurstOfDivinityEffectName + " to cast a spell, your primary weapon becomes infused with " + ModTheme.ImbueEffectName + " for " + ImbueDuration + " seconds.",//ModTheme.ImbueEffectName +" and Spark to cause a " + ModTheme.ImpendingDoomEffectName + " effect. Spark will cause the " + ModTheme.ImpendingDoomEffectName + " effect to spread if the target is already affected by " + ModTheme.ImpendingDoomEffectName + ".\n\nCreatures affected by " + ModTheme.ImpendingDoomEffectName + " take dmage over time and may be struck by lightning.",
+                Description = "When you expend " + ModTheme.BurstOfDivinityEffectName + " to cast a spell, your primary weapon becomes infused with a powerful infusion for " + ImbueDuration + " seconds.",//ModTheme.ImbueEffectName +" and Spark to cause a " + ModTheme.ImpendingDoomEffectName + " effect. Spark will cause the " + ModTheme.ImpendingDoomEffectName + " effect to spread if the target is already affected by " + ModTheme.ImpendingDoomEffectName + ".\n\nCreatures affected by " + ModTheme.ImpendingDoomEffectName + " take dmage over time and may be struck by lightning.",
                 IsUsable = false,
                 CastType = Character.SpellCastType.NONE,
                 CastModifier = Character.SpellCastModifier.Immobilized,

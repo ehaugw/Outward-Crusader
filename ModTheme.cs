@@ -176,6 +176,8 @@ namespace Crusader
             }
         }
 
+        public const string AncestralMemoryEffectName = "Ancestral Memory";
+
         public static string ChannelDivinitySpellName
         {
             get

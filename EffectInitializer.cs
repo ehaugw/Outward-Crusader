@@ -171,7 +171,7 @@ namespace Crusader
         {
             var statusEffect = TinyEffectManager.MakeStatusEffectPrefab(
                 effectName: IDs.ancestralMemoryNameID,
-                displayName: "Ancestral Memory",
+                displayName: ModTheme.AncestralMemoryEffectName,
                 familyName: IDs.ancestralMemoryNameID,
                 description: "Reduces the mana cost of spells, but stacks are expended when a spell is casted.",
                 lifespan: BlessedDeterminationSpell.FREECAST_LIFESPAN,

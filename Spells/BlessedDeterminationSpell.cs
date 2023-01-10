@@ -41,7 +41,7 @@ namespace Crusader
                 SLPackName = Crusader.ModFolderName,
                 SubfolderName = "Blessed Determination",
                 Description = (ModTheme.BlessedDeterminationRequiredBoonName != null ? "While under the effect of the " + ModTheme.BlessedDeterminationRequiredBoonName + " boon, all" : "All") + 
-                    " spent mana is regained as stamina, and spending stamina builds up a " + ModTheme.BurstOfDivinityEffectName + " effect that reduces the mana cost of the next spell you cast.",
+                    " spent mana is regained as stamina, and spending stamina builds up an effect that reduces the mana cost of the next spell you cast.",
                 IsUsable = false,
                 CastType = Character.SpellCastType.NONE,
                 CastModifier = Character.SpellCastModifier.Immobilized,
