@@ -86,6 +86,7 @@ namespace Crusader
             KlausNPC.Init();
             IgnacioNPC.Init();
             IgnacioHintNPC1.Init();
+            KlausHintNPC1.Init();
 
             SL.BeforePacksLoaded += BeforePackLoaded;
             SL.OnPacksLoaded += OnPackLoaded;

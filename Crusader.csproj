@@ -46,6 +46,7 @@
     <Compile Include="Effects\SafeRemoveStatusFromOwner.cs" />
     <Compile Include="FactionSelector.cs" />
     <Compile Include="ModTheme.cs" />
+    <Compile Include="SkillTreesAndTrainers\KlausHintNPC1.cs" />
     <Compile Include="SkillTreesAndTrainers\IgnacioNPC.cs" />
     <Compile Include="SkillTreesAndTrainers\IgnacioHintNPC1.cs" />
     <Compile Include="SkillTreesAndTrainers\KlausNPC.cs" />
