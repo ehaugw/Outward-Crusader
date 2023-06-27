@@ -21,12 +21,14 @@ namespace Crusader
 
         public static bool IsHolyMission(Character character)
         {
-            return character?.Inventory?.QuestKnowledge?.IsItemLearned(IDs.questionsAndCorruptionID) ?? false;
+            return true;
+            // return character?.Inventory?.QuestKnowledge?.IsItemLearned(IDs.questionsAndCorruptionID) ?? false;
         }
 
         public static bool IsBlueChamberCollective(Character character)
         {
-            return character?.Inventory?.QuestKnowledge?.IsItemLearned(IDs.mixedLegaciesID) ?? false;
+            return false;
+            //return character?.Inventory?.QuestKnowledge?.IsItemLearned(IDs.mixedLegaciesID) ?? false;
         }
 
         public static void SetWeaponTrailForFaction(Skill skill)
