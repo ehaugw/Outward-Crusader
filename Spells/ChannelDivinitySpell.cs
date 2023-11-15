@@ -65,9 +65,9 @@ namespace Crusader
 
             FactionSelector.SetCasterParticleForFaction(skill, 1.6f);
 
-            foreach (var tup in new Tuple<int, SL_ShootBlast.BlastPrefabs>[]{
-                new Tuple<int, SL_ShootBlast.BlastPrefabs>(IDs.questionsAndCorruptionID, SL_ShootBlast.BlastPrefabs.EliteSupremeShellSpecialLaser),
-                new Tuple<int, SL_ShootBlast.BlastPrefabs>(IDs.mixedLegaciesID, SL_ShootBlast.BlastPrefabs.CrimsonEliteLaser)
+            foreach (var tup in new Tuple<int[], SL_ShootBlast.BlastPrefabs>[]{
+                new Tuple<int[], SL_ShootBlast.BlastPrefabs>(FactionSelector.HolyMissionQuests, SL_ShootBlast.BlastPrefabs.EliteSupremeShellSpecialLaser),
+                new Tuple<int[], SL_ShootBlast.BlastPrefabs>(FactionSelector.BlueChamberQuests, SL_ShootBlast.BlastPrefabs.CrimsonEliteLaser)
             })
             {
                 var blastTransform = TinyGameObjectManager.MakeFreshTransform(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER, true, true);
@@ -105,7 +105,7 @@ namespace Crusader
                 }.ApplyToTransform(blastTransform) as ShootBlast;
                 damageBlast.transform.Rotate(-90, 0, 0);
                 var requirementTransform = TinyGameObjectManager.GetOrMake(blastTransform, EffectSourceConditions.SOURCE_CONDITION_CONTAINER, true, true);
-                requirementTransform.gameObject.AddComponent<SourceConditionQuest>().RequiredQuestID = tup.Item1;
+                requirementTransform.gameObject.AddComponent<SourceConditionQuest>().Quests = tup.Item1;
             }
             
             StatusEffectsCondition conditions;
@@ -121,8 +121,8 @@ namespace Crusader
             conditions.StatusEffectNames = new[] { IDs.rageNameID, IDs.rageAmplifiedNameID };
             conditions.Invert = true;
             qconditions = myEffects.gameObject.AddComponent<QuestKnowledgeCondition>();
-            qconditions.Quests = new[] { IDs.mixedLegaciesID };
-            qconditions.Invert = true;
+            qconditions.Quests = FactionSelector.HolyMissionQuests;
+            qconditions.Invert = false;
             myEffects.gameObject.AddComponent<AddStatusEffect>().Status = Crusader.Instance.surgeOfDivinityInstance;
 
             //SURGE OF MEMORIES
@@ -134,7 +134,7 @@ namespace Crusader
             conditions.StatusEffectNames = new[] { IDs.rageNameID, IDs.rageAmplifiedNameID };
             conditions.Invert = true;
             qconditions = myEffects.gameObject.AddComponent<QuestKnowledgeCondition>();
-            qconditions.Quests = new[] { IDs.mixedLegaciesID };
+            qconditions.Quests = FactionSelector.BlueChamberQuests;
             qconditions.Invert = false;
             myEffects.gameObject.AddComponent<AddStatusEffect>().Status = Crusader.Instance.surgeOfMemoriesInstance;
 
