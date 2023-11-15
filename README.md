@@ -1,7 +1,7 @@
 [Mods by ehaugw](https://outward.thunderstore.io/package/ehaugw/ "Mods by ehaugw") | Support me on [Patreon](https://www.patreon.com/ehaugw "Patreon")
 
 
-This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at January 10, 2023. Due to significant changes in a few mod frameworks' infrastructures, it is recommended that you update all mods that are older than November 08, 2022.
+This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at November 15, 2023. Due to significant changes in a few mod frameworks' infrastructures, it is recommended that you update all mods that are older than November 08, 2022.
 
 
 
@@ -48,6 +48,7 @@ Manual Uninstallation
 
 # Features
 
+Please report bugs here: https://discord.gg/dJP24PRbeQ
 "The Crusader" implements a new skill tree with a total of 8 skills (like every other skill tree). The skill tree has a focus on healing the user and his/her allies, resource management and dealing [Holy Damage](https://www.nexusmods.com/outward/mods/221 "Holy Damage"). A melee character is typcally very strong against a single enemy and struggles against larger groups. This skill tree addresses that issue by offering less single target power in exchange for a weapon infusion ([Zealous Weapon](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Zealous Weapon")) that brings some AoE damage to the table. The skills are as following:
 
 **Cure Wounds** (Mana cost: 14)
@@ -114,13 +115,6 @@ Some of the skills above cause status effects, and some of these effects are add
 * A weapon infusion that adds 5 + 25% of weapon damage as [Holy Damage](https://www.nexusmods.com/outward/mods/221 "Holy Damage") to the affected weapon.
 * Applies 15 seconds of [Impending Doom](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Impending Doom") on a hit.
 
-**Bone Shivering Weapon** (Duration: 10 seconds)
-
-* A weapon infusion that adds 5% of weapon damage as both frost and ethereal damage to the affected weapon.
-* Adds 33% Chill buildup.
-* Adds 33% Haunted buildup.
-* Heals for 10% of the damage dealt with the weapon.
-
 **Impending Doom** (Duration: 15 seconds, ticks once every 1 second)
 
 * A status effect that deals 1 [Holy Damage](https://www.nexusmods.com/outward/mods/221 "Holy Damage") per second for 15 seconds to the affected creature.
@@ -133,19 +127,9 @@ Some of the skills above cause status effects, and some of these effects are add
 * Reduces the mana cost of the next spell cast by 7 per stack (before reductions).
 * One stack of [Burst of Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Burst of Divinity") will be consumed for every 7 mana that was not spend due to this status effect. This number is always rounded up.
 
-**Ancestral Memory** (Duration: 30 seconds)
-
-* This effect can be stacked indefinitely. Each effect has individual timers.
-* Reduces the mana cost of the next spell cast by 7 per stack (before reductions).
-* One stack of [Ancestral Memory](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Ancestral Memory") will be consumed for every 7 mana that was not spend due to this status effect. This number is always rounded up.
-
 **Surge of Divinity** (Duration: 90 seconds)
 
 * Doubles the build-up rate of [Burst of Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Burst of Divinity").
-
-**Surge of Memories** (Duration: 90 seconds)
-
-* Doubles the build-up rate of [Ancestral Memory](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Ancestral Memory").
 
 **Healing Surge** (Duration: 120 seconds)
 
@@ -156,13 +140,20 @@ Some of the skills above cause status effects, and some of these effects are add
 
 # Is it possible to learn this power?
 
-Not from a jedi, but I suggest seeking out [Klaus](https://staticdelivery.nexusmods.com/mods/2775/images/136/136-1610466050-2031884270.png "Klaus").
+Speak to the guy next to the alchemist shop in Monsoon for more info.
 
 
 
 # Patch notes
 
 
+* Version 5.3.0
+
+  * Reintroduce faction differences
+  * Rafael gives clues about Klauss' location
+* Version 5.2.0
+
+  * Removed faction depending effects. All factions play as holy crusaders again.
 * Version 5.1.9
 
   * **Rebuking Smite** mana cost to 14 and damage multiplier to 1.7.
