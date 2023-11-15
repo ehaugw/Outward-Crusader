@@ -15,6 +15,7 @@ namespace Crusader
             TinyHelper.TinyHelper.OnDescriptionModified += delegate (Item item, ref string description) {
                 if (item.ItemID == IDs.divineFavourID)
                 {
+                    //TODO: Use skill owner if possible
                     if (FactionSelector.IsBlueChamberCollective(CharacterManager.Instance.GetFirstLocalCharacter()))
                     {
                         description = "When you expend " + ModTheme.AncestralMemoryEffectName + " to cast a spell, your primary weapon becomes infused with " + ModTheme.BlueChamberImbueName + " for " + ImbueDuration + " seconds.";
