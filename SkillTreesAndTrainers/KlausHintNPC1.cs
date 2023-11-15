@@ -51,29 +51,31 @@ namespace Crusader
             var graph = TinyDialogueManager.GetDialogueGraph(trainerTemplate);
             TinyDialogueManager.SetActorReference(graph, actor);
 
-            var rootStatement = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Hello! How can I help?");
-            var characterIntroduction = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "I am Rafael, a Holy Mission Missionary and a city guard.");
-            var locateTrainer = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Of course! He just left town, and is likely at his usual spot, at the North-Eastern shore of the Huge Tree in the marsh.");
-            var closeDialogue = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Good bye!");
-
-            var introMultipleChoice = TinyDialogueManager.MakeMultipleChoiceNode(graph, new string[] {
-                "You could present yourself.",
-                "I have heard great things about a guy called Klaus. Do you know where I can find him?",
-                "No, I am fine. Thank you."
+            var root                                    = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Hail civillian. I implore you for aid, as a guard it is my duty to stay in Monsoon. Can you search for my old master. I've beseeched holy Elatt and in my request he showed me a vision of a great tree on a peninsula.");
+            var rootReply0                              = TinyDialogueManager.MakeMultipleChoiceNode(graph, new string[] {"What is so important  about your teacher?",});
+            var rootReply0Answer0                       = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "He was my teacher, nothing too special, though he was one of the few who beleived in me when I was young, and kept in touch until recently and now I worry for him. The marsh is no safe place after all.");
+            var rootReply0Answer0Reply0                 = TinyDialogueManager.MakeMultipleChoiceNode(graph, new string[] {
+                "I will do what i can.",
+                "I am not suited for this. Take care.",
             });
 
-            graph.allNodes.Clear();
-            graph.allNodes.Add(rootStatement);
-            graph.allNodes.Add(introMultipleChoice);
-            graph.allNodes.Add(characterIntroduction);
-            graph.allNodes.Add(locateTrainer);
+            var locateTrainer = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Thank you! He just left town, and is likely at his usual spot, at the North-Eastern shore of the Huge Tree in the marsh.");
+            var closeDialogue = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Good bye!");
 
-            graph.primeNode = rootStatement;
-            graph.ConnectNodes(rootStatement, introMultipleChoice);
-            graph.ConnectNodes(introMultipleChoice, characterIntroduction, 0);
-            graph.ConnectNodes(introMultipleChoice, locateTrainer, 1);
-            graph.ConnectNodes(introMultipleChoice, closeDialogue, 2);
-            graph.ConnectNodes(characterIntroduction, rootStatement);
+            graph.allNodes.Clear();
+            graph.allNodes.Add(root);
+            graph.allNodes.Add(rootReply0);
+            graph.allNodes.Add(rootReply0Answer0);
+            graph.allNodes.Add(rootReply0Answer0Reply0);
+            graph.allNodes.Add(locateTrainer);
+            graph.allNodes.Add(closeDialogue);
+
+            graph.primeNode = root;
+            graph.ConnectNodes(root, rootReply0);
+            graph.ConnectNodes(rootReply0, rootReply0Answer0, 0);
+            graph.ConnectNodes(rootReply0Answer0, rootReply0Answer0Reply0);
+            graph.ConnectNodes(rootReply0Answer0Reply0, locateTrainer, 0);
+            graph.ConnectNodes(rootReply0Answer0Reply0, closeDialogue, 1);
 
             var obj = instanceGameObject.transform.parent.gameObject;
             obj.SetActive(true);
