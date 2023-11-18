@@ -150,7 +150,7 @@ namespace Crusader
                         {
                             if (AfterUseMana && TinyHelper.SkillRequirements.SafeHasSkillKnowledge(character, IDs.divineFavourID) && character.CurrentWeapon is Weapon weapon)
                             {
-                                CrusaderRPCManager.Instance.photonView.RPC("ApplyAddImbueEffectRPC", PhotonTargets.All, new object[] { weapon.UID, tup.Item2, Judgement.ImbueDuration });
+                                TinyHelper.TinyHelperRPCManager.Instance.photonView.RPC("ApplyAddImbueEffectRPC", PhotonTargets.All, new object[] { weapon.UID, tup.Item2, Judgement.ImbueDuration });
                             }
 
                             freecastingStacks = Math.Min(Convert.ToInt32(Math.Ceiling(__result / BlessedDeterminationSpell.FREECAST_PROVIDED_MANA)), freecastingStacks);
