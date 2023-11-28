@@ -1,7 +1,7 @@
 [Mods by ehaugw](https://outward.thunderstore.io/package/ehaugw/ "Mods by ehaugw") | Support me on [Patreon](https://www.patreon.com/ehaugw "Patreon")
 
 
-This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at November 15, 2023. Due to significant changes in a few mod frameworks' infrastructures, it is recommended that you update all mods that are older than November 08, 2022.
+This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at November 28, 2023. Due to significant changes in a few mod frameworks' infrastructures, it is recommended that you update all mods that are older than November 08, 2022.
 
 
 
@@ -72,7 +72,7 @@ Please report bugs here: https://discord.gg/dJP24PRbeQ
 **Blessed Determination** (Passive)
 
 * Restores 100% of mana spent as stamina.
-* Each point of stamina spent gives about 5% [Burst of Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Burst of Divinity") or [Ancestral Memory](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Ancestral Memory") depending on faction choice build-up.
+* Each point of stamina spent gives about 5% [Burst of Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Burst of Divinity") or [Ancestral Memory](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Ancestral Memory") build-up, depending on faction choice.
 
 **Judgement** (Passive)
 
@@ -94,7 +94,7 @@ Please report bugs here: https://discord.gg/dJP24PRbeQ
 * Heals allies for 10 health, scaling with the caster's [Holy Damage](https://www.nexusmods.com/outward/mods/221 "Holy Damage") bonus.
 
 **Channel** (Cooldown: 300 seconds, Mana cost: 7)
-This skill can be combined with [Rune Magic](https://outward.gamepedia.com/Rune_Magic "Rune Magic") to make vastly different effects.
+This skill can be combined with [Boons](https://outward.fandom.com/wiki/Boons "Boons") to make vastly different effects.
 
 * [Rage](https://outward.fandom.com/wiki/Rage "Rage")
 
@@ -115,6 +115,13 @@ Some of the skills above cause status effects, and some of these effects are add
 * A weapon infusion that adds 5 + 25% of weapon damage as [Holy Damage](https://www.nexusmods.com/outward/mods/221 "Holy Damage") to the affected weapon.
 * Applies 15 seconds of [Impending Doom](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Impending Doom") on a hit.
 
+**Bone Shivering Weapon** (Duration: 10 seconds)
+
+* A weapon infusion that adds 5% of weapon damage as both frost and ethereal damage to the affected weapon.
+* Adds 33% Chill buildup.
+* Adds 33% Haunted buildup.
+* Heals for 10% of the damage dealt with the weapon.
+
 **Impending Doom** (Duration: 15 seconds, ticks once every 1 second)
 
 * A status effect that deals 1 [Holy Damage](https://www.nexusmods.com/outward/mods/221 "Holy Damage") per second for 15 seconds to the affected creature.
@@ -127,9 +134,19 @@ Some of the skills above cause status effects, and some of these effects are add
 * Reduces the mana cost of the next spell cast by 7 per stack (before reductions).
 * One stack of [Burst of Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Burst of Divinity") will be consumed for every 7 mana that was not spend due to this status effect. This number is always rounded up.
 
+**Ancestral Memory** (Duration: 30 seconds)
+
+* This effect can be stacked indefinitely. Each effect has individual timers.
+* Reduces the mana cost of the next spell cast by 7 per stack (before reductions).
+* One stack of [Ancestral Memory](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Ancestral Memory") will be consumed for every 7 mana that was not spend due to this status effect. This number is always rounded up.
+
 **Surge of Divinity** (Duration: 90 seconds)
 
 * Doubles the build-up rate of [Burst of Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Burst of Divinity").
+
+**Surge of Memories** (Duration: 90 seconds)
+
+* Doubles the build-up rate of [Ancestral Memory](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Ancestral Memory").
 
 **Healing Surge** (Duration: 120 seconds)
 
@@ -140,20 +157,24 @@ Some of the skills above cause status effects, and some of these effects are add
 
 # Is it possible to learn this power?
 
-Speak to the guy next to the alchemist shop in Monsoon for more info.
+Not from a jedi, but you could try speaking to the guy next to the alchemist shop in Monsoon, or the little girl next to the Wild Hunter trainer.
+You must join a faction to become a **Crusader**. Your **Crusader** abilities will vary depending on your faction.
 
 
 
 # Patch notes
 
 
+* Version 5.3.1
+
+  * Include updated version of Custom Weapon Behaviour
 * Version 5.3.0
 
   * Reintroduce faction differences
   * Rafael gives clues about Klauss' location
 * Version 5.2.0
 
-  * Removed faction depending effects. All factions play as holy crusaders again.
+  * Removed faction depending effects. All factions play as holy **Crusader**s again.
 * Version 5.1.9
 
   * **Rebuking Smite** mana cost to 14 and damage multiplier to 1.7.
