@@ -30,7 +30,7 @@ namespace Crusader
         public static Crusader Instance;
 
         public const string GUID = "com.ehaugw.crusaderclass";
-        public const string VERSION = "5.3.2";
+        public const string VERSION = "5.3.3";
         public const string NAME = "The Crusader";
         public static string ModFolderName = Directory.GetParent(typeof(Crusader).Assembly.Location).Name.ToString();
 
@@ -78,6 +78,8 @@ namespace Crusader
         internal void Awake()
         {
             Instance = this;
+
+            CustomWeaponBehaviour.IBaseDamageModifiers.Add(new AuraOfSmitingBonusDamage());
 
             var rpcGameObject = new GameObject("CrusaderRPC");
             DontDestroyOnLoad(rpcGameObject);

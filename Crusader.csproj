@@ -38,6 +38,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AuraOfSmitingBonusDamage.cs" />
     <Compile Include="CrusaderRPCManager.cs" />
     <Compile Include="Effects\AuraOfSmitingEffect.cs" />
     <Compile Include="Effects\Healing.cs" />

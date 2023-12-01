@@ -52,29 +52,4 @@ namespace Crusader
             return skill;
         }
     }
-
-    [HarmonyPatch(typeof(CustomBehaviourFormulas), "PostAmplifyWeaponDamage")]
-    public class CustomBehaviourFormulas_PostAmplifyWeaponDamage
-    {
-        [HarmonyPostfix]
-        public static void Postfix(ref Weapon _weapon, ref DamageList _damageList)
-        {
-            if (_weapon.OwnerCharacter is Character character)
-            {
-                bool qualifiesForAuraOfSmiting = character.StatusEffectMngr?.HasStatusEffect(Crusader.Instance.auraOfSmitingEffectInstance.IdentifierName) ?? false;
-
-                if (!qualifiesForAuraOfSmiting)
-                {
-                    List<Character> charsInRange = new List<Character>();
-                    CharacterManager.Instance.FindCharactersInRange(character.CenterPosition, AuraOfSmitingEffect.RANGE, ref charsInRange);
-                    qualifiesForAuraOfSmiting = charsInRange.FirstOrDefault(c => c.IsAlly(character) && (c.StatusEffectMngr?.HasStatusEffect(Crusader.Instance.auraOfSmitingEffectInstance.IdentifierName) ?? false)) != null;
-                }
-
-                if (qualifiesForAuraOfSmiting)
-                {
-                    _damageList.Add(new DamageType(HolyDamageManager.HolyDamageManager.GetDamageType(), AuraOfSmitingEffect.DAMAGE));
-                }
-            }
-        }
-    }
 }
