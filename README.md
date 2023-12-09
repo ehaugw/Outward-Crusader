@@ -1,7 +1,7 @@
 [Mods by ehaugw](https://outward.thunderstore.io/package/ehaugw/ "Mods by ehaugw") | Support me on [Patreon](https://www.patreon.com/ehaugw "Patreon")
 
 
-This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at December 01, 2023. Due to significant changes in a few mod frameworks' infrastructures, it is recommended that you update all mods that are older than November 08, 2022.
+This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at December 09, 2023. Due to significant changes in a few mod frameworks' infrastructures, it is recommended that you update all mods that are older than November 08, 2022.
 
 
 
@@ -165,6 +165,9 @@ You must join a faction to become a **Crusader**. Your **Crusader** abilities wi
 # Patch notes
 
 
+* Version 5.3.4
+
+  * Add [Bone Shivering Weapon](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Bone Shivering Weapon") to **Gong Strike** and [Elemental Discharge](https://outward.gamepedia.com/Elemental_Discharge "Elemental Discharge").
 * Version 5.3.3
 
   * Update Aura of Smiting to work with new Custom Weapon Behaviour.

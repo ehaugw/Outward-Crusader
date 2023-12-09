@@ -32,7 +32,7 @@ namespace Crusader
                     new SL_EffectTransform() {
                         TransformName = "ActivationEffects",
                         Effects = new SL_Effect[] {
-                            new SL_AddStatusEffectBuildUp() {StatusEffect = MEDITATION_EFFECT_NAME, Buildup=100, Delay = 0},
+                            new SL_AddStatusEffect() {StatusEffect = MEDITATION_EFFECT_NAME, ChanceToContract=100, Delay = 0},
                         }
                     }
                 },

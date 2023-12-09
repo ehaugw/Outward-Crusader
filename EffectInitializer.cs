@@ -330,6 +330,31 @@ namespace Crusader
             var main = fx.Find("Smoke").GetComponent<ParticleSystem>().main;
             main.startColor = FactionSelector.blueChamberCollectiveMinMaxGradient;
 
+            if (ResourcesPrefabManager.Instance.GetItemPrefab(IDs.elementalDischargeID)?.transform.Find("NormalEthereal").gameObject is GameObject lightningEffectElemental)
+            //if (gongStrike.transform.Find("ElementalEffect/NormalLight").gameObject is GameObject normalLightEffectObject)
+            {
+                if (lightningEffectElemental.GetComponent<ImbueEffectORCondition>() is ImbueEffectORCondition orCondition)
+                {
+                    var listOfImubes = orCondition.ImbueEffectPresets.ToList();
+                    listOfImubes.Add(effectPreset);
+
+                    orCondition.ImbueEffectPresets = listOfImubes.ToArray();
+                }
+            }
+
+
+            if (ResourcesPrefabManager.Instance.GetItemPrefab(IDs.gongStrikeID)?.transform.Find("ElementalEffect/NormalEthereal").gameObject is GameObject lightningEffectGong)
+            //if (gongStrike.transform.Find("ElementalEffect/NormalLight").gameObject is GameObject normalLightEffectObject)
+            {
+                if (lightningEffectGong.GetComponent<ImbueEffectORCondition>() is ImbueEffectORCondition orCondition)
+                {
+                    var listOfImubes = orCondition.ImbueEffectPresets.ToList();
+                    listOfImubes.Add(effectPreset);
+
+                    orCondition.ImbueEffectPresets = listOfImubes.ToArray();
+                }
+            }
+
             return effectPreset;
         }
 
