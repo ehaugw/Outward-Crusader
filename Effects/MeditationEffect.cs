@@ -6,6 +6,8 @@
     using UnityEngine;
     using SideLoader;
     using InstanceIDs;
+    using TinyHelper;
+    using At = SideLoader.At;
 
     class MeditationEffect : Effect
     {
@@ -106,7 +108,7 @@
             {
                 _affectedCharacter.StatusEffectMngr?.RemoveStatusWithIdentifierName(Crusader.Instance.meditationStatusEffectInstance.IdentifierName);
                 //_affectedCharacter.ForceCancel(true, true);
-                CrusaderRPCManager.Instance.photonView.RPC("CharacterForceCancelRPC", PhotonTargets.All, new object[] { _affectedCharacter.UID.ToString(), true, true});
+                TinyHelperRPCManager.Instance.photonView.RPC("CharacterForceCancelRPC", PhotonTargets.All, new object[] { _affectedCharacter.UID.ToString(), true, true});
             }
         }
     }
