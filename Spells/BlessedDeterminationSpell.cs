@@ -87,7 +87,14 @@ namespace Crusader
         [HarmonyPostfix]
         public static void Postfix(CharacterStats __instance, float _staminaConsumed, Character ___m_character)
         {
-            if (___m_character is Character character && character.Inventory.SkillKnowledge.IsItemLearned(IDs.blessedDeterminationID) && (ModTheme.BlessedDeterminationRequiredBoonName == null || character.StatusEffectMngr.HasStatusEffect(ModTheme.BlessedDeterminationRequiredBoonName) || character.StatusEffectMngr.HasStatusEffect(ModTheme.BlessedDeterminationRequiredBoonName + " Amplified")))
+            if (___m_character is Character character
+                && character.Inventory.SkillKnowledge.IsItemLearned(IDs.blessedDeterminationID)
+                && (
+                    ModTheme.BlessedDeterminationRequiredBoonName == null
+                    || character.StatusEffectMngr.HasStatusEffect(ModTheme.BlessedDeterminationRequiredBoonName)
+                    || character.StatusEffectMngr.HasStatusEffect(ModTheme.BlessedDeterminationRequiredBoonName + " Amplified")
+                )
+            )
             {
                 if (FactionSelector.IsBlueChamberCollective(character))
                 {
@@ -112,6 +119,8 @@ namespace Crusader
         [HarmonyPostfix]
         public static void Postfix(CharacterStats __instance, ref float _amount, ref float __state)
         {
+            //UseMana includes GetFinalManaConsumption, and GetFinalManaConsumption includes mana providing effect stacks.
+            //We tell GetFinalManaConsumption to calculate again using the pre mana cost reduction to prevent it from applying mana cost reduction twice. In this call, we pass the tag that makes it remove the stacks.
             __instance.GetFinalManaConsumption(new Tag[] { Crusader.Instance.AfterUseManaTagInstance }, __state);
         }
     }
@@ -131,7 +140,14 @@ namespace Crusader
                 bool AfterUseMana = _tags.Contains(Crusader.Instance.AfterUseManaTagInstance);
 
                 
-                if (AfterUseMana && character.Inventory.SkillKnowledge.IsItemLearned(IDs.blessedDeterminationID) && (ModTheme.BlessedDeterminationRequiredBoonName == null || character.StatusEffectMngr.HasStatusEffect(ModTheme.BlessedDeterminationRequiredBoonName) || character.StatusEffectMngr.HasStatusEffect(ModTheme.BlessedDeterminationRequiredBoonName + " Amplified")))
+                if (AfterUseMana
+                    && character.Inventory.SkillKnowledge.IsItemLearned(IDs.blessedDeterminationID)
+                    && (
+                        ModTheme.BlessedDeterminationRequiredBoonName == null
+                        || character.StatusEffectMngr.HasStatusEffect(ModTheme.BlessedDeterminationRequiredBoonName)
+                        || character.StatusEffectMngr.HasStatusEffect(ModTheme.BlessedDeterminationRequiredBoonName + " Amplified")
+                    )
+                )
                 {
                     character.Stats.AffectStamina(__result * BlessedDeterminationSpell.BLESSED_DETERMINATION_STAMINA_REGEN);
                 }
