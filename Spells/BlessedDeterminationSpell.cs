@@ -179,6 +179,7 @@ namespace Crusader
                                     effect.RemoveOldestStack();
                                 }
                             }
+                            break;
                         }
                     }
                 }
