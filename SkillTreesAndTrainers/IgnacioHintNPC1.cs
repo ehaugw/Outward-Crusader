@@ -1,9 +1,10 @@
-﻿using InstanceIDs;
+using InstanceIDs;
 using SideLoader;
 using UnityEngine;
 
 namespace Crusader
 {
+    using NodeCanvas.Framework;
     using SynchronizedWorldObjects;
     using System.Linq;
     using TinyHelper;
@@ -41,40 +42,35 @@ namespace Crusader
 
         override public object SetupClientSide(int rpcListenerID, string instanceUID, int sceneViewID, int recursionCount, string rpcMeta)
         {
-            Character player = GameObject.FindObjectsOfType<Character>().Where(x => x.IsLocalPlayer).First();
             Character instanceCharacter = base.SetupClientSide(rpcListenerID, instanceUID, sceneViewID, recursionCount, rpcMeta) as Character;
             if (instanceCharacter == null) return null;
 
             GameObject instanceGameObject = instanceCharacter.gameObject;
             var trainerTemplate = TinyDialogueManager.AssignTrainerTemplate(instanceGameObject.transform);
             var actor = TinyDialogueManager.SetDialogueActorName(trainerTemplate, IdentifierName);
-            var trainerComp = TinyDialogueManager.SetTrainerSkillTree(trainerTemplate, CrusaderSkillTree.KlausSkillSchool.UID);
             var graph = TinyDialogueManager.GetDialogueGraph(trainerTemplate);
             TinyDialogueManager.SetActorReference(graph, actor);
+            graph.allNodes.Clear();
 
+            //NPC statements
             var rootStatement = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Hi! Have you seen Ignacio?");
             var characterIntroduction = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Ignacio calls me Laura, and so can you!");
             var locateTrainer = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Ignacio uses to play with me when he's not meditating in the Ancestor's Resting Place.");
-            var closeDialogue = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Good bye!");
+            var closeDialogue = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "That's a shame. I hope he's all right. Good bye!");
 
-            var introMultipleChoice = TinyDialogueManager.MakeMultipleChoiceNode(graph, new string[] {
-                "Who is asking?",
-                "Who is Ignacio?",
-                "No, I am sorry."
-            });
+            //Player statements
+            var whoAreYouText = "Who is asking?";
+            var whoIsIgnacioText = "Who is Ignacio?";
+            var noImSorryText = "No, I am sorry.";
 
-            graph.allNodes.Clear();
-            graph.allNodes.Add(rootStatement);
-            graph.allNodes.Add(introMultipleChoice);
-            graph.allNodes.Add(characterIntroduction);
-            graph.allNodes.Add(locateTrainer);
+            //Player choices
+            var introMultipleChoice = TinyDialogueManager.MakeMultipleChoiceNode(graph, new string[] { whoAreYouText, whoIsIgnacioText, noImSorryText, });
 
             graph.primeNode = rootStatement;
-            graph.ConnectNodes(rootStatement, introMultipleChoice);
-            graph.ConnectNodes(introMultipleChoice, characterIntroduction, 0);
-            graph.ConnectNodes(introMultipleChoice, locateTrainer, 1);
-            graph.ConnectNodes(introMultipleChoice, closeDialogue, 2);
-            graph.ConnectNodes(characterIntroduction, rootStatement);
+
+            ////inject compliment about killing wendigo if first time talking
+            TinyDialogueManager.ChainNodes(graph, new Node[] { rootStatement, introMultipleChoice });
+            TinyDialogueManager.ConnectMultipleChoices(graph, introMultipleChoice, new Node[] { characterIntroduction, locateTrainer, closeDialogue });
 
             var obj = instanceGameObject.transform.parent.gameObject;
             obj.SetActive(true);
