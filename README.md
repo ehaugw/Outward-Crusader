@@ -1,7 +1,7 @@
 [Mods by ehaugw](https://outward.thunderstore.io/package/ehaugw/ "Mods by ehaugw") | Support me on [Patreon](https://www.patreon.com/ehaugw "Patreon")
 
 
-This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at July 10, 2024. Due to significant changes in a few mod frameworks' infrastructures, it is recommended that you update all mods that are older than November 08, 2022.
+This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at September 20, 2024. 
 
 
 
@@ -12,36 +12,6 @@ What's the purpose of "The Crusader"?
 * Enable the user to play as a holy warrior with divine magic.
 * Give the user a legit reason to sacrifice health and stamina on a melee character.
 * Enable the user to play an all out melee character without mana, while still casting a few spells.
-
-Manual Installation
-
-* Ensure that you are opted in to the **default-mono** branch.
-* Ensure that [BepInEx](https://outward.thunderstore.io/package/BepInEx/BepInExPack_Outward/ "BepInEx") is installed.
-* Make sure all **dependencies** are installed. The mod **depends** on these and will not work without them!
-
-  * **[Outward SideLoader](https://outward.thunderstore.io/package/sinai-dev/SideLoader/ "Outward SideLoader")**
-  * **[BepInEx](https://outward.thunderstore.io/package/BepInEx/BepInExPack_Outward/ "BepInEx")**
-* Uninstall previous versions of the mod.
-* Download "Crusader.zip".
-* Move "Crusader.zip" into the "Outward" game folder.
-* Right click "Crusader.zip" and click "Extract Here".
-
-Manual Uninstallation
-
-* Version 4.3.0 and onwards
-
-  * Navigate to "Outward/BepInEx/plugins/".
-  * Delete the "Crusader" folder.
-* Version 1.1.0 to 4.1.0
-
-  * Navigate to "Outward/BepInEx/plugins/".
-  * Delete the "Templar" folder.
-* Version 1.0.0
-
-  * Navigate to "Outward/BepInEx/plugins/".
-  * Delete the "Templar" folder.
-  * Navigate to "Outward/Mods/SideLoader/".
-  * Delete the "Templar" folder.
 
 
 
@@ -165,6 +135,13 @@ You must join a faction to become a **Crusader**. Your **Crusader** abilities wi
 # Patch notes
 
 
+* Version 5.3.8
+
+  * Correct dll versioning
+* Version 5.3.7
+
+  * Use local faction belonging rather than hosts faction belonging when playing multiplayer
+  * Fix a niche bug where you would only be granted 7 mana for having [Ancestral Memory](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Ancestral Memory") and [Burst of Divinity](https://outward.thunderstore.io/package/ehaugw/Crusader/ "Burst of Divinity") at the same time
 * Version 5.3.6
 
   * Fix running attack bug.
@@ -391,7 +368,7 @@ You must join a faction to become a **Crusader**. Your **Crusader** abilities wi
 
 
 
-# Other mods by [ehaugw](https://www.nexusmods.com/users/51266516 "ehaugw") (this list may be outdated)
+# Other mods by [ehaugw](https://thunderstore.io/c/outward/p/ehaugw/ "ehaugw") (this list may be outdated)
 
 
 * [Anti Alchemy Abuse](https://outward.thunderstore.io/package/ehaugw/AntiAlchemyAbuse/ "Anti Alchemy Abuse")
@@ -433,6 +410,15 @@ You must join a faction to become a **Crusader**. Your **Crusader** abilities wi
 * [Martial Artist](https://outward.thunderstore.io/package/ehaugw/MartialArtist/ "Martial Artist")
 
   * Provide some simple mechanics, locked behind basic skills, to add some depth to combat
+* [Vagabond](https://outward.thunderstore.io/package/ehaugw/Vagabond/ "Vagabond")
+
+  * Provide positional mechanics, beast taming, dirty tricks and an enhanced survival experience.
+* [Weapon Repair Kit](https://thunderstore.io/c/outward/p/ehaugw/WeaponRepairKit "Weapon Repair Kit")
+
+  * Repair your weapons on the fly!
+* [Rune of Protection](https://thunderstore.io/c/outward/p/ehaugw/RuneOfProtection "Rune of Protection")
+
+  * Enable manaless characters to gain Runic Protection through a limited consumable
 
 
 
@@ -440,4 +426,34 @@ You must join a faction to become a **Crusader**. Your **Crusader** abilities wi
 # Credits
 
 Thanks to **Sinai** for making the [Outward Explorer](https://github.com/sinaioutlander/Outward-Mods/tree/master/Explorer "Outward Explorer"), and always beeing up for discussing solutions to anything.
+Manual Installation
+
+* Ensure that you are opted in to the **default-mono** branch.
+* Ensure that [BepInEx](https://outward.thunderstore.io/package/BepInEx/BepInExPack_Outward/ "BepInEx") is installed.
+* Make sure all **dependencies** are installed. The mod **depends** on these and will not work without them!
+
+  * **[Outward SideLoader](https://outward.thunderstore.io/package/sinai-dev/SideLoader/ "Outward SideLoader")**
+  * **[BepInEx](https://outward.thunderstore.io/package/BepInEx/BepInExPack_Outward/ "BepInEx")**
+* Uninstall previous versions of the mod.
+* Download "Crusader.zip".
+* Move "Crusader.zip" into the "Outward" game folder.
+* Right click "Crusader.zip" and click "Extract Here".
+
+Manual Uninstallation
+
+* Version 4.3.0 and onwards
+
+  * Navigate to "Outward/BepInEx/plugins/".
+  * Delete the "Crusader" folder.
+* Version 1.1.0 to 4.1.0
+
+  * Navigate to "Outward/BepInEx/plugins/".
+  * Delete the "Templar" folder.
+* Version 1.0.0
+
+  * Navigate to "Outward/BepInEx/plugins/".
+  * Delete the "Templar" folder.
+  * Navigate to "Outward/Mods/SideLoader/".
+  * Delete the "Templar" folder.
+
 Thanks to IggyTheMad for designing most of the icons in the mod!
