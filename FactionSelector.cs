@@ -24,12 +24,12 @@ namespace Crusader
 
         public static bool IsHolyMission(Character character)
         {
-            return QuestRequirements.HasQuestKnowledge(character, HolyMissionQuests, TinyHelper.LogicType.Any);
+            return QuestRequirements.HasQuestKnowledgeLocal(character, HolyMissionQuests, TinyHelper.LogicType.Any);
         }
 
         public static bool IsBlueChamberCollective(Character character)
         {
-            return QuestRequirements.HasQuestKnowledge(character, BlueChamberQuests, TinyHelper.LogicType.Any);
+            return QuestRequirements.HasQuestKnowledgeLocal(character, BlueChamberQuests, TinyHelper.LogicType.Any);
         }
 
         public static void SetWeaponTrailForFaction(Skill skill)
@@ -55,7 +55,7 @@ namespace Crusader
                     }
                 }
                 var requirementTransform = TinyGameObjectManager.GetOrMake(particleTransform, EffectSourceConditions.SOURCE_CONDITION_CONTAINER, true, true);
-                requirementTransform.gameObject.AddComponent<SourceConditionQuest>().Quests = tup.Item1;
+                requirementTransform.gameObject.AddComponent<SourceConditionQuestLocal>().Quests = tup.Item1;
             }
         }
 
@@ -88,7 +88,7 @@ namespace Crusader
                 }
 
                 var requirementTransform = TinyGameObjectManager.GetOrMake(particleTransform, EffectSourceConditions.SOURCE_CONDITION_CONTAINER, true, true);
-                requirementTransform.gameObject.AddComponent<SourceConditionQuest>().Quests = tup.Item1;
+                requirementTransform.gameObject.AddComponent<SourceConditionQuestLocal>().Quests = tup.Item1;
             }
         }
     }

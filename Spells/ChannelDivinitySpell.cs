@@ -105,7 +105,7 @@ namespace Crusader
                 }.ApplyToTransform(blastTransform) as ShootBlast;
                 damageBlast.transform.Rotate(-90, 0, 0);
                 var requirementTransform = TinyGameObjectManager.GetOrMake(blastTransform, EffectSourceConditions.SOURCE_CONDITION_CONTAINER, true, true);
-                requirementTransform.gameObject.AddComponent<SourceConditionQuest>().Quests = tup.Item1;
+                requirementTransform.gameObject.AddComponent<SourceConditionQuestLocal>().Quests = tup.Item1;
             }
             
             StatusEffectsCondition conditions;
