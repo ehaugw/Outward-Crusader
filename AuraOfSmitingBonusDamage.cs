@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Crusader
 {
-    public class AuraOfSmitingBonusDamage : IBaseDamageModifier
+    public class AuraOfSmitingBonusDamage
     {
         public void Apply(Weapon weapon, DamageList original, ref DamageList result)
         {

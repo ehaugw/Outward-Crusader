@@ -15,10 +15,12 @@ namespace Crusader
     using SynchronizedWorldObjects;
     using ImpendingDoom;
     using System.IO;
+    using BaseDamageModifiers;
 
     [BepInPlugin(GUID, NAME, VERSION)]
     [BepInDependency(SL.GUID, BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency(TinyHelper.GUID, TinyHelper.VERSION)]
+    [BepInDependency(BaseDamageModifiers.GUID, BaseDamageModifiers.VERSION)]
     [BepInDependency(EffectSourceConditions.GUID, EffectSourceConditions.VERSION)]
     [BepInDependency(HolyDamageManager.GUID, HolyDamageManager.VERSION)]
     [BepInDependency(SynchronizedWorldObjects.GUID, SynchronizedWorldObjects.VERSION)]
@@ -30,7 +32,7 @@ namespace Crusader
         public static Crusader Instance;
 
         public const string GUID = "com.ehaugw.crusaderclass";
-        public const string VERSION = "5.3.8";
+        public const string VERSION = "5.3.9";
         public const string NAME = "The Crusader";
         public static string ModFolderName = Directory.GetParent(typeof(Crusader).Assembly.Location).Name.ToString();
 
@@ -79,7 +81,13 @@ namespace Crusader
         {
             Instance = this;
 
-            CustomWeaponBehaviour.IBaseDamageModifiers.Add(new AuraOfSmitingBonusDamage());
+            BaseDamageModifiers.WeaponDamageModifiers += delegate (Weapon weapon, DamageList original, ref DamageList result)
+            {
+                if (weapon?.OwnerCharacter?.StatusEffectMngr?.HasStatusEffect(Crusader.Instance.auraOfSmitingEffectInstance.IdentifierName) ?? false)
+                {
+                    result.Add(new DamageType(HolyDamageManager.GetDamageType(), AuraOfSmitingEffect.DAMAGE));
+                }
+            };
 
             var rpcGameObject = new GameObject("CrusaderRPC");
             DontDestroyOnLoad(rpcGameObject);

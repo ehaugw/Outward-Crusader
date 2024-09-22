@@ -4,7 +4,7 @@ pluginpath = BepInEx/plugins
 sideloaderpath = $(pluginpath)/$(modname)/SideLoader
 unityassets = resources/unity/Particles/Assets/AssetBundles
 
-dependencies = CustomWeaponBehaviour EffectSourceConditions HolyDamageManager SynchronizedWorldObjects TinyHelper ImpendingDoom
+dependencies = CustomWeaponBehaviour EffectSourceConditions HolyDamageManager SynchronizedWorldObjects TinyHelper ImpendingDoom BaseDamageModifiers
 
 assemble:
 	# common for all mods
