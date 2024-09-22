@@ -1,13 +1,7 @@
 ﻿using InstanceIDs;
 using SideLoader;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 using TinyHelper;
-using HarmonyLib;
-using CustomWeaponBehaviour;
 
 namespace Crusader
 {

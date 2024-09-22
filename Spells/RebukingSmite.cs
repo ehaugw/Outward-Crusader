@@ -1,12 +1,9 @@
-﻿using CustomWeaponBehaviour;
-using InstanceIDs;
+﻿using InstanceIDs;
 using SideLoader;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 using TinyHelper;
+using CustomGrip;
 
 namespace Crusader
 {

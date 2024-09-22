@@ -2,9 +2,7 @@
 using SideLoader;
 using System.Collections.Generic;
 using UnityEngine;
-using CustomWeaponBehaviour;
 using TinyHelper;
-using System.Linq;
 
 namespace Crusader
 {

@@ -1,21 +1,18 @@
 namespace Crusader
 {
-    using System.Collections.Generic;
     using UnityEngine;
     using SideLoader;
     using HarmonyLib;
     using BepInEx;
     using InstanceIDs;
-    using System;
     using TinyHelper;
-    using CustomWeaponBehaviour;
-    using System.Linq;
     using HolyDamageManager;
     using EffectSourceConditions;
     using SynchronizedWorldObjects;
     using ImpendingDoom;
     using System.IO;
     using BaseDamageModifiers;
+    using CustomGrip;
 
     [BepInPlugin(GUID, NAME, VERSION)]
     [BepInDependency(SL.GUID, BepInDependency.DependencyFlags.HardDependency)]
@@ -24,7 +21,7 @@ namespace Crusader
     [BepInDependency(EffectSourceConditions.GUID, EffectSourceConditions.VERSION)]
     [BepInDependency(HolyDamageManager.GUID, HolyDamageManager.VERSION)]
     [BepInDependency(SynchronizedWorldObjects.GUID, SynchronizedWorldObjects.VERSION)]
-    [BepInDependency(CustomWeaponBehaviour.GUID, CustomWeaponBehaviour.VERSION)]
+    [BepInDependency(CustomGrip.GUID, CustomGrip.VERSION)]
     [BepInDependency(ImpendingDoomMod.GUID, ImpendingDoomMod.VERSION)]
 
     public class Crusader : BaseUnityPlugin
@@ -32,7 +29,7 @@ namespace Crusader
         public static Crusader Instance;
 
         public const string GUID = "com.ehaugw.crusaderclass";
-        public const string VERSION = "5.3.9";
+        public const string VERSION = "5.3.10";
         public const string NAME = "The Crusader";
         public static string ModFolderName = Directory.GetParent(typeof(Crusader).Assembly.Location).Name.ToString();
 
