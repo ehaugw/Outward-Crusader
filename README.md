@@ -1,7 +1,7 @@
 [Mods by ehaugw](https://outward.thunderstore.io/package/ehaugw/ "Mods by ehaugw") | Support me on [Patreon](https://www.patreon.com/ehaugw "Patreon")
 
 
-This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at September 20, 2024. 
+This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at September 29, 2024. 
 
 
 
@@ -135,6 +135,12 @@ You must join a faction to become a **Crusader**. Your **Crusader** abilities wi
 # Patch notes
 
 
+* Version 5.3.10
+
+  * Get rid of CustomWeaponBehaviour
+* Version 5.3.9
+
+  * Isolate base damage calculations from CustomWeaponBehaviour into BaseDamageModifiers
 * Version 5.3.8
 
   * Correct dll versioning
