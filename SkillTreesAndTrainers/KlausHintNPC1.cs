@@ -59,7 +59,7 @@ namespace Crusader
                 "I am not suited for this. Take care.",
             });
 
-            var locateTrainer = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Thank you! He just left town, and is likely at his usual spot, at the North-Eastern shore of the Huge Tree in the marsh.");
+            var locateTrainer = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Thank you! He just left town, and is likely at his usual spot, at the north-eastern shore of the Huge Tree to the west in the marsh.");
             var closeDialogue = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "Good bye!");
 
             graph.allNodes.Clear();
