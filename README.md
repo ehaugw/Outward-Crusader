@@ -135,6 +135,9 @@ You must join a faction to become a **Crusader**. Your **Crusader** abilities wi
 # Patch notes
 
 
+* Version 5.3.12
+
+  * Correct versioning in Crusader.dll
 * Version 5.3.11
 
   * Meditate can be used with any equipment that isn't a shield
