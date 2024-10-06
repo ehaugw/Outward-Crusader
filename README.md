@@ -1,7 +1,7 @@
 [Mods by ehaugw](https://outward.thunderstore.io/package/ehaugw/ "Mods by ehaugw") | Support me on [Patreon](https://www.patreon.com/ehaugw "Patreon")
 
 
-This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at September 29, 2024. 
+This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at October 06, 2024. 
 
 
 
@@ -135,6 +135,9 @@ You must join a faction to become a **Crusader**. Your **Crusader** abilities wi
 # Patch notes
 
 
+* Version 5.3.11
+
+  * Meditate can be used with any equipment that isn't a shield
 * Version 5.3.10
 
   * Get rid of CustomWeaponBehaviour
@@ -425,6 +428,9 @@ You must join a faction to become a **Crusader**. Your **Crusader** abilities wi
 * [Rune of Protection](https://thunderstore.io/c/outward/p/ehaugw/RuneOfProtection "Rune of Protection")
 
   * Enable manaless characters to gain Runic Protection through a limited consumable
+* [Relic Keeper](https://outward.thunderstore.io/package/ehaugw/RelicKeeper/ "Relic Keeper")
+
+  * Gives the player an opportunity to collect relics of all rarities, and channel their unique powers.
 
 
 
