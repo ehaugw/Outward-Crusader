@@ -27,7 +27,6 @@ namespace Crusader
                 CastLocomotionEnabled = false,
                 MobileCastMovementMult = -1f,
                 CastSheatheRequired = 1,
-
                 EffectTransforms = new SL_EffectTransform[] {
                     new SL_EffectTransform() {
                         TransformName = "ActivationEffects",
@@ -44,7 +43,7 @@ namespace Crusader
             myitem.ApplyTemplate();
             Skill skill = ResourcesPrefabManager.Instance.GetItemPrefab(myitem.New_ItemID) as Skill;
 
-            EmptyOffHandCondition.AddToSkill(skill, false, true);
+            ForbiddenWeaponTypeCondition.AddToSkill(skill, new List<Weapon.WeaponType> { Weapon.WeaponType.Shield });
             return skill;
         }
 
