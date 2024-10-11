@@ -1,7 +1,7 @@
 [Mods by ehaugw](https://outward.thunderstore.io/package/ehaugw/ "Mods by ehaugw") | Support me on [Patreon](https://www.patreon.com/ehaugw "Patreon")
 
 
-This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at October 06, 2024. 
+This mods was confirmed to work with the (at that time) current base game (Outward Definitive Edition) at October 11, 2024. 
 
 
 
@@ -135,6 +135,9 @@ You must join a faction to become a **Crusader**. Your **Crusader** abilities wi
 # Patch notes
 
 
+* Version 5.3.13
+
+  * Create a faction manager and use RPC to use local faction belonging rather than hosts faction belonging when playing multiplayer
 * Version 5.3.12
 
   * Correct versioning in Crusader.dll
