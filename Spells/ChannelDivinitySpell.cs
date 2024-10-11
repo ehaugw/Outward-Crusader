@@ -17,11 +17,11 @@ namespace Crusader
             TinyHelper.TinyHelper.OnDescriptionModified += delegate (Item item, ref string description) {
                 if (item.ItemID == IDs.channelDivinityID)
                 {
-                    if (FactionSelector.IsBlueChamberCollective(CharacterManager.Instance.GetFirstLocalCharacter()))
+                    if (Crusader.Instance.FactionSelectorInstance.PlayerFactions[CharacterManager.Instance.GetFirstLocalCharacter().UID] == FactionSelector.CrusaderFaction.BlueChamber)
                     {
                         description = "You channel your powers, drastically increasing your " + ModTheme.AncestralMemoryEffectName + " buildup, or produces combo effects when casted in combination with Discipline or Rage.";
                     }
-                    else if (FactionSelector.IsHolyMission(CharacterManager.Instance.GetFirstLocalCharacter()))
+                    else if (Crusader.Instance.FactionSelectorInstance.PlayerFactions[CharacterManager.Instance.GetFirstLocalCharacter().UID] == FactionSelector.CrusaderFaction.HolyMission)
                     {
                         description = "You channel your powers, drastically increasing your " + ModTheme.BurstOfDivinityEffectName + " buildup, or produces combo effects when casted in combination with Discipline or Rage.";
                     }
@@ -65,9 +65,10 @@ namespace Crusader
 
             FactionSelector.SetCasterParticleForFaction(skill, 1.6f);
 
-            foreach (var tup in new Tuple<int[], SL_ShootBlast.BlastPrefabs>[]{
-                new Tuple<int[], SL_ShootBlast.BlastPrefabs>(FactionSelector.HolyMissionQuests, SL_ShootBlast.BlastPrefabs.EliteSupremeShellSpecialLaser),
-                new Tuple<int[], SL_ShootBlast.BlastPrefabs>(FactionSelector.BlueChamberQuests, SL_ShootBlast.BlastPrefabs.CrimsonEliteLaser)
+            foreach (var tup in new Tuple<FactionSelector.CrusaderFaction, SL_ShootBlast.BlastPrefabs>[]{
+                new Tuple<FactionSelector.CrusaderFaction, SL_ShootBlast.BlastPrefabs>(FactionSelector.CrusaderFaction.HolyMission, SL_ShootBlast.BlastPrefabs.EliteSupremeShellSpecialLaser),
+                new Tuple<FactionSelector.CrusaderFaction, SL_ShootBlast.BlastPrefabs>(FactionSelector.CrusaderFaction.HeroicKingdom, SL_ShootBlast.BlastPrefabs.EliteSupremeShellSpecialLaser),
+                new Tuple<FactionSelector.CrusaderFaction, SL_ShootBlast.BlastPrefabs>(FactionSelector.CrusaderFaction.BlueChamber, SL_ShootBlast.BlastPrefabs.CrimsonEliteLaser)
             })
             {
                 var blastTransform = TinyGameObjectManager.MakeFreshTransform(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER, true, true);
@@ -105,12 +106,12 @@ namespace Crusader
                 }.ApplyToTransform(blastTransform) as ShootBlast;
                 damageBlast.transform.Rotate(-90, 0, 0);
                 var requirementTransform = TinyGameObjectManager.GetOrMake(blastTransform, EffectSourceConditions.SOURCE_CONDITION_CONTAINER, true, true);
-                requirementTransform.gameObject.AddComponent<SourceConditionQuestLocal>().Quests = tup.Item1;
+                requirementTransform.gameObject.AddComponent<SourceConditionCrusaderFaction>().Faction = tup.Item1;
             }
             
             StatusEffectsCondition conditions;
             Transform myEffects;
-            QuestKnowledgeCondition qconditions;
+            ConditionCrusaderFaction qconditions;
 
             //SURGE OF DIVINITY
             myEffects = TinyGameObjectManager.MakeFreshTransform(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER, true, true);
@@ -120,8 +121,21 @@ namespace Crusader
             conditions = myEffects.gameObject.AddComponent<StatusEffectsCondition>();
             conditions.StatusEffectNames = new[] { IDs.rageNameID, IDs.rageAmplifiedNameID };
             conditions.Invert = true;
-            qconditions = myEffects.gameObject.AddComponent<QuestKnowledgeCondition>();
-            qconditions.Quests = FactionSelector.HolyMissionQuests;
+            qconditions = myEffects.gameObject.AddComponent<ConditionCrusaderFaction>();
+            qconditions.Faction = FactionSelector.CrusaderFaction.HolyMission;
+            qconditions.Invert = false;
+            myEffects.gameObject.AddComponent<AddStatusEffect>().Status = Crusader.Instance.surgeOfDivinityInstance;
+            
+            //SURGE OF INNER FLAME
+            myEffects = TinyGameObjectManager.MakeFreshTransform(skill.transform, EffectSourceConditions.EFFECTS_CONTAINER, true, true);
+            conditions = myEffects.gameObject.AddComponent<StatusEffectsCondition>();
+            conditions.StatusEffectNames = new[] { IDs.disciplineNameID, IDs.disciplineAmplifiedNameID };
+            conditions.Invert = true;
+            conditions = myEffects.gameObject.AddComponent<StatusEffectsCondition>();
+            conditions.StatusEffectNames = new[] { IDs.rageNameID, IDs.rageAmplifiedNameID };
+            conditions.Invert = true;
+            qconditions = myEffects.gameObject.AddComponent<ConditionCrusaderFaction>();
+            qconditions.Faction = FactionSelector.CrusaderFaction.HeroicKingdom;
             qconditions.Invert = false;
             myEffects.gameObject.AddComponent<AddStatusEffect>().Status = Crusader.Instance.surgeOfDivinityInstance;
 
@@ -133,8 +147,8 @@ namespace Crusader
             conditions = myEffects.gameObject.AddComponent<StatusEffectsCondition>();
             conditions.StatusEffectNames = new[] { IDs.rageNameID, IDs.rageAmplifiedNameID };
             conditions.Invert = true;
-            qconditions = myEffects.gameObject.AddComponent<QuestKnowledgeCondition>();
-            qconditions.Quests = FactionSelector.BlueChamberQuests;
+            qconditions = myEffects.gameObject.AddComponent<ConditionCrusaderFaction>();
+            qconditions.Faction = FactionSelector.CrusaderFaction.BlueChamber;
             qconditions.Invert = false;
             myEffects.gameObject.AddComponent<AddStatusEffect>().Status = Crusader.Instance.surgeOfMemoriesInstance;
 

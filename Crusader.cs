@@ -73,6 +73,7 @@ namespace Crusader
         public Tag AfterUseManaTagInstance;
 
         public static SkillSchool CrusaderSkillTreeInstance;
+        public FactionSelector FactionSelectorInstance = new FactionSelector();
 
         internal void Awake()
         {

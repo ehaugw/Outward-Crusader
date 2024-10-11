@@ -20,5 +20,11 @@ namespace Crusader
             view.viewID = IDs.CrusaderRPCPhotonID;
             Debug.Log("Registered CrusaderRPC with ViewID " + this.photonView.viewID);
         }
+
+        [PunRPC]
+        public void AssignFaction(string playerUID, FactionSelector.CrusaderFaction faction)
+        {
+            Crusader.Instance.FactionSelectorInstance.PlayerFactions[playerUID] = faction;
+        }
     }
 }

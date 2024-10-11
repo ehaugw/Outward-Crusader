@@ -54,7 +54,7 @@ namespace Crusader
             var characterIntroduction = TinyDialogueManager.MakeStatementNode(graph, IdentifierName, "That is classified. All I can tell you is that I am Ignacio.");
 
             NodeCanvas.DialogueTrees.DTNode openTrainer;
-            if (FactionSelector.IsBlueChamberCollective(player))
+            if (Crusader.Instance.FactionSelectorInstance.PlayerFactions[player.UID] == FactionSelector.CrusaderFaction.BlueChamber)
             {
                 openTrainer = TinyDialogueManager.MakeTrainDialogueAction(graph, trainerComp);
             } else

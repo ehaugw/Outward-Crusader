@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using InstanceIDs;
+using Rewired;
 using SideLoader;
 using System;
 using System.Collections.Generic;
@@ -35,13 +36,13 @@ namespace Crusader
             TinyHelper.TinyHelper.OnDescriptionModified += delegate (Item item, ref string description) {
                 if (item.ItemID == IDs.blessedDeterminationID)
                 {
-                    if (FactionSelector.IsBlueChamberCollective(CharacterManager.Instance.GetFirstLocalCharacter()))
+                    if (Crusader.Instance.FactionSelectorInstance.PlayerFactions[CharacterManager.Instance.GetFirstLocalCharacter().UID] == FactionSelector.CrusaderFaction.BlueChamber)
                     {
                         description =
                             (ModTheme.BlessedDeterminationRequiredBoonName != null ? "While under the effect of the " + ModTheme.BlessedDeterminationRequiredBoonName + " boon, all" : "All") +
                             " spent mana is regained as stamina, and spending stamina builds up an " + ModTheme.AncestralMemoryEffectName + ", which reduces the mana cost of the next spell you cast.";
                     }
-                    else if (FactionSelector.IsHolyMission(CharacterManager.Instance.GetFirstLocalCharacter()))
+                    else if (Crusader.Instance.FactionSelectorInstance.PlayerFactions[CharacterManager.Instance.GetFirstLocalCharacter().UID] == FactionSelector.CrusaderFaction.HolyMission)
                     {
                         description =
                             (ModTheme.BlessedDeterminationRequiredBoonName != null ? "While under the effect of the " + ModTheme.BlessedDeterminationRequiredBoonName + " boon, all" : "All") +
@@ -96,7 +97,7 @@ namespace Crusader
                 )
             )
             {
-                if (FactionSelector.IsBlueChamberCollective(character))
+                if (Crusader.Instance.FactionSelectorInstance.PlayerFactions[character.UID] == FactionSelector.CrusaderFaction.BlueChamber)
                 {
                     character.StatusEffectMngr.AddStatusEffectBuildUp(Crusader.Instance.ancestralMemoryInstance, _staminaConsumed * BlessedDeterminationSpell.GetFreeCastBuildup(character), character);
                 } else
