@@ -18,7 +18,7 @@ namespace Crusader
         public bool Invert = false;
         public override bool CharacterHasRequirement(Character character)
         {
-            return (Crusader.Instance.FactionSelectorInstance.PlayerFactions[character.UID] == Faction) ^ Invert;
+            return (character.GetCrusaderFaction() == Faction) ^ Invert;
         }
     }
 
@@ -27,7 +27,15 @@ namespace Crusader
         public FactionSelector.CrusaderFaction Faction = FactionSelector.CrusaderFaction.None;
         protected override bool CheckIsValid(Character _affectedCharacter)
         {
-            return (Crusader.Instance.FactionSelectorInstance.PlayerFactions[_affectedCharacter.UID] == Faction) ^ Invert;
+            return (_affectedCharacter.GetCrusaderFaction() == Faction) ^ Invert;
+        }
+    }
+
+    public static class CharacterCrusaderFactionExtension
+    {
+        public static FactionSelector.CrusaderFaction GetCrusaderFaction(this Character character)
+        {
+            return Crusader.Instance.FactionSelectorInstance.PlayerFactions[character.UID.ToString()];
         }
     }
 

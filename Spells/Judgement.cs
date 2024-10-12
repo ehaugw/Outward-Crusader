@@ -16,11 +16,11 @@ namespace Crusader
                 if (item.ItemID == IDs.divineFavourID)
                 {
                     //TODO: Use skill owner if possible
-                    if (Crusader.Instance.FactionSelectorInstance.PlayerFactions[CharacterManager.Instance.GetFirstLocalCharacter().UID] == FactionSelector.CrusaderFaction.BlueChamber)
+                    if (CharacterManager.Instance.GetFirstLocalCharacter().GetCrusaderFaction() == FactionSelector.CrusaderFaction.BlueChamber)
                     {
                         description = "When you expend " + ModTheme.AncestralMemoryEffectName + " to cast a spell, your primary weapon becomes infused with " + ModTheme.BlueChamberImbueName + " for " + ImbueDuration + " seconds.";
                     }
-                    else if (Crusader.Instance.FactionSelectorInstance.PlayerFactions[CharacterManager.Instance.GetFirstLocalCharacter().UID] == FactionSelector.CrusaderFaction.HolyMission)
+                    else if (CharacterManager.Instance.GetFirstLocalCharacter().GetCrusaderFaction() == FactionSelector.CrusaderFaction.HolyMission)
                     {
                         description = "When you expend " + ModTheme.BurstOfDivinityEffectName + " to cast a spell, your primary weapon becomes infused with " + ModTheme.HolyMissionImbueName + " for " + ImbueDuration + " seconds.";
                     }

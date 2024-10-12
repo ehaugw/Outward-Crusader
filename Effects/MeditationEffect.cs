@@ -26,7 +26,7 @@
                 {
                     if (!_affectedCharacter.StatusEffectMngr.HasStatusEffect(Crusader.Instance.meditationCooldownStatusEffectInstance.IdentifierName))
                     {
-                        if (Crusader.Instance.FactionSelectorInstance.PlayerFactions[_affectedCharacter.UID] == FactionSelector.CrusaderFaction.BlueChamber)
+                        if (_affectedCharacter.GetCrusaderFaction() == FactionSelector.CrusaderFaction.BlueChamber)
                         {
                             _affectedCharacter.StatusEffectMngr.AddStatusEffect(Crusader.Instance.ancestralMemoryInstance, _affectedCharacter);
                         }

@@ -17,11 +17,11 @@ namespace Crusader
             TinyHelper.TinyHelper.OnDescriptionModified += delegate (Item item, ref string description) {
                 if (item.ItemID == IDs.channelDivinityID)
                 {
-                    if (Crusader.Instance.FactionSelectorInstance.PlayerFactions[CharacterManager.Instance.GetFirstLocalCharacter().UID] == FactionSelector.CrusaderFaction.BlueChamber)
+                    if (CharacterManager.Instance.GetFirstLocalCharacter().GetCrusaderFaction() == FactionSelector.CrusaderFaction.BlueChamber)
                     {
                         description = "You channel your powers, drastically increasing your " + ModTheme.AncestralMemoryEffectName + " buildup, or produces combo effects when casted in combination with Discipline or Rage.";
                     }
-                    else if (Crusader.Instance.FactionSelectorInstance.PlayerFactions[CharacterManager.Instance.GetFirstLocalCharacter().UID] == FactionSelector.CrusaderFaction.HolyMission)
+                    else if (CharacterManager.Instance.GetFirstLocalCharacter().GetCrusaderFaction() == FactionSelector.CrusaderFaction.HolyMission)
                     {
                         description = "You channel your powers, drastically increasing your " + ModTheme.BurstOfDivinityEffectName + " buildup, or produces combo effects when casted in combination with Discipline or Rage.";
                     }

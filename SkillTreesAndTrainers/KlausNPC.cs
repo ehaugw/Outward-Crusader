@@ -57,7 +57,7 @@ namespace Crusader
 
 
             NodeCanvas.DialogueTrees.DTNode openTrainer;
-            if (Crusader.Instance.FactionSelectorInstance.PlayerFactions[player.UID] == FactionSelector.CrusaderFaction.HolyMission)
+            if (player.GetCrusaderFaction() == FactionSelector.CrusaderFaction.HolyMission)
             {
                 openTrainer = TinyDialogueManager.MakeTrainDialogueAction(graph, trainerComp);
             } else
